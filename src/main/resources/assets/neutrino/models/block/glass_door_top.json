@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "neutrino:block/glass_door_top",
+    "bottom": "neutrino:block/glass_door_bottom"
+  }
+}
