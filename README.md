@@ -22,7 +22,7 @@ Fabric mods before, you can find a variety of community guides for doing so [her
 
 You can report bugs and crashes by opening an issue on our [issue tracker](https://github.com/frostwizard4/neutrino/issues).
 
-#### Building with Gradle
+### Building with Gradle
 
 Sodium uses a typical Gradle project structure and can be built by simply running the default `build` task. After Gradle
 finishes building the project, you can find the built mod in `build/libs`. Feel free to open a pull request!
