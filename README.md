@@ -11,6 +11,12 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft
 
 ---
 
+## Features:
+ 
+  - Half Full Bookshelfs
+  - Glass Doors
+  - Glass Trapdoors
+
 ## Installation
 
 ### Manual installation (recommended)
@@ -24,5 +30,10 @@ You can report bugs and crashes by opening an issue on our [issue tracker](https
 
 ### Building with Gradle
 
-Sodium uses a typical Gradle project structure and can be built by simply running the default `build` task. After Gradle
+Neutrino uses a typical Gradle project structure and can be built by simply running the default `build` task. After Gradle
 finishes building the project, you can find the built mod in `build/libs`. Feel free to open a pull request!
+
+### Development
+
+If you are going to help develop the mod (which I highly reccomend!) I only ask that you add your feature to the bullet point list
+on this `readme`!
