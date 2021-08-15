@@ -21,9 +21,9 @@ public class NeutrinoMain implements ModInitializer {
 
     // an instance of our new item
     public static final NeutrinoCompendium COMPENDIUM = new NeutrinoCompendium(new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
-    public static final Block EMPTY_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.0f).strength(5.0F,5.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
-    public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(1.0f,1.0f).sounds(BlockSoundGroup.GLASS).nonOpaque());
-    public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(1.0f,1.0f).sounds(BlockSoundGroup.GLASS).nonOpaque());
+    public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F,1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
+    public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f,0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
+    public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f,0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
 
 
 
@@ -31,8 +31,8 @@ public class NeutrinoMain implements ModInitializer {
     public void onInitialize() {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "compendium"), COMPENDIUM);
 
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "empty_bookshelf"), EMPTY_BOOKSHELF);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_bookshelf"), new BlockItem(EMPTY_BOOKSHELF, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
         Registry.register(Registry.ITEM, new Identifier("neutrino", "glass_door"), new BlockItem(GLASS_DOOR, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "glass_door"), GLASS_DOOR);

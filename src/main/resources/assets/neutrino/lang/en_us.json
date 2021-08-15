@@ -1,8 +1,8 @@
 {
   "item.neutrino.compendium": "The Neutrino Compendium",
   "item.neutrino.compendium.tooltip": "The Documentation on Neutrino!",
-  "item.neutrino.empty_bookshelf": "Empty Bookshelf",
-  "block.neutrino.empty_bookshelf": "Empty Bookshelf",
+  "item.neutrino.half_full_bookshelf": "Half Full Bookshelf",
+  "block.neutrino.half_full_bookshelf": "Half Full Bookshelf",
   "item.neutrino.glass_door": "Glass Door",
   "block.neutrino.glass_door": "Glass Door",
   "item.neutrino.glass_trapdoor": "Glass Trapdoor",
