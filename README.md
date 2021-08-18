@@ -7,7 +7,7 @@
 ![GitHub release](https://img.shields.io/github/v/release/frostwizard4/neutrino?include_prereleases)
 
 
-A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft
+A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
 
 ---
 
