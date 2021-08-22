@@ -16,6 +16,10 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Half Full Bookshelfs
   - Glass Doors
   - Glass Trapdoors
+  - Sand Slab
+  - Gravel Slab
+  - Dirt Slab
+  - Crafting Table Slab
 
 ## Installation
 
