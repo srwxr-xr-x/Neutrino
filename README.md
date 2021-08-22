@@ -39,5 +39,5 @@ finishes building the project, you can find the built mod in `build/libs`. Feel 
 
 ### Development
 
-If you are going to help develop the mod (which I highly reccomend!) I only ask that you add your feature to the bullet point list
+If you are going to help develop the mod (which I highly recommend!) I only ask that you add your feature to the bullet point list
 on this `readme`!
