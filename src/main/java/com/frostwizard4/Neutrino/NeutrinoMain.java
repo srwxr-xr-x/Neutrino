@@ -32,8 +32,6 @@ public class NeutrinoMain implements ModInitializer {
     public static final SlabBlock SAND_SLAB = new SlabBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f,0.3f).sounds(BlockSoundGroup.SAND));
     public static final CraftingSlab CRAFTING_SLAB = new CraftingSlab(FabricBlockSettings.of(Material.WOOD).strength(1.5f, 1.5f).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
 
-
-
     @Override
     public void onInitialize() {
 
