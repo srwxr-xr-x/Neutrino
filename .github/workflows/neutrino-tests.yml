@@ -41,11 +41,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: 1.17.1
 
-      - name: Minecraft Tests
-        uses: Geometrically/fabric-test-runner@v1
-        with:
-          minecraftVersion: latest
-          runBuildTest: true
-          runServerTest: false
-
     
