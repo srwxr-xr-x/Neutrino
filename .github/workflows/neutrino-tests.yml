@@ -11,7 +11,6 @@ on:
         required: true
         default: 'warning'
 
-
 jobs:
   fabric-test-run:
 
@@ -31,6 +30,14 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Check for errors.
+        uses: github/super-linter@v3
+        env:
+          VALIDATE_ALL_CODEBASE: false    
       - name: Minecraft Tests
         uses: Geometrically/fabric-test-runner@v1
         with:
