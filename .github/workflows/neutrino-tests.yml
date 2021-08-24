@@ -26,12 +26,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
 
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+        env:
+          GITHUB_WORKSPACE: /home/runner/work/Neutrino/Neutrino
       - name: Check for errors.
         uses: github/super-linter@v3
         env:
