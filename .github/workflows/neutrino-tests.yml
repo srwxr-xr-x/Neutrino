@@ -1,4 +1,4 @@
-name: Neutrino Tests
+name: Neutrino Checks
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
         default: 'warning'
 
 jobs:
-  fabric-test-run:
+  Neutrino Code Check:
 
     runs-on: ubuntu-latest
     permissions:
@@ -20,7 +20,6 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of the branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
