@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "neutrino:item/death_cap_mushroom"
+  }
+}
