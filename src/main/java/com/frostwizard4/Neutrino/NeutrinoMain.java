@@ -50,6 +50,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final HarvesterArtifact HARVESTER = new HarvesterArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final DeathCapArtifact DEATH_CAP_MUSHROOM = new DeathCapArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.UNCOMMON));
 
+    //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
     @Override
     public void onInitialize() {
