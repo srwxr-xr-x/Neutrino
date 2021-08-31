@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:book"
+    },
+    "X": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result": {
+    "item": "neutrino:enchanters_tome"
+  }
+}
