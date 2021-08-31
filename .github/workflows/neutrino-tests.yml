@@ -9,7 +9,7 @@ on:
         default: 'warning'
 
 jobs:
-  Neutrino Code Check:
+  Neutrino-code-check:
 
     runs-on: ubuntu-latest
     permissions:
