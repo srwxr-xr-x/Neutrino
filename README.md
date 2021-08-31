@@ -20,6 +20,9 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Gravel Slab
   - Dirt Slab
   - Crafting Table Slab
+  - Enchanter's Tome from Minecraft Dungeons
+  - Harvester from Minecraft Dungeons
+  - Death Cap Mushroom from Minecraft Dungeons
 
 ## Installation
 
