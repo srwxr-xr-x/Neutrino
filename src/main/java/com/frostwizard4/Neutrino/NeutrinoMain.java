@@ -3,6 +3,7 @@ package com.frostwizard4.Neutrino;
 import com.frostwizard4.Neutrino.Artifacts.DeathCapArtifact;
 import com.frostwizard4.Neutrino.Artifacts.EnchantersTomeArtifact;
 import com.frostwizard4.Neutrino.Artifacts.HarvesterArtifact;
+import com.frostwizard4.Neutrino.Artifacts.LightningRodArtifact;
 import com.frostwizard4.Neutrino.Blocks.GlassDoor;
 import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Items.Backstabber;
@@ -18,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -38,17 +40,18 @@ public class NeutrinoMain implements ModInitializer {
     public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
 
     public static final ItemGroup NEUTRINO_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_group")).icon(() -> new ItemStack(HALF_FULL_BOOKSHELF)).build();
-    public static final ItemGroup NEUTRINO_DUNGEONS_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_dungeons_group")).icon(() -> new ItemStack(NeutrinoMain.BACKSTABBER)).build();
+    public static final ItemGroup NEUTRINO_DUNGEONS_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_dungeons_group")).icon(() -> new ItemStack(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)).build();
 
     public static final SlabBlock DIRT_SLAB = new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(1.5f, 1.5f).sounds(BlockSoundGroup.GRASS));
     public static final SlabBlock GRAVEL_SLAB = new SlabBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GRAVEL));
     public static final SlabBlock SAND_SLAB = new SlabBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.SAND));
     public static final CraftingSlab CRAFTING_SLAB = new CraftingSlab(FabricBlockSettings.of(Material.WOOD).strength(1.5f, 1.5f).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
 
-    public static final Backstabber BACKSTABBER = new Backstabber(DaggerToolMaterial.INSTANCE, 12, 7, new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).fireproof().rarity(Rarity.RARE));
+    public static final Backstabber BACKSTABBER = new Backstabber(DaggerToolMaterial.INSTANCE, 8, 7, new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).fireproof().rarity(Rarity.RARE));
     public static final EnchantersTomeArtifact ENCHANTERS_TOME = new EnchantersTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final HarvesterArtifact HARVESTER = new HarvesterArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final DeathCapArtifact DEATH_CAP_MUSHROOM = new DeathCapArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.UNCOMMON));
+    public static final LightningRodArtifact LIGHTNING_ROD_ARTIFACT = new LightningRodArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
 
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
@@ -80,10 +83,13 @@ public class NeutrinoMain implements ModInitializer {
         register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
         register(Registry.ITEM, new Identifier("neutrino", "death_cap_mushroom"), DEATH_CAP_MUSHROOM);
+        register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
 
         Registry.register(Registry.SOUND_EVENT, SoundRegister.ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SoundRegister.DAGGER_STAB_ID, DAGGER_STAB);
         Registry.register(Registry.SOUND_EVENT, SoundRegister.HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
+        Registry.register(Registry.SOUND_EVENT, SoundRegister.LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
+
 
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_TRAPDOOR, RenderLayer.getCutout());

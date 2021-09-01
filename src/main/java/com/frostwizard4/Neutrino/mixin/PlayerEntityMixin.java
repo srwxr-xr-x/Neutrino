@@ -46,6 +46,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
+        if(getMainHandStack().isOf(NeutrinoMain.HARVESTER)) {
+            hud.addChatMessage(MessageType.GAME_INFO, Text.of("Power Level: " + (int)neutrino$boomPowerCounter / 10), UUID.randomUUID());
+        }
         if (isOnSoulSpeedBlock()) {
             if (getMainHandStack().isOf(NeutrinoMain.HARVESTER)) {
                 if (neutrino$boomPowerCounter >= 1500) {
@@ -59,6 +62,5 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             }
         }
     }
-
 }
 

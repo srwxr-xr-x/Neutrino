@@ -1,7 +1,7 @@
 ## Planned Features:
 
 - `Blast Fungus` -
-- `Boots of Swiftness` - Gives you speed for a brief amount of time 
+- `Boots of Swiftness` - Gives you speed for a brief amount of time
 - `Buzzy Nest` -
 - `Corrupted Beacon` - Shoots a Devastating Beam of Energy
 - `Corrupted Pumpkin` - See Corrupted Beacon
@@ -21,7 +21,7 @@
 - `Ice Wand` -
 - `Iron Hide Amulet` -
 - `Light Feather` -
-- `Lightning Rod` - Summons lightning on the enemies around you.
+- `Lightning Rod` - Summons lightning on the enemies around you. ~ ***Implemented***
 - `Love Medallion` -
 - `Powershaker` -
 - `Satchel of Elixirs` - Drops helpful potions
@@ -39,4 +39,3 @@
 - `Totem of Regeneration` - Places a totem that heals people in the circle
 - `Totem of Shielding` - Places a totem that protects players in the hexagon from projectile's
 - `Totem of Soul Protection` -
-

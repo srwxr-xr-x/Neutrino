@@ -15,6 +15,7 @@
   "block.neutrino.glass_trapdoor": "Glass Trapdoor",
   "item.neutrino.backstabber": "Backstabber",
   "item.neutrino.harvester": "Harvester",
+  "item.neutrino.lightning_rod_artifact": "Lightning Rod",
   "item.neutrino.enchanters_tome": "Enchanter's Tome",
   "item.neutrino.death_cap_mushroom": "Death Cap Mushroom",
   "itemGroup.neutrino.neutrino_group": "Neutrino",
@@ -28,6 +29,9 @@
   "subtitles.neutrino.eat_death_cap_mushroom": "Use Death Cap Mushroom",
   "subtitles.neutrino.harvester_activate": "Harvester Activates",
   "item.neutrino.death_cap_mushroom.tooltip": "§oEaten by daring warriors before battle, ",
-  "item.neutrino.death_cap_mushroom.tooltip2": "§othe Death Cap Mushroom drives fighters",
-  "item.neutrino.death_cap_mushroom.tooltip3": "§ointo a frenzy."
+  "item.neutrino.death_cap_mushroom.tooltip2": "§othe Death Cap Mushroom drives fighters ",
+  "item.neutrino.death_cap_mushroom.tooltip3": "§ointo a frenzy.",
+  "item.neutrino.lightning_rod.tooltip": "§oCrafted by Illager Geomancers, this item ",
+  "item.neutrino.lightning_rod.tooltip2": "§ois enchanted with the power of a storming sky.",
+  "subtitles.neutrino.lightning_rod_activate": "Lightning Rod Activates"
 }

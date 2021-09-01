@@ -15,4 +15,8 @@ public class SoundRegister {
 
     public static final Identifier EAT_DEATH_CAP_MUSHROOM_ID = new Identifier("neutrino:eat_death_cap_mushroom");
     public static SoundEvent EAT_DEATH_CAP_MUSHROOM = new SoundEvent(EAT_DEATH_CAP_MUSHROOM_ID);
+
+    public static final Identifier LIGHTNING_ROD_ACTIVATE_ID = new Identifier("neutrino:lightning_rod_activate");
+    public static SoundEvent LIGHTNING_ROD_ACTIVATE = new SoundEvent(LIGHTNING_ROD_ACTIVATE_ID);
+
 }
