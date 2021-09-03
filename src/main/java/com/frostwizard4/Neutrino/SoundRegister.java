@@ -19,4 +19,7 @@ public class SoundRegister {
     public static final Identifier LIGHTNING_ROD_ACTIVATE_ID = new Identifier("neutrino:lightning_rod_activate");
     public static SoundEvent LIGHTNING_ROD_ACTIVATE = new SoundEvent(LIGHTNING_ROD_ACTIVATE_ID);
 
+    public static final Identifier UPDRAFT_TOME_ACTIVATE_ID = new Identifier("neutrino:updraft_tome_activate");
+    public static SoundEvent UPDRAFT_TOME_ACTIVATE = new SoundEvent(UPDRAFT_TOME_ACTIVATE_ID);
+
 }

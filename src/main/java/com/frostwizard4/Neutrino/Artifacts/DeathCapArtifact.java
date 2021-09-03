@@ -37,8 +37,8 @@ public class DeathCapArtifact extends Item {
         //Play Sound
         playerEntity.playSound(EAT_DEATH_CAP_MUSHROOM, 1.0F, 1.0F);
         //Apply Effects
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,50, 2));
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 50,1));
+        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,300, 2));
+        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 300,1));
         //Set 30 second Cooldown
         playerEntity.getItemCooldownManager().set(NeutrinoMain.DEATH_CAP_MUSHROOM, 600);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));

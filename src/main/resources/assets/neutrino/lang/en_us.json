@@ -15,6 +15,7 @@
   "block.neutrino.glass_trapdoor": "Glass Trapdoor",
   "item.neutrino.backstabber": "Backstabber",
   "item.neutrino.harvester": "Harvester",
+  "item.neutrino.updraft_tome": "Updraft Tome",
   "item.neutrino.lightning_rod_artifact": "Lightning Rod",
   "item.neutrino.enchanters_tome": "Enchanter's Tome",
   "item.neutrino.death_cap_mushroom": "Death Cap Mushroom",
@@ -33,5 +34,8 @@
   "item.neutrino.death_cap_mushroom.tooltip3": "§ointo a frenzy.",
   "item.neutrino.lightning_rod.tooltip": "§oCrafted by Illager Geomancers, this item ",
   "item.neutrino.lightning_rod.tooltip2": "§ois enchanted with the power of a storming sky.",
-  "subtitles.neutrino.lightning_rod_activate": "Lightning Rod Activates"
+  "subtitles.neutrino.lightning_rod_activate": "Lightning Rod Activates",
+  "subtitles.neutrino.updraft_tome_activate": "Updraft Tome Activates",
+  "item.neutrino.updraft_tome.tooltip": "§oAn ancient book filled with illegible glyphs, ",
+  "item.neutrino.updraft_tome.tooltip2": "§oyou feel a strange breeze as you flip the pages. "
 }

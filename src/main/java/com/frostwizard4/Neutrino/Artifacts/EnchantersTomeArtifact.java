@@ -31,9 +31,9 @@ public class EnchantersTomeArtifact extends Item {
         //Play Sound
         playerEntity.playSound(ENCHANTERS_TOME_ACTIVATE, 1.0F, 1.0F);
         //Apply Effects to the Closest Players
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,50, 2));
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 50,1));
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE,50, 2));
+        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,200, 2));
+        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200,1));
+        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE,200, 2));
         //Add 25 second Cooldown
         playerEntity.getItemCooldownManager().set(NeutrinoMain.ENCHANTERS_TOME, 500);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
