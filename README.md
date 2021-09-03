@@ -24,6 +24,7 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Harvester from Minecraft Dungeons
   - Death Cap Mushroom from Minecraft Dungeons
   - Lightning Rod from Minecraft Dungeons
+  - Updraft Tome from Minecraft Dungeons
 
 ## Installation
 
