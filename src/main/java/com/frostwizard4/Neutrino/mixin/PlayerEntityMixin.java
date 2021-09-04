@@ -9,7 +9,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.MessageType;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,6 +34,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     private float neutrino$boomPowerCounter = 0;
     MinecraftClient client = MinecraftClient.getInstance();
     InGameHud hud = new InGameHud(client);
+    Vec3d lv = this.getVelocity();
 
     @Override
     public float neutrino$getPowerCount() {
@@ -44,13 +51,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Shadow
     public abstract Iterable<ItemStack> getItemsHand();
 
+    @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
+
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
         if(getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
             hud.addChatMessage(MessageType.GAME_INFO, Text.of("Power Level: " + (int)neutrino$boomPowerCounter / 10), UUID.randomUUID());
         }
         if (isOnSoulSpeedBlock()) {
-            if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
+            if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT) || getMainHandStack().isOf(NeutrinoMain.SOUL_HEALER)) {
+                displaySoulSpeedEffects();
                 if (neutrino$boomPowerCounter >= 1500) {
                     neutrino$boomPowerCounter = 1500;
                     hud.addChatMessage(MessageType.GAME_INFO, Text.of("Power Level: " + (int)neutrino$boomPowerCounter / 10), UUID.randomUUID());

@@ -22,4 +22,6 @@ public class SoundRegister {
     public static final Identifier UPDRAFT_TOME_ACTIVATE_ID = new Identifier("neutrino:updraft_tome_activate");
     public static SoundEvent UPDRAFT_TOME_ACTIVATE = new SoundEvent(UPDRAFT_TOME_ACTIVATE_ID);
 
+    public static final Identifier SOUL_HEALER_ACTIVATE_ID = new Identifier("neutrino:soul_healer_activate");
+    public static SoundEvent SOUL_HEALER_ACTIVATE = new SoundEvent(SOUL_HEALER_ACTIVATE_ID);
 }

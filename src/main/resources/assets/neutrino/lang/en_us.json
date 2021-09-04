@@ -16,6 +16,7 @@
   "item.neutrino.backstabber": "Backstabber",
   "item.neutrino.harvester": "Harvester",
   "item.neutrino.updraft_tome": "Updraft Tome",
+  "item.neutrino.soul_healer": "Soul Healer",
   "item.neutrino.lightning_rod_artifact": "Lightning Rod",
   "item.neutrino.enchanters_tome": "Enchanter's Tome",
   "item.neutrino.death_cap_mushroom": "Death Cap Mushroom",
@@ -28,6 +29,7 @@
   "item.neutrino.enchanters_tome.tooltip3": "§opowerful enchantments.",
   "subtitles.neutrino.enchanters_tome_activate": "Enchanter's Tome Activates",
   "subtitles.neutrino.eat_death_cap_mushroom": "Use Death Cap Mushroom",
+  "subtitles.neutrino.soul_healer_activate": "Soul Healer Activates",
   "subtitles.neutrino.harvester_activate": "Harvester Activates",
   "item.neutrino.death_cap_mushroom.tooltip": "§oEaten by daring warriors before battle, ",
   "item.neutrino.death_cap_mushroom.tooltip2": "§othe Death Cap Mushroom drives fighters ",
@@ -37,5 +39,8 @@
   "subtitles.neutrino.lightning_rod_activate": "Lightning Rod Activates",
   "subtitles.neutrino.updraft_tome_activate": "Updraft Tome Activates",
   "item.neutrino.updraft_tome.tooltip": "§oAn ancient book filled with illegible glyphs, ",
-  "item.neutrino.updraft_tome.tooltip2": "§oyou feel a strange breeze as you flip the pages. "
+  "item.neutrino.updraft_tome.tooltip2": "§oyou feel a strange breeze as you flip the pages. ",
+  "item.neutrino.soul_healer.tooltip": "§oThe Soul Healer amulet is cold to the touch and ",
+  "item.neutrino.soul_healer.tooltip2": "§otrembles with the power of souls. It is a common ",
+  "item.neutrino.soul_healer.tooltip3":"§oamong the Illagers of the Woodland Mansions."
 }
