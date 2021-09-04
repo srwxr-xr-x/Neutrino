@@ -1,0 +1,44 @@
+{
+  "dagger_stab": {
+    "subtitle": "subtitles.neutrino.dagger_stab",
+    "sounds": [
+      "neutrino:dagger_stab"
+    ]
+  },
+  "enchanters_tome_activate": {
+    "subtitle": "subtitles.neutrino.enchanters_tome_activate",
+    "sounds": [
+      "neutrino:enchanters_tome_activate"
+    ]
+  },
+  "harvester_activate": {
+    "subtitle": "subtitles.neutrino.harvester_activate",
+    "sounds": [
+      "neutrino:harvester_activate"
+    ]
+  },
+  "eat_death_cap_mushroom": {
+    "subtitle": "subtitles.neutrino.eat_death_cap_mushroom",
+    "sounds": [
+      "neutrino:eat_death_cap_mushroom"
+    ]
+  },
+  "lightning_rod_activate": {
+    "subtitle": "subtitles.neutrino.lightning_rod_activate",
+    "sounds": [
+      "neutrino:lightning_rod_activate"
+    ]
+  },
+  "updraft_tome_activate": {
+    "subtitle": "subtitles.neutrino.updraft_tome_activate",
+    "sounds": [
+      "neutrino:updraft_tome_activate"
+    ]
+  },
+  "soul_healer_activate": {
+    "subtitle": "subtitles.neutrino.soul_healer_activate",
+    "sounds": [
+      "neutrino:soul_healer_activate"
+    ]
+  }
+}

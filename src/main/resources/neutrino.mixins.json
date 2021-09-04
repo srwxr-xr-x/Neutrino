@@ -6,7 +6,9 @@
   "mixins": [
   ],
   "client": [
-    "NeutrinoMixin"
+    "NeutrinoMixin",
+    "PlayerEntityMixin",
+    "LightningMixin"
   ],
   "injectors": {
     "defaultRequire": 1
