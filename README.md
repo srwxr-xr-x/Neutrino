@@ -46,3 +46,4 @@ finishes building the project, you can find the built mod in `build/libs`. Feel 
 
 If you are going to help develop the mod (which I highly recommend!) I only ask that you add your feature to the bullet point list
 on this `readme`!
+_Note: If the mixin's in the mod's source code have errors, I suggest opening the game in your ide and closing the project to fix it._
