@@ -1,29 +1,19 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
-import net.minecraft.block.LightningRodBlock;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.CreeperEntity;
-import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.command.SummonCommand;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-import java.lang.annotation.Target;
 import java.util.List;
 
 import static com.frostwizard4.Neutrino.SoundRegister.EAT_DEATH_CAP_MUSHROOM;
