@@ -17,6 +17,7 @@
   "item.neutrino.harvester": "Harvester",
   "item.neutrino.updraft_tome": "Updraft Tome",
   "item.neutrino.soul_healer": "Soul Healer",
+  "item.neutrino.soul_pouch": "Soul Bundle",
   "item.neutrino.lightning_rod_artifact": "Lightning Rod",
   "item.neutrino.enchanters_tome": "Enchanter's Tome",
   "item.neutrino.death_cap_mushroom": "Death Cap Mushroom",
@@ -42,5 +43,6 @@
   "item.neutrino.updraft_tome.tooltip2": "§oyou feel a strange breeze as you flip the pages. ",
   "item.neutrino.soul_healer.tooltip": "§oThe Soul Healer amulet is cold to the touch and ",
   "item.neutrino.soul_healer.tooltip2": "§otrembles with the power of souls. It is a common ",
-  "item.neutrino.soul_healer.tooltip3":"§oamong the Illagers of the Woodland Mansions."
+  "item.neutrino.soul_healer.tooltip3":"§oamong the Illagers of the Woodland Mansions.",
+  "item.neutrino.soul_pouch.tooltip": "§kThe Soul Pouch §r"
 }

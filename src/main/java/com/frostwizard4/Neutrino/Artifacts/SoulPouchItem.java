@@ -36,7 +36,6 @@ public class SoulPouchItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(new TranslatableText("item.neutrino.harvester.tooltip").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.harvester.tooltip2").formatted(Formatting.AQUA));
+        tooltip.add(new TranslatableText("item.neutrino.soul_pouch.tooltip").formatted(Formatting.AQUA));
     }
 }

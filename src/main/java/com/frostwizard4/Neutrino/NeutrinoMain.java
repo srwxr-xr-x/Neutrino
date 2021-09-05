@@ -6,19 +6,20 @@ import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Items.Backstabber;
 import com.frostwizard4.Neutrino.Items.DaggerToolMaterial;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
+import com.sun.net.httpserver.Authenticator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -88,12 +89,20 @@ public class NeutrinoMain implements ModInitializer {
         register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
         register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
 
-        Registry.register(Registry.SOUND_EVENT, SoundRegister.ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, SoundRegister.DAGGER_STAB_ID, DAGGER_STAB);
-        Registry.register(Registry.SOUND_EVENT, SoundRegister.HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, SoundRegister.LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, SoundRegister.UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, SoundRegister.SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
+        FabricModelPredicateProviderRegistry.register(NeutrinoMain.SOUL_POUCH, new Identifier("filled"), (stack, world, entity, seed) -> {
+
+            if (((PlayerEntityAccess) entity).neutrino$getSoulPouchCount() == 3000) {
+                return 1.0f;
+            } else  {
+                return 0.0f;
+            }
+        });
+        register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
+        register(Registry.SOUND_EVENT, DAGGER_STAB_ID, DAGGER_STAB);
+        register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
+        register(Registry.SOUND_EVENT, LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
+        register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
+        register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
 
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_TRAPDOOR, RenderLayer.getCutout());

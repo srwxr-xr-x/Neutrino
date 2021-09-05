@@ -1,6 +1,6 @@
 {
-  "parent": "item/bundle",
+  "parent": "neutrino:item/soul_pouch",
   "textures": {
-    "layer0": "item/soul_pouch_filled"
+    "layer0": "neutrino:item/soul_pouch_filled"
   }
 }

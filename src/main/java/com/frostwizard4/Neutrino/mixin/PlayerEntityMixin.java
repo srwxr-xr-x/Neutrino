@@ -58,6 +58,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
         }
         if (isOnSoulSpeedBlock()) {
             if(getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
+                displaySoulSpeedEffects();
                 if(neutrino$soulPouchCounter >= 3000) {
                     neutrino$soulPouchCounter = 3000;
                     hud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), UUID.randomUUID());
