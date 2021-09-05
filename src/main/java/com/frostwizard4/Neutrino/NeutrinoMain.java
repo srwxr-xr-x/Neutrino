@@ -50,6 +50,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final LightningRodArtifact LIGHTNING_ROD_ARTIFACT = new LightningRodArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final UpdraftTomeArtifact UPDRAFT_TOME = new UpdraftTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final SoulHealerArtifact SOUL_HEALER = new SoulHealerArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
+    public static final SoulPouchItem SOUL_POUCH = new SoulPouchItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
 
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
@@ -85,7 +86,7 @@ public class NeutrinoMain implements ModInitializer {
         register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
         register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
         register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
-
+        register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
 
         Registry.register(Registry.SOUND_EVENT, SoundRegister.ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SoundRegister.DAGGER_STAB_ID, DAGGER_STAB);

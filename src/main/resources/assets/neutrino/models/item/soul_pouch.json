@@ -1,0 +1,9 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "item/soul_pouch"
+  },
+  "overrides": [
+    { "predicate": { "filled": 0.0000001 }, "model": "item/soul_pouch_filled" }
+  ]
+}
