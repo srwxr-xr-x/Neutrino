@@ -44,5 +44,21 @@
   "item.neutrino.soul_healer.tooltip": "§oThe Soul Healer amulet is cold to the touch and ",
   "item.neutrino.soul_healer.tooltip2": "§otrembles with the power of souls. It is a common ",
   "item.neutrino.soul_healer.tooltip3":"§oamong the Illagers of the Woodland Mansions.",
-  "item.neutrino.soul_pouch.tooltip": "§kThe Soul Pouch §r"
+  "item.neutrino.soul_pouch.tooltip": "§kThe Soul Pouch §r",
+  "advancements.neutrino.root.title": "Neutrino",
+  "advancements.neutrino.root.description": "The Advancements in Neutrino!",
+  "advancements.neutrino.deadly_snack.title": "A Deadly Snack",
+  "advancements.neutrino.deadly_snack.description": "I wouldn't eat this if I were you...",
+  "advancements.neutrino.light_in_the_dark.title": "A Light in the Dark",
+  "advancements.neutrino.light_in_the_dark.description": "Light the sky with the Lightning Rod",
+  "advancements.neutrino.higher_heights.title": "Higher Heights",
+  "advancements.neutrino.higher_heights.description": "Reach new heights with the Updraft Tome",
+  "advancements.neutrino.not_so_seedy.title": "A Not-So Seedy Place",
+  "advancements.neutrino.not_so_seedy.description": "Harvest the Souls of the Dead with the Harvester",
+  "advancements.neutrino.miracle_worker.title": "Miracle Worker",
+  "advancements.neutrino.miracle_worker.description": "Obtain the Soul Healer to heal yourself",
+  "advancements.neutrino.post_postmortal.title": "Post-Postmortal",
+  "advancements.neutrino.post_postmortal.description": "Obtain the Soul Bundle, an Item of immense power",
+  "advancements.neutrino.special_book.title": "A Very Special Book",
+  "advancements.neutrino.special_book.description": "Obtain an Enchanter's Tome, a powerful healing book"
 }

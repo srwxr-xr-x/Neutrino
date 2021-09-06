@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/higher_heights",
+  "display": {
+    "icon": {
+      "item": "neutrino:enchanters_tome"
+    },
+    "title": {
+      "translate": "advancements.neutrino.special_book.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.special_book.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_enchanters_tome": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:enchanters_tome"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_enchanters_tome"
+    ]
+  ]
+}

@@ -6,7 +6,6 @@ import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Items.Backstabber;
 import com.frostwizard4.Neutrino.Items.DaggerToolMaterial;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
-import com.sun.net.httpserver.Authenticator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -20,22 +19,18 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.loot.LootTable;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.loot.provider.number.LootNumberProvider;
-import net.minecraft.loot.provider.number.LootNumberProviderType;
-import net.minecraft.loot.provider.number.LootNumberProviderTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 import static com.frostwizard4.Neutrino.SoundRegister.*;
-import static net.minecraft.util.registry.Registry.LOOT_NUMBER_PROVIDER_TYPE;
 import static net.minecraft.util.registry.Registry.register;
 
 
@@ -99,7 +94,7 @@ public class NeutrinoMain implements ModInitializer {
         register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
         register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
 
-        FabricModelPredicateProviderRegistry.register(NeutrinoMain.SOUL_POUCH, new Identifier("filled"), (stack, world, entity, seed) -> {if (((PlayerEntityAccess) entity).neutrino$getSoulPouchCount() == 3000) {return 1.0f;} else  {return 0.0f;}});
+        FabricModelPredicateProviderRegistry.register(NeutrinoMain.SOUL_POUCH, new Identifier("filled"), (stack, world, entity, seed) -> {if (entity != null) {if (((PlayerEntityAccess) entity).neutrino$getSoulPouchCount() == 3000) {return 1.0f;} else {return 0.0f;}} else {return 0;}});
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {

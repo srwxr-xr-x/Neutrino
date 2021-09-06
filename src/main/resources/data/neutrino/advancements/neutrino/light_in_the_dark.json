@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/deadly_snack",
+  "display": {
+    "icon": {
+      "item": "neutrino:lightning_rod_artifact"
+    },
+    "title": {
+      "translate": "advancements.neutrino.light_in_the_dark.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.light_in_the_dark.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_lightning_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:lightning_rod_artifact"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_lightning_rod"
+    ]
+  ]
+}

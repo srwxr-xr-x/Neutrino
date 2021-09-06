@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/root",
+  "display": {
+    "icon": {
+      "item": "neutrino:updraft_tome"
+    },
+    "title": {
+      "translate": "advancements.neutrino.higher_heights.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.higher_heights.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_tome": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:updraft_tome"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_tome"
+    ]
+  ]
+}

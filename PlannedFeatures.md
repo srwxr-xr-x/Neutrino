@@ -1,41 +1,10 @@
 ## Planned Features:
 
-- `Blast Fungus` -
-- `Boots of Swiftness` - Gives you speed for a brief amount of time
-- `Buzzy Nest` -
 - `Corrupted Beacon` - Shoots a Devastating Beam of Energy
 - `Corrupted Pumpkin` - See Corrupted Beacon
-- `Corrupted Seeds` -
 - `Death Cap Mushroom` - Gives you Buff's ~ ***Implemented***
-- `Enchanted Grass` -
 - `Enchanter's Tome` - Gives Buff's to you and your friends ~ ***Implemented***
-- `Eye of the Guardian` -
-- `Fireworks Arrow` - Replaces Arrow with Firework
-- `Fishing Rod` - Pulls Enemies Closer to You
-- `Flaming Quiver` - Replaces Arrows with Flaming Arrows
-- `Ghost Cloak` - Grants invisibilty for a brief time
-- `Golem Kit` -
-- `Gong of Weakening` -
-- `Harpoon Quiver` - Replaces Arrows with Harpoons
 - `Harvester` - Collects souls and releases them in a "cluster hex" of power ~ ***Implemented***
-- `Ice Wand` -
-- `Iron Hide Amulet` -
-- `Light Feather` -
 - `Lightning Rod` - Summons lightning on the enemies around you. ~ ***Implemented***
-- `Love Medallion` -
-- `Powershaker` -
-- `Satchel of Elixirs` - Drops helpful potions
-- `Satchel of Elements` -
-- `Satchel of Snacks` -
-- `Scatter Mines` -
-- `Shadow Shifter` -
-- `Shock Powder` - Stun's Enemie's around you -
-- `Soul Healer` -
-- `Soul Lantern` - Summons a being to help you in battle
-- `Spinblade` -
-- `Tasty Bone` - Summons a dog to help you in battle
-- `Thundering Quiver` -
-- `Torment Quiver` - Makes your fire slower and kock enemies back
-- `Totem of Regeneration` - Places a totem that heals people in the circle
-- `Totem of Shielding` - Places a totem that protects players in the hexagon from projectile's
-- `Totem of Soul Protection` -
+- `Soul Healer` - Heals the player ~ ***Implemented***
+- `Goat Horn` - Basically a War Horn

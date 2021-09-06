@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/not_so_seedy",
+  "display": {
+    "icon": {
+      "item": "neutrino:soul_pouch"
+    },
+    "title": {
+      "translate": "advancements.neutrino.post_postmortal.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.post_postmortal.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_soul_bundle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:soul_pouch"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_soul_bundle"
+    ]
+  ]
+}

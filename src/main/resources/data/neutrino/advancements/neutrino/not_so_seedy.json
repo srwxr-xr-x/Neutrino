@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/light_in_the_dark",
+  "display": {
+    "icon": {
+      "item": "neutrino:harvester"
+    },
+    "title": {
+      "translate": "advancements.neutrino.not_so_seedy.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.not_so_seedy.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_harvester": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:harvester"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_harvester"
+    ]
+  ]
+}

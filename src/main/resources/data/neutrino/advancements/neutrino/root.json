@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "item": "neutrino:half_full_bookshelf"
+    },
+    "title": {
+      "translate": "advancements.neutrino.root.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.root.description"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "neutrino_items": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:soul_pouch",
+              "neutrino:soul_healer",
+              "neutrino:updraft_tome",
+              "neutrino:lightning_rod_artifact",
+              "neutrino:death_cap_mushroom",
+              "neutrino:harvester",
+              "neutrino:enchanters_tome"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "neutrino_items"
+    ]
+  ]
+}
