@@ -40,5 +40,11 @@
     "sounds": [
       "neutrino:soul_healer_activate"
     ]
+  },
+  "war_horn_use": {
+    "subtitle": "subtitles.neutrino.war_horn_use",
+    "sounds": [
+      "neutrino:war_horn_use"
+    ]
   }
 }

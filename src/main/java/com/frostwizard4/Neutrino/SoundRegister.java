@@ -24,4 +24,7 @@ public class SoundRegister {
 
     public static final Identifier SOUL_HEALER_ACTIVATE_ID = new Identifier("neutrino:soul_healer_activate");
     public static SoundEvent SOUL_HEALER_ACTIVATE = new SoundEvent(SOUL_HEALER_ACTIVATE_ID);
+
+    public static final Identifier WAR_HORN_USE_ID = new Identifier("neutrino:war_horn_use");
+    public static SoundEvent WAR_HORN_USE = new SoundEvent(WAR_HORN_USE_ID);
 }

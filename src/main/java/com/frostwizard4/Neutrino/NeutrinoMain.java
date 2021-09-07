@@ -5,6 +5,7 @@ import com.frostwizard4.Neutrino.Blocks.GlassDoor;
 import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Items.Backstabber;
 import com.frostwizard4.Neutrino.Items.DaggerToolMaterial;
+import com.frostwizard4.Neutrino.Items.GoatHorn;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -57,6 +58,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final UpdraftTomeArtifact UPDRAFT_TOME = new UpdraftTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final SoulHealerArtifact SOUL_HEALER = new SoulHealerArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final SoulPouchItem SOUL_POUCH = new SoulPouchItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
+    public static final GoatHorn GOAT_HORN = new GoatHorn(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
@@ -159,6 +161,7 @@ public class NeutrinoMain implements ModInitializer {
         register(Registry.SOUND_EVENT, LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
         register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
         register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
+        register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
 
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_TRAPDOOR, RenderLayer.getCutout());
