@@ -95,6 +95,8 @@ public class NeutrinoMain implements ModInitializer {
         register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
         register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
         register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
+        register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
+
 
         FabricModelPredicateProviderRegistry.register(NeutrinoMain.SOUL_POUCH, new Identifier("filled"), (stack, world, entity, seed) -> {if (entity != null) {if (((PlayerEntityAccess) entity).neutrino$getSoulPouchCount() == 3000) {return 1.0f;} else {return 0.0f;}} else {return 0;}});
 
@@ -151,6 +153,14 @@ public class NeutrinoMain implements ModInitializer {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .with(ItemEntry.builder(NeutrinoMain.LIGHTNING_ROD_ARTIFACT));
+                table.pool(poolBuilder);
+            }
+        });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.VILLAGE_WEAPONSMITH_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(NeutrinoMain.GOAT_HORN));
                 table.pool(poolBuilder);
             }
         });

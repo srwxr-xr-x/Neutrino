@@ -32,7 +32,7 @@ public class GoatHorn extends Item {
             }
         }
         //Set 20 second Cooldown
-        playerEntity.getItemCooldownManager().set(NeutrinoMain.DEATH_CAP_MUSHROOM, 400);
+        playerEntity.getItemCooldownManager().set(NeutrinoMain.GOAT_HORN, 400);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }
 }
