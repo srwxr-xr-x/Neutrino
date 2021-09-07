@@ -26,9 +26,6 @@ public class SoulHealerArtifact extends Item {
         super(settings);
     }
 
-    MinecraftClient client = MinecraftClient.getInstance();
-    InGameHud hud = new InGameHud(client);
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {
         if (((PlayerEntityAccess) playerEntity).neutrino$getPowerCount() >= 150) {
@@ -38,7 +35,9 @@ public class SoulHealerArtifact extends Item {
             world.getClosestPlayer(playerEntity, 15).addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 200, 2));
             ((PlayerEntityAccess) playerEntity).neutrino$setPowerCount(0);
         } else {
-            hud.addChatMessage(MessageType.GAME_INFO, Text.of("Not enough souls!"), UUID.randomUUID());
+            if (world.isClient()) {
+                MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Not enough souls!"), UUID.randomUUID());
+            }
         }
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }

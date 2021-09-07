@@ -17,20 +17,14 @@ public abstract class LightningMixin extends LivingEntity implements LightningAc
     protected LightningMixin(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
     }
-    private PlayerEntity player;
-
-    @Override
-    public void neutrino$setPlayer(PlayerEntity playerEntity) {
-        player = playerEntity;
-    }
 
     @Override
     public void neutrino$summonLightning() {
         if (world.isRaining()) {
             if (world.isThundering()) {
-                for (Entity e : world.getOtherEntities(player, Box.of(player.getPos(), 10, 10, 10))) {
+                for (Entity e : world.getOtherEntities(this, Box.of(this.getPos(), 10, 10, 10))) {
                     if (e instanceof MobEntity) {
-                        if (player.distanceTo(e) < 10) {
+                        if (this.distanceTo(e) < 10) {
                             LightningEntity lightningEntity = (LightningEntity) EntityType.LIGHTNING_BOLT.create(this.world);
                             lightningEntity.refreshPositionAfterTeleport(e.getX(), e.getY(), e.getZ());
                             this.world.spawnEntity(lightningEntity);
@@ -38,9 +32,9 @@ public abstract class LightningMixin extends LivingEntity implements LightningAc
                     }
                 }
             }
-            for (Entity e : world.getOtherEntities(player, Box.of(player.getPos(), 10, 10, 10))) {
+            for (Entity e : world.getOtherEntities(this, Box.of(this.getPos(), 10, 10, 10))) {
                 if (e instanceof MobEntity) {
-                    if (player.distanceTo(e) < 10) {
+                    if (this.distanceTo(e) < 10) {
                         LightningEntity lightningEntity = (LightningEntity) EntityType.LIGHTNING_BOLT.create(this.world);
                         lightningEntity.refreshPositionAfterTeleport(e.getX(), e.getY(), e.getZ());
                         this.world.spawnEntity(lightningEntity);
@@ -48,9 +42,9 @@ public abstract class LightningMixin extends LivingEntity implements LightningAc
                 }
             }
         }
-        for (Entity e : world.getOtherEntities(player, Box.of(player.getPos(), 10, 10, 10))) {
+        for (Entity e : world.getOtherEntities(this, Box.of(this.getPos(), 10, 10, 10))) {
             if (e instanceof MobEntity) {
-                if (player.distanceTo(e) < 10) {
+                if (this.distanceTo(e) < 10) {
                     LightningEntity lightningEntity = (LightningEntity) EntityType.LIGHTNING_BOLT.create(this.world);
                     lightningEntity.refreshPositionAfterTeleport(e.getX(), e.getY(), e.getZ());
                     this.world.spawnEntity(lightningEntity);

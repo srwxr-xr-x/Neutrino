@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.MessageType;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
@@ -27,23 +28,20 @@ public class LightningRodArtifact extends Item {
         super(settings);
     }
 
-    MinecraftClient client = MinecraftClient.getInstance();
-    InGameHud hud = new InGameHud(client);
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {
         if (((PlayerEntityAccess) playerEntity).neutrino$getPowerCount() >= 150) {
             //Play Sound
             playerEntity.playSound(LIGHTNING_ROD_ACTIVATE, 1.0F, 1.0F);
             //Summon Lightning
-            ((LightningAccess) playerEntity).neutrino$setPlayer(playerEntity);
             ((LightningAccess) playerEntity).neutrino$summonLightning();
             //Set 2 second Cooldown
             playerEntity.getItemCooldownManager().set(NeutrinoMain.LIGHTNING_ROD_ARTIFACT, 40);
             ((PlayerEntityAccess) playerEntity).neutrino$setPowerCount(((PlayerEntityAccess) playerEntity).neutrino$getPowerCount() - 150);
         } else {
-            hud.addChatMessage(MessageType.GAME_INFO, Text.of("Not enough souls!"), UUID.randomUUID());
-
+            if(world.isClient()) {
+                MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Not enough souls!"), UUID.randomUUID());
+            }
         }
             return TypedActionResult.success(playerEntity.getStackInHand(hand));
 
