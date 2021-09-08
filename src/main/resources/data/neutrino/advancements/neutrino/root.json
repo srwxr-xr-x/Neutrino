@@ -16,19 +16,13 @@
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
   },
   "criteria": {
-    "neutrino_items": {
+    "neutrino_item": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "neutrino:soul_pouch",
-              "neutrino:soul_healer",
-              "neutrino:updraft_tome",
-              "neutrino:lightning_rod_artifact",
-              "neutrino:death_cap_mushroom",
-              "neutrino:harvester",
-              "neutrino:enchanters_tome"
+              "minecraft:crafting_table"
             ]
           }
         ]
@@ -37,7 +31,7 @@
   },
   "requirements": [
     [
-      "neutrino_items"
+      "neutrino_item"
     ]
   ]
 }
