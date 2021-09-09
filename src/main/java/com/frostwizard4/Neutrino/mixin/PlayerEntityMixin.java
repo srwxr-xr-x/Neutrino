@@ -3,13 +3,11 @@ package com.frostwizard4.Neutrino.mixin;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.MessageType;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
@@ -52,39 +50,41 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
-        if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
-            if(world.isClient()) {
-                MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+        if (world.isClient()) {
+            if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
+                if (world.isClient()) {
+                    MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                }
             }
-        }
-        if (isOnSoulSpeedBlock()) {
-            if(getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
-                displaySoulSpeedEffects();
-                if(neutrino$soulPouchCounter >= 3000) {
-                    neutrino$soulPouchCounter = 3000;
-                    if(world.isClient()) {
-                        MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), UUID.randomUUID());
-                    }
-                } else {
-                    if(getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
-                        neutrino$soulPouchCounter++;
-                        if(world.isClient()) {
+            if (isOnSoulSpeedBlock()) {
+                if (getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
+                    displaySoulSpeedEffects();
+                    if (neutrino$soulPouchCounter >= 3000) {
+                        neutrino$soulPouchCounter = 3000;
+                        if (world.isClient()) {
                             MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), UUID.randomUUID());
+                        }
+                    } else {
+                        if (getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
+                            neutrino$soulPouchCounter++;
+                            if (world.isClient()) {
+                                MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), UUID.randomUUID());
+                            }
                         }
                     }
                 }
-            }
-            if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT) || getMainHandStack().isOf(NeutrinoMain.SOUL_HEALER)) {
-                displaySoulSpeedEffects();
-                if (neutrino$boomPowerCounter >= 1500) {
-                    neutrino$boomPowerCounter = 1500;
-                    if(world.isClient()) {
-                        MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
-                    }
-                } else {
-                    neutrino$boomPowerCounter++;
-                    if(world.isClient()) {
-                        MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT) || getMainHandStack().isOf(NeutrinoMain.SOUL_HEALER)) {
+                    displaySoulSpeedEffects();
+                    if (neutrino$boomPowerCounter >= 1500) {
+                        neutrino$boomPowerCounter = 1500;
+                        if (world.isClient()) {
+                            MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                        }
+                    } else {
+                        neutrino$boomPowerCounter++;
+                        if (world.isClient()) {
+                            MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                        }
                     }
                 }
             }

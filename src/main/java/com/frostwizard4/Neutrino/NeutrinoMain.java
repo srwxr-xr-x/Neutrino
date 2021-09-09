@@ -85,6 +85,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final SoulPouchItem SOUL_POUCH = new SoulPouchItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
     public static final GoatHorn GOAT_HORN = new GoatHorn(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
+    /*
     public static final Block DUST_BLOCK = new MossBlock(FabricBlockSettings.of(Material.MOSS_BLOCK).strength(0.3f, 0.3f).sounds(BlockSoundGroup.MOSS_BLOCK));
     private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> register(String id, ConfiguredFeature<FC, ?> configuredFeature) {
         return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("neutrino", id), configuredFeature);
@@ -139,10 +140,9 @@ public class NeutrinoMain implements ModInitializer {
                 .generationSettings(builder2.build())
                 .build();
     }//Dust Cave Code
-
+    */
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
-    //TODO Fix broken Client Side code
     @Override
     public void onInitialize() {
 
@@ -155,6 +155,7 @@ public class NeutrinoMain implements ModInitializer {
 
         Registry.register(Registry.ITEM, new Identifier("neutrino", "glass_trapdoor"), new BlockItem(GLASS_TRAPDOOR, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "glass_trapdoor"), GLASS_TRAPDOOR);
+
         Registry.register(Registry.ITEM, new Identifier("neutrino", "dirt_slab"), new BlockItem(DIRT_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "dirt_slab"), DIRT_SLAB);
 
@@ -167,9 +168,10 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "crafting_slab"), new BlockItem(CRAFTING_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "crafting_slab"), CRAFTING_SLAB);
 
+        /*
         Registry.register(Registry.ITEM, new Identifier("neutrino", "dust_block"), new BlockItem(DUST_BLOCK, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "dust_block"), DUST_BLOCK);
-
+        */
         Registry.register(Registry.ITEM, new Identifier("neutrino", "backstabber"), BACKSTABBER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
@@ -180,9 +182,10 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
 
+        /*
         Registry.register(BuiltinRegistries.CONFIGURED_SURFACE_BUILDER, new Identifier("neutrino", "dust_cave"), DUST_CAVE_BUILDER);
         Registry.register(BuiltinRegistries.BIOME, DUST_CAVE_KEY.getValue(), DUST_CAVE);
-
+        */
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
@@ -248,9 +251,10 @@ public class NeutrinoMain implements ModInitializer {
             }
         });
 
+        /*
         OverworldBiomes.addContinentalBiome(DUST_CAVE_KEY, OverworldClimate.TEMPERATE, 2D);
         OverworldBiomes.addContinentalBiome(DUST_CAVE_KEY, OverworldClimate.COOL, 2D);
-
+        */
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, DAGGER_STAB_ID, DAGGER_STAB);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
