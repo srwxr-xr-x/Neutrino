@@ -21,13 +21,21 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
+import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.LootingEnchantLootFunction;
+import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
@@ -63,7 +71,6 @@ import static net.minecraft.world.gen.feature.ConfiguredFeatures.MOSS_VEGETATION
 public class NeutrinoMain implements ModInitializer {
 
     public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
-
 
     public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
@@ -142,6 +149,7 @@ public class NeutrinoMain implements ModInitializer {
                 .build();
     }//Dust Cave Code
     */
+
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
     @Override
@@ -239,7 +247,8 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.LIGHTNING_ROD_ARTIFACT));
+                        .with(ItemEntry.builder(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f,1.0f))));
                 table.pool(poolBuilder);
             }
         });

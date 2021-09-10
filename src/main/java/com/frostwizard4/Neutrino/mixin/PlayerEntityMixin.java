@@ -1,5 +1,6 @@
 package com.frostwizard4.Neutrino.mixin;
 
+import com.frostwizard4.Neutrino.CheckHolding;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import net.minecraft.client.MinecraftClient;
@@ -53,7 +54,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
         if (world.isClient()) {
             if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
                 if (world.isClient()) {
-                    MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                    CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
                 }
             }
             if (isOnSoulSpeedBlock()) {
@@ -62,13 +63,13 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                     if (neutrino$soulPouchCounter >= 3000) {
                         neutrino$soulPouchCounter = 3000;
                         if (world.isClient()) {
-                            MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), UUID.randomUUID());
+                            CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
                         }
                     } else {
                         if (getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
                             neutrino$soulPouchCounter++;
                             if (world.isClient()) {
-                                MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), UUID.randomUUID());
+                                CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
                             }
                         }
                     }
@@ -78,12 +79,12 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                     if (neutrino$boomPowerCounter >= 1500) {
                         neutrino$boomPowerCounter = 1500;
                         if (world.isClient()) {
-                            MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                            CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
                         }
                     } else {
                         neutrino$boomPowerCounter++;
                         if (world.isClient()) {
-                            MinecraftClient.getInstance().inGameHud.addChatMessage(MessageType.GAME_INFO, Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), UUID.randomUUID());
+                            CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
                         }
                     }
                 }
