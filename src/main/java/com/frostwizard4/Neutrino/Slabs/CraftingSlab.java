@@ -33,7 +33,6 @@ public class CraftingSlab extends SlabBlock {
         } else {
             player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
             return ActionResult.CONSUME;
-
         }
     }
     private NamedScreenHandlerFactory screen(World world, BlockPos pos) {

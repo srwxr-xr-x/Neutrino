@@ -4,6 +4,8 @@
   "package": "com.frostwizard4.Neutrino.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+  ],
+  "client": [
     "PlayerEntityMixin"
   ],
   "injectors": {
