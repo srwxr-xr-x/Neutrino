@@ -31,7 +31,9 @@ import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.KilledByPlayerLootCondition;
+import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.EnchantRandomlyLootFunction;
 import net.minecraft.loot.function.LootingEnchantLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -158,7 +160,6 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
-
         Registry.register(Registry.ITEM, new Identifier("neutrino", "glass_door"), new BlockItem(GLASS_DOOR, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "glass_door"), GLASS_DOOR);
 
@@ -176,7 +177,6 @@ public class NeutrinoMain implements ModInitializer {
 
         Registry.register(Registry.ITEM, new Identifier("neutrino", "crafting_slab"), new BlockItem(CRAFTING_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "crafting_slab"), CRAFTING_SLAB);
-
         /*
         Registry.register(Registry.ITEM, new Identifier("neutrino", "dust_block"), new BlockItem(DUST_BLOCK, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "dust_block"), DUST_BLOCK);
@@ -190,7 +190,6 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
-
         /*
         Registry.register(BuiltinRegistries.CONFIGURED_SURFACE_BUILDER, new Identifier("neutrino", "dust_cave"), DUST_CAVE_BUILDER);
         Registry.register(BuiltinRegistries.BIOME, DUST_CAVE_KEY.getValue(), DUST_CAVE);
@@ -199,7 +198,9 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.SOUL_POUCH));
+                        .with(ItemEntry.builder(NeutrinoMain.SOUL_POUCH)
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(14));
                 table.pool(poolBuilder);
             }
         });
@@ -207,7 +208,9 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.WOODLAND_MANSION_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.SOUL_HEALER));
+                        .with(ItemEntry.builder(NeutrinoMain.SOUL_HEALER)
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(2));
                 table.pool(poolBuilder);
             }
         });
@@ -215,7 +218,9 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.HERO_OF_THE_VILLAGE_CLERIC_GIFT_GAMEPLAY.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.DEATH_CAP_MUSHROOM));
+                        .with(ItemEntry.builder(NeutrinoMain.DEATH_CAP_MUSHROOM)
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(4));
                 table.pool(poolBuilder);
             }
         });
@@ -223,7 +228,9 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.STRONGHOLD_LIBRARY_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.ENCHANTERS_TOME));
+                        .with(ItemEntry.builder(NeutrinoMain.ENCHANTERS_TOME)
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(4));
                 table.pool(poolBuilder);
             }
         });
@@ -231,7 +238,9 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.HERO_OF_THE_VILLAGE_LIBRARIAN_GIFT_GAMEPLAY.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.UPDRAFT_TOME));
+                        .with(ItemEntry.builder(NeutrinoMain.UPDRAFT_TOME)
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(6));
                 table.pool(poolBuilder);
             }
         });
@@ -239,7 +248,9 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.ABANDONED_MINESHAFT_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.HARVESTER));
+                        .with(ItemEntry.builder(NeutrinoMain.HARVESTER)
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(9));
                 table.pool(poolBuilder);
             }
         });
@@ -248,19 +259,21 @@ public class NeutrinoMain implements ModInitializer {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .with(ItemEntry.builder(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f,1.0f))));
+                            .weight(1))
+                        .with(EmptyEntry.Serializer().weight(7));
                 table.pool(poolBuilder);
             }
         });
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.VILLAGE_WEAPONSMITH_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.GOAT_HORN));
+                        .rolls(ConstantLootNumberProvider.create(1.0F))
+                        .with(ItemEntry.builder(NeutrinoMain.GOAT_HORN)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(4));
                 table.pool(poolBuilder);
             }
         });
-
         /*
         OverworldBiomes.addContinentalBiome(DUST_CAVE_KEY, OverworldClimate.TEMPERATE, 2D);
         OverworldBiomes.addContinentalBiome(DUST_CAVE_KEY, OverworldClimate.COOL, 2D);
