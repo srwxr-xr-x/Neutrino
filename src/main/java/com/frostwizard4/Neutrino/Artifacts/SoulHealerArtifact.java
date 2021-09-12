@@ -4,6 +4,7 @@ import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.SoundRegister;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -45,7 +46,10 @@ public class SoulHealerArtifact extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.neutrino.soul_healer.tooltip").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.soul_healer.tooltip2").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.soul_healer.tooltip3").formatted(Formatting.AQUA));
+        if(Screen.hasShiftDown()) {
+            tooltip.add(new TranslatableText("item.neutrino.soul_healer.tooltip2"));
+        } else {
+            tooltip.add(new TranslatableText("item.neutrino.soul_healer.shiftdown").formatted(Formatting.DARK_GRAY));
+        }
     }
 }

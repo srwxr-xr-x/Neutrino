@@ -3,6 +3,7 @@ package com.frostwizard4.Neutrino.Artifacts;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -72,6 +73,12 @@ public class LightningRodArtifact extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.neutrino.lightning_rod.tooltip").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.lightning_rod.tooltip2").formatted(Formatting.AQUA));
+        if(Screen.hasShiftDown()) {
+            tooltip.add(new TranslatableText("item.neutrino.lightning_rod.tooltip2"));
+            tooltip.add(new TranslatableText("item.neutrino.lightning_rod.tooltip3"));
+
+        } else {
+            tooltip.add(new TranslatableText("item.neutrino.lightning_rod.shiftdown").formatted(Formatting.DARK_GRAY));
+        }
     }
 }

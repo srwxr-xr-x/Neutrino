@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -33,11 +34,17 @@ public class DeathCapArtifact extends Item {
         playerEntity.getItemCooldownManager().set(NeutrinoMain.DEATH_CAP_MUSHROOM, 600);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }
+
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.tooltip").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.tooltip2").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.tooltip3").formatted(Formatting.AQUA));
+
+        if(Screen.hasShiftDown()) {
+            tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.tooltip2"));
+            tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.tooltip3"));
+        } else {
+            tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.shiftdown").formatted(Formatting.DARK_GRAY));
+        }
     }
 
     @Override

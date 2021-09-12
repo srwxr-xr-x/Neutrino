@@ -4,6 +4,7 @@ import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -41,5 +42,10 @@ public class SoulPouchItem extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.neutrino.soul_pouch.tooltip").formatted(Formatting.AQUA));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(new TranslatableText("item.neutrino.soul_pouch.tooltip2"));
+        } else {
+            tooltip.add(new TranslatableText("item.neutrino.soul_pouch.shiftdown").formatted(Formatting.DARK_GRAY));
+        }
     }
 }

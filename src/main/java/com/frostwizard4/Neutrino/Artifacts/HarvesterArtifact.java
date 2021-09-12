@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -35,6 +36,10 @@ public class HarvesterArtifact extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.neutrino.harvester.tooltip").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.harvester.tooltip2").formatted(Formatting.AQUA));
+        if(Screen.hasShiftDown()) {
+            tooltip.add(new TranslatableText("item.neutrino.harvester.tooltip2"));
+        } else {
+            tooltip.add(new TranslatableText("item.neutrino.harvester.shiftdown"));
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -37,8 +38,15 @@ public class EnchantersTomeArtifact extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.tooltip").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.tooltip2").formatted(Formatting.AQUA));
-        tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.tooltip3").formatted(Formatting.AQUA));
+
+        if(Screen.hasShiftDown()) {
+            tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.tooltip2"));
+            tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.tooltip3"));
+            tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.tooltip4"));
+
+        } else {
+            tooltip.add(new TranslatableText("item.neutrino.enchanters_tome.shiftdown").formatted(Formatting.DARK_GRAY));
+        }
     }
 
 }
