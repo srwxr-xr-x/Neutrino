@@ -7,6 +7,7 @@
 ![GitHub release](https://img.shields.io/github/v/release/frostwizard4/neutrino?include_prereleases)
 [![](http://cf.way2muchnoise.eu/versions//For%20MC_neutrino_all.svg)](https://github.com/Frostwizard4/Neutrino/releases)
 [![](http://cf.way2muchnoise.eu/neutrino.svg)](https://minecraft.curseforge.com/projects/neutrino)
+
 A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
 
 ---
