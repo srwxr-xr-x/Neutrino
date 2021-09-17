@@ -3,18 +3,32 @@ package com.frostwizard4.Neutrino.mixin;
 import com.frostwizard4.Neutrino.CheckHolding;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.EntityDamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.MessageType;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.tag.BlockTags;
+import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.UUID;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEntityAccess {
@@ -26,15 +40,21 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     private float neutrino$soulPouchCounter = 0;
 
     @Override
-    public float neutrino$getPowerCount() { return neutrino$boomPowerCounter; }
+    public float neutrino$getPowerCount() {
+        return neutrino$boomPowerCounter;
+    }
 
-    public float neutrino$getSoulPouchCount() { return neutrino$soulPouchCounter; }
+    public float neutrino$getSoulPouchCount() {
+        return neutrino$soulPouchCounter;
+    }
 
     public void neutrino$setPowerCount(float newValue) {
         neutrino$boomPowerCounter = newValue;
     }
 
-    public void neutrino$setSoulPouchCount(float newValue) { neutrino$soulPouchCounter = newValue; }
+    public void neutrino$setSoulPouchCount(float newValue) {
+        neutrino$soulPouchCounter = newValue;
+    }
 
     @Shadow
     protected abstract boolean isOnSoulSpeedBlock();
@@ -45,10 +65,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Shadow
     public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
+    @Shadow public abstract void attack(Entity target);
+
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
+        if(this.attack(DamageSource.player(this))) {
+
+        }
         if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
             if (world.isClient()) {
+
                 CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
             }
         }
@@ -86,5 +112,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
         }
     }
 }
+
 
 
