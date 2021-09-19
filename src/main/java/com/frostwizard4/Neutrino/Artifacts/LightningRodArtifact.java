@@ -33,12 +33,10 @@ public class LightningRodArtifact extends Item {
 
     public void summonLightning(PlayerEntity playerEntity, World world) {
         for (Entity e : world.getOtherEntities(playerEntity, Box.of(playerEntity.getPos(), 10, 10, 10))) {
-            if (e instanceof MobEntity) {
-                if (playerEntity.distanceTo(e) < 10) {
-                    LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-                    lightningEntity.setPos(e.getX(), e.getY(), e.getZ());
-                    world.spawnEntity(lightningEntity);
-                }
+            if (e instanceof MobEntity && (playerEntity.distanceTo(e) < 10)) {
+                LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
+                lightningEntity.setPos(e.getX(), e.getY(), e.getZ());
+                world.spawnEntity(lightningEntity);
             }
         }
     }
@@ -48,15 +46,11 @@ public class LightningRodArtifact extends Item {
             //Play Sound
             playerEntity.playSound(LIGHTNING_ROD_ACTIVATE, 1.0F, 1.0F);
             //Summon Lightning
-            if (world.isRaining()) {
-                if (world.isThundering()) {
-                    if(!world.isClient()) {
+            if (world.isRaining() && !world.isClient()) {
+                if (world.isThundering() && !world.isClient()) {
                         summonLightning(playerEntity, world);
-                    }
                 }
-                if(!world.isClient()) {
-                    summonLightning(playerEntity, world);
-                }
+                summonLightning(playerEntity, world);
             }
             if(!world.isClient()) {
                 summonLightning(playerEntity, world);

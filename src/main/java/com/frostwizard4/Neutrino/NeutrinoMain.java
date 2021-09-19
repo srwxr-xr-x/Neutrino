@@ -3,6 +3,7 @@ package com.frostwizard4.Neutrino;
 import com.frostwizard4.Neutrino.Artifacts.*;
 import com.frostwizard4.Neutrino.Blocks.GlassDoor;
 import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
+import com.frostwizard4.Neutrino.Enchantments.LifeStealEnchantment;
 import com.frostwizard4.Neutrino.Items.Backstabber;
 import com.frostwizard4.Neutrino.Items.DaggerToolMaterial;
 import com.frostwizard4.Neutrino.Items.GoatHorn;
@@ -20,6 +21,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
@@ -63,6 +65,9 @@ public class NeutrinoMain implements ModInitializer {
     public static final SoulHealerArtifact SOUL_HEALER = new SoulHealerArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final SoulPouchItem SOUL_POUCH = new SoulPouchItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
     public static final GoatHorn GOAT_HORN = new GoatHorn(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Enchantment LIFE_STEAL = Registry.register(Registry.ENCHANTMENT, new Identifier("neutrino", "life_steal"), new LifeStealEnchantment());
+    public static final Identifier SEND_SLOW_LEAVES = new Identifier("neutrino", "send_slow_leaves");
+
 
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
