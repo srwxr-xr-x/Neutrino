@@ -7,4 +7,4 @@
 - `Harvester` - Collects souls and releases them in a "cluster hex" of power ~ ***Implemented***
 - `Lightning Rod` - Summons lightning on the enemies around you. ~ ***Implemented***
 - `Soul Healer` - Heals the player ~ ***Implemented***
-- `Goat Horn` - Basically a War Horn
+- `Goat Horn` - Basically a War Horn ~ ***Implemented***

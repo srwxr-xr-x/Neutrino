@@ -3,8 +3,10 @@
 # Neutrino
 
 ![GitHub license](https://img.shields.io/github/license/frostwizard4/neutrino.svg)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/77654914cd7040fd87cbcf12daaf0d49)](https://www.codacy.com/gh/FrostWizard4/Neutrino/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FrostWizard4/Neutrino&amp;utm_campaign=Badge_Grade)
 ![GitHub issues](https://img.shields.io/github/issues/frostwizard4/neutrino.svg)
 ![GitHub release](https://img.shields.io/github/v/release/frostwizard4/neutrino?include_prereleases)
+
 [![](http://cf.way2muchnoise.eu/versions//For%20MC_neutrino_all.svg)](https://github.com/Frostwizard4/Neutrino/releases)
 [![](http://cf.way2muchnoise.eu/neutrino.svg)](https://www.curseforge.com/minecraft/mc-mods/neutrino)
 
@@ -26,6 +28,9 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Death Cap Mushroom from Minecraft Dungeons
   - Lightning Rod from Minecraft Dungeons
   - Updraft Tome from Minecraft Dungeons
+  - Life Steal Enchantment
+  - No Collision Leaves
+  - Slowly fall through leaves (CLIENT ONLY ATM)
 
 ## Installation
 
