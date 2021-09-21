@@ -30,7 +30,8 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Updraft Tome from Minecraft Dungeons
   - Life Steal Enchantment
   - No Collision Leaves
-  - Slowly fall through leaves (CLIENT ONLY ATM)
+  - Slowly fall through leaves
+  - Shattered and Rusty Swords
 
 ## Installation
 
