@@ -1,4 +1,4 @@
-<img src="src/main/resources/assets/neutrino/icon2.png" width="128">
+<img src="src/main/resources/assets/neutrino/icon.png" width="128">
 
 # Neutrino
 
