@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;

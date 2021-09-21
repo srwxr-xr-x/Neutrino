@@ -17,6 +17,6 @@ public class LeavesBlockMixin extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        entity.slowMovement(state, new Vec3d(0.75D, 0.75D, 0.75D));
+        entity.slowMovement(state, new Vec3d(0.90D, 0.99D, 0.90D));
     }
 }

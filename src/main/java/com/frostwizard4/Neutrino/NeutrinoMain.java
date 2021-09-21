@@ -4,14 +4,12 @@ import com.frostwizard4.Neutrino.Artifacts.*;
 import com.frostwizard4.Neutrino.Blocks.GlassDoor;
 import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Enchantments.LifeStealEnchantment;
-import com.frostwizard4.Neutrino.Items.Backstabber;
-import com.frostwizard4.Neutrino.Items.DaggerToolMaterial;
 import com.frostwizard4.Neutrino.Items.GoatHorn;
+import com.frostwizard4.Neutrino.Items.RustySwordMaterial;
+import com.frostwizard4.Neutrino.Items.ShatteredSwordMaterial;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
@@ -20,13 +18,8 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
@@ -36,15 +29,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
-import java.util.Objects;
-
 import static com.frostwizard4.Neutrino.SoundRegister.*;
 
 
 public class NeutrinoMain implements ModInitializer {
 
     public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
-
     public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
 
@@ -56,7 +46,6 @@ public class NeutrinoMain implements ModInitializer {
     public static final SlabBlock SAND_SLAB = new SlabBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.SAND));
     public static final CraftingSlab CRAFTING_SLAB = new CraftingSlab(FabricBlockSettings.of(Material.WOOD).strength(1.5f, 1.5f).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
 
-    public static final Backstabber BACKSTABBER = new Backstabber(DaggerToolMaterial.INSTANCE, 4, 7, new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).fireproof().rarity(Rarity.RARE));
     public static final EnchantersTomeArtifact ENCHANTERS_TOME = new EnchantersTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final HarvesterArtifact HARVESTER = new HarvesterArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final DeathCapArtifact DEATH_CAP_MUSHROOM = new DeathCapArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.UNCOMMON));
@@ -66,13 +55,14 @@ public class NeutrinoMain implements ModInitializer {
     public static final SoulPouchItem SOUL_POUCH = new SoulPouchItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
     public static final GoatHorn GOAT_HORN = new GoatHorn(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final Enchantment LIFE_STEAL = Registry.register(Registry.ENCHANTMENT, new Identifier("neutrino", "life_steal"), new LifeStealEnchantment());
-    public static final Identifier SEND_SLOW_LEAVES = new Identifier("neutrino", "send_slow_leaves");
-
+    public static final ToolItem RUSTY_SWORD = new SwordItem(RustySwordMaterial.INSTANCE, 1, -1.0F, new Item.Settings().group(NEUTRINO_GROUP));
+    public static final ToolItem SHATTERED_SWORD = new SwordItem(ShatteredSwordMaterial.INSTANCE, 2, -1.5F, new Item.Settings().group(NEUTRINO_GROUP));
 
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
     @Override
     public void onInitialize() {
+        VillagerInit.fillTradeData();
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
@@ -95,7 +85,6 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "crafting_slab"), new BlockItem(CRAFTING_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "crafting_slab"), CRAFTING_SLAB);
 
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "backstabber"), BACKSTABBER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "death_cap_mushroom"), DEATH_CAP_MUSHROOM);
@@ -104,6 +93,8 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {
@@ -185,7 +176,26 @@ public class NeutrinoMain implements ModInitializer {
                 table.pool(poolBuilder);
             }
         });
-
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.JUNGLE_TEMPLE_CHEST.equals(id) || LootTables.DESERT_PYRAMID_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(NeutrinoMain.RUSTY_SWORD)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(3));
+                table.pool(poolBuilder);
+            }
+        });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.BASTION_BRIDGE_CHEST.equals(id) || LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(NeutrinoMain.SHATTERED_SWORD)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(5));
+                table.pool(poolBuilder);
+            }
+        });
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, DAGGER_STAB_ID, DAGGER_STAB);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
