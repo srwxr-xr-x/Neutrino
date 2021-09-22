@@ -1,3 +1,5 @@
+![Logo](src/main/resources/assets/neutrino/icon2.png)
+
 # Neutrino
 
 ![GitHub license](https://img.shields.io/github/license/frostwizard4/neutrino.svg)
