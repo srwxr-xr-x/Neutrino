@@ -74,5 +74,9 @@
   "advancements.neutrino.post_postmortal.title": "Post-Postmortal",
   "advancements.neutrino.post_postmortal.description": "Obtain the Soul Bundle, an Item of immense power",
   "advancements.neutrino.special_book.title": "A Very Special Book",
-  "advancements.neutrino.special_book.description": "Obtain an Enchanter's Tome, a powerful healing book"
+  "advancements.neutrino.special_book.description": "Obtain an Enchanter's Tome, a powerful healing book",
+  "text.autoconfig.neutrino.title": "Neutrino Config",
+  "text.autoconfig.neutrino.option.leavesMode": "§b*§rSlow Leaves Mode",
+  "text.autoconfig.neutrino.option.leavesMode.@Tooltip": "Enable or Disable Leaves slowing you down (On, Off)",
+  "text.autoconfig.neutrino.option.leavesMode.@PrefixText": "          §b* §lYou need to restart Minecraft to apply this!§r"
 }

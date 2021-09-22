@@ -26,6 +26,9 @@
     ],
     "client": [
       "com.frostwizard4.Neutrino.NeutrinoClientInit"
+    ],
+    "modmenu": [
+      "com.frostwizard4.Neutrino.NeutrinoModMenuIntegration"
     ]
   },
   "mixins": [

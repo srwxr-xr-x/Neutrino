@@ -8,6 +8,10 @@ import com.frostwizard4.Neutrino.Items.GoatHorn;
 import com.frostwizard4.Neutrino.Items.RustySwordMaterial;
 import com.frostwizard4.Neutrino.Items.ShatteredSwordMaterial;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.ConfigHolder;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -33,6 +37,8 @@ import static com.frostwizard4.Neutrino.SoundRegister.*;
 
 
 public class NeutrinoMain implements ModInitializer {
+    public static final String MOD_ID = "neutrino";
+
 
     public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
     public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
@@ -58,6 +64,11 @@ public class NeutrinoMain implements ModInitializer {
     public static final ToolItem RUSTY_SWORD = new SwordItem(RustySwordMaterial.INSTANCE, 1, -1.0F, new Item.Settings().group(NEUTRINO_GROUP));
     public static final ToolItem SHATTERED_SWORD = new SwordItem(ShatteredSwordMaterial.INSTANCE, 2, -1.5F, new Item.Settings().group(NEUTRINO_GROUP));
 
+    public static final NeutrinoConfig nConfig;
+    static {
+        AutoConfig.register(NeutrinoConfig.class, GsonConfigSerializer::new);
+        nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
+    }
     //TODO, add Invisible Item Frames
     //TODO, add more items from Minecraft Dungeons
     @Override
@@ -196,6 +207,7 @@ public class NeutrinoMain implements ModInitializer {
                 table.pool(poolBuilder);
             }
         });
+
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, DAGGER_STAB_ID, DAGGER_STAB);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
