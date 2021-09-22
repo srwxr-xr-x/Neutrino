@@ -1,4 +1,4 @@
-name: Neutrino Checks
+name: Neutrino Tests
 
 on:
   workflow_dispatch:
@@ -8,32 +8,28 @@ on:
         required: true
         default: 'warning'
 
-jobs:
-  Neutrino-code-check:
 
+jobs:
+  fabric-test-run:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
+      - run: echo "🎉 The job was triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of the branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-
-      - name: Checkout
-        uses: actions/checkout@v2
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      
+      - name: Minecraft Tests
+        uses: Geometrically/fabric-test-runner@v1
         with:
-          fetch-depth: 0
-      - name: Check for errors.
-        uses: github/super-linter@v3
-        env:
-          VALIDATE_ALL_CODEBASE: true    
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BRANCH: 1.17.1
-          GITHUB_WORKSPACE: /home/runner/work/Neutrino/Neutrino
-
-    
+          minecraftVersion: latest
+          runBuildTest: true
+          runServerTest: false
