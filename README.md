@@ -1,5 +1,3 @@
-<img src="src/main/resources/assets/neutrino/icon.png" width="128">
-
 # Neutrino
 
 ![GitHub license](https://img.shields.io/github/license/frostwizard4/neutrino.svg)
@@ -13,6 +11,12 @@
 A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
 
 ---
+## Required Dependencies:
+
+### - [Fabric](https://fabricmc.net/use/)
+### -  [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+### -  [Cloth Config API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
+### -  [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu)
 
 ## Features:
  
