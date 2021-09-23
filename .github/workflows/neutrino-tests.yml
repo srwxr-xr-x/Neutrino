@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  fabric-test-run:
+  neutrino-code-check:
     runs-on: ubuntu-latest
     permissions:
       contents: read
