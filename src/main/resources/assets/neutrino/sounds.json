@@ -1,10 +1,4 @@
 {
-  "dagger_stab": {
-    "subtitle": "subtitles.neutrino.dagger_stab",
-    "sounds": [
-      "neutrino:dagger_stab"
-    ]
-  },
   "enchanters_tome_activate": {
     "subtitle": "subtitles.neutrino.enchanters_tome_activate",
     "sounds": [

@@ -46,6 +46,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     private float neutrino$boomPowerCounter = 0;
     private float neutrino$soulPouchCounter = 0;
+    private int neutrino$fallCount = 0;
+    private DamageSource neutrino$DamageSource = DamageSource.GENERIC;
+    private int rnd = (int)(Math.random() *  (10 - 1 + 1) + 1);
 
     @Override
     public float neutrino$getPowerCount() {

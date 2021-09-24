@@ -4,8 +4,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class SoundRegister {
-    public static final Identifier DAGGER_STAB_ID = new Identifier("neutrino:dagger_stab");
-    public static SoundEvent DAGGER_STAB = new SoundEvent(DAGGER_STAB_ID);
 
     public static final Identifier ENCHANTERS_TOME_ACTIVATE_ID = new Identifier("neutrino:enchanters_tome_activate");
     public static SoundEvent ENCHANTERS_TOME_ACTIVATE = new SoundEvent(ENCHANTERS_TOME_ACTIVATE_ID);

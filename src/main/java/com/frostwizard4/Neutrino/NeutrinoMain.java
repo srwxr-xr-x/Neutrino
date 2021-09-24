@@ -9,10 +9,10 @@ import com.frostwizard4.Neutrino.Items.RustySwordMaterial;
 import com.frostwizard4.Neutrino.Items.ShatteredSwordMaterial;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
@@ -29,20 +29,32 @@ import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.structure.MineshaftGenerator;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.MineshaftFeature;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
 import static com.frostwizard4.Neutrino.SoundRegister.*;
 
 
 public class NeutrinoMain implements ModInitializer {
-    public static final String MOD_ID = "neutrino";
-
 
     public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
     public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
+    public static final Block DUNGEONS_POT = new Block(FabricBlockSettings.of(Material.STONE).strength(1F, 2.2F).sounds(BlockSoundGroup.STONE).nonOpaque().materialColor(DyeColor.BLACK));
 
     public static final ItemGroup NEUTRINO_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_group")).icon(() -> new ItemStack(HALF_FULL_BOOKSHELF)).build();
     public static final ItemGroup NEUTRINO_DUNGEONS_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_dungeons_group")).icon(() -> new ItemStack(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)).build();
@@ -69,14 +81,16 @@ public class NeutrinoMain implements ModInitializer {
         AutoConfig.register(NeutrinoConfig.class, GsonConfigSerializer::new);
         nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
     }
-    //TODO, add Invisible Item Frames
-    //TODO, add more items from Minecraft Dungeons
+
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "dungeons_pot"), DUNGEONS_POT);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "dungeons_pot"), new BlockItem(DUNGEONS_POT, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
         Registry.register(Registry.ITEM, new Identifier("neutrino", "glass_door"), new BlockItem(GLASS_DOOR, new FabricItemSettings().group(NEUTRINO_GROUP)));
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "glass_door"), GLASS_DOOR);
@@ -209,7 +223,6 @@ public class NeutrinoMain implements ModInitializer {
         });
 
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, DAGGER_STAB_ID, DAGGER_STAB);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);

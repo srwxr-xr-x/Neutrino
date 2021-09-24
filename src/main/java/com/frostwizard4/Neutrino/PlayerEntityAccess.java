@@ -5,5 +5,4 @@ public interface PlayerEntityAccess {
     void neutrino$setPowerCount(float newValue);
     float neutrino$getSoulPouchCount();
     void neutrino$setSoulPouchCount(float newValue);
-
 }

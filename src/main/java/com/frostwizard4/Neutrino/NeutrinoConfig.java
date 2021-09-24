@@ -4,7 +4,7 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-@Config(name = NeutrinoMain.MOD_ID)
+@Config(name = "neutrino")
 public class NeutrinoConfig implements ConfigData {
     public enum Flags { On, Off }
 
