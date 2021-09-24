@@ -1,4 +1,4 @@
-![Logo](src/main/resources/assets/neutrino/icon2.png)
+![Logo](src/main/resources/assets/neutrino/icon.png)
 
 # Neutrino
 
