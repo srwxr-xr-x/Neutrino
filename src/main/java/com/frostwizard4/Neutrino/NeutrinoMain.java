@@ -4,6 +4,7 @@ import com.frostwizard4.Neutrino.Artifacts.*;
 import com.frostwizard4.Neutrino.Blocks.GlassDoor;
 import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Enchantments.LifeStealEnchantment;
+import com.frostwizard4.Neutrino.Items.EmptyStaff;
 import com.frostwizard4.Neutrino.Items.GoatHorn;
 import com.frostwizard4.Neutrino.Items.RustySwordMaterial;
 import com.frostwizard4.Neutrino.Items.ShatteredSwordMaterial;
@@ -21,7 +22,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.LightningEntity;
 import net.minecraft.item.*;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.EmptyEntry;
@@ -62,7 +62,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final Enchantment LIFE_STEAL = Registry.register(Registry.ENCHANTMENT, new Identifier("neutrino", "life_steal"), new LifeStealEnchantment());
     public static final ToolItem RUSTY_SWORD = new SwordItem(RustySwordMaterial.INSTANCE, 1, -1.0F, new Item.Settings().group(NEUTRINO_GROUP));
     public static final ToolItem SHATTERED_SWORD = new SwordItem(ShatteredSwordMaterial.INSTANCE, 2, -1.5F, new Item.Settings().group(NEUTRINO_GROUP));
-    public static final CrossbowItem DIAMOND_CROSSBOW = new CrossbowItem(new FabricItemSettings().rarity(Rarity.RARE).maxDamage(15).group(NEUTRINO_GROUP));
+    public static final EmptyStaff EMPTY_STAFF = new EmptyStaff(new FabricItemSettings().group(NEUTRINO_GROUP));
 
     public static final NeutrinoConfig nConfig;
     static {
@@ -108,7 +108,7 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "diamond_crossbow"), DIAMOND_CROSSBOW);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_staff"), EMPTY_STAFF);
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {

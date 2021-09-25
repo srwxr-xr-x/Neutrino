@@ -1,6 +1,0 @@
-{
-    "parent": "item/crossbow",
-    "textures": {
-        "layer0": "neutrino:item/diamond_crossbow_pulling_1"
-    }
-}

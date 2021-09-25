@@ -8,7 +8,6 @@
     "DesertTempleMixin",
     "LeavesBlockMixin",
     "LightningEntityMixin",
-    "LivingEntityDeathMixin",
     "PlayerEntityMixin"
   ],
   "injectors": {

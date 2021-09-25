@@ -1,7 +1,6 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
-import net.minecraft.block.Blocks;
 import net.minecraft.structure.DesertTempleGenerator;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructurePieceWithDimensions;

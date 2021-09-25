@@ -1,15 +1,11 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
-import io.netty.buffer.Unpooled;
-import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -17,11 +13,8 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 
 import java.util.List;
-
-import static com.frostwizard4.Neutrino.SoundRegister.HARVESTER_ACTIVATE;
 
 public class SoulPouchItem extends Item {
     public SoulPouchItem(Settings settings) {

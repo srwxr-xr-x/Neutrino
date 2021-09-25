@@ -2,7 +2,6 @@ package com.frostwizard4.Neutrino;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.MessageType;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
 import java.util.UUID;
