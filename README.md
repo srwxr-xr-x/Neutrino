@@ -38,6 +38,7 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - No Collision Leaves
   - Slowly fall through leaves
   - Shattered and Rusty Swords
+  - Terracotta Pots
 
 ## Installation
 
