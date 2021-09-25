@@ -30,6 +30,6 @@ jobs:
       - name: Minecraft Tests
         uses: Geometrically/fabric-test-runner@v1
         with:
-          minecraftVersion: latest
+          minecraftVersion: 1.17.1
           runBuildTest: true
           runServerTest: false
