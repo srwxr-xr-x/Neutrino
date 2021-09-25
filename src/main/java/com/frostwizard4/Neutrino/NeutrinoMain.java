@@ -11,8 +11,6 @@ import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
@@ -23,28 +21,17 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.item.*;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.structure.MineshaftGenerator;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.MineshaftFeature;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
 import static com.frostwizard4.Neutrino.SoundRegister.*;
 
@@ -75,6 +62,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final Enchantment LIFE_STEAL = Registry.register(Registry.ENCHANTMENT, new Identifier("neutrino", "life_steal"), new LifeStealEnchantment());
     public static final ToolItem RUSTY_SWORD = new SwordItem(RustySwordMaterial.INSTANCE, 1, -1.0F, new Item.Settings().group(NEUTRINO_GROUP));
     public static final ToolItem SHATTERED_SWORD = new SwordItem(ShatteredSwordMaterial.INSTANCE, 2, -1.5F, new Item.Settings().group(NEUTRINO_GROUP));
+    public static final CrossbowItem DIAMOND_CROSSBOW = new CrossbowItem(new FabricItemSettings().rarity(Rarity.RARE).maxDamage(15).group(NEUTRINO_GROUP));
 
     public static final NeutrinoConfig nConfig;
     static {
@@ -120,6 +108,7 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "diamond_crossbow"), DIAMOND_CROSSBOW);
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {

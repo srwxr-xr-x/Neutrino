@@ -7,6 +7,8 @@ import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredica
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.CrossbowItem;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.GLASS_DOOR;
@@ -28,6 +30,23 @@ public class NeutrinoClientInit implements ClientModInitializer {
                 }
             } else {
                 return 0;}
+        });
+
+        FabricModelPredicateProviderRegistry.register(NeutrinoMain.DIAMOND_CROSSBOW, new Identifier("pull"), (stack, world, entity, seed) -> {
+            if (entity == null) {
+                return 0.0F;
+            } else {
+                return CrossbowItem.isCharged(stack) ? 0.0F : (float)(stack.getMaxUseTime() - entity.getItemUseTimeLeft()) / (float)CrossbowItem.getPullTime(stack);
+            }
+        });
+        FabricModelPredicateProviderRegistry.register(NeutrinoMain.DIAMOND_CROSSBOW, new Identifier("pulling"), (stack, world, entity, seed) -> {
+            return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack && !CrossbowItem.isCharged(stack) ? 1.0F : 0.0F;
+        });
+        FabricModelPredicateProviderRegistry.register(NeutrinoMain.DIAMOND_CROSSBOW, new Identifier("charged"), (stack, world, entity, seed) -> {
+            return entity != null && CrossbowItem.isCharged(stack) ? 1.0F : 0.0F;
+        });
+        FabricModelPredicateProviderRegistry.register(NeutrinoMain.DIAMOND_CROSSBOW, new Identifier("firework"), (stack, world, entity, seed) -> {
+            return entity != null && CrossbowItem.isCharged(stack) && CrossbowItem.hasProjectile(stack, Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
         });
     }
 }
