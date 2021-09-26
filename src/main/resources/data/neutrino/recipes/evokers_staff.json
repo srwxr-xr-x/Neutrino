@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "neutrino:empty_staff"
+    },
+    "X": {
+      "item": "neutrino:gray_jewel"
+    }
+  },
+  "result": {
+    "item": "neutrino:evokers_staff"
+  }
+}

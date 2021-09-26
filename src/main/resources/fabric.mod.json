@@ -30,7 +30,7 @@
       "com.frostwizard4.Neutrino.NeutrinoClientInit"
     ],
     "modmenu": [
-      "com.frostwizard4.Neutrino.NeutrinoModMenuIntegration"
+      "com.frostwizard4.Neutrino.Misc.NeutrinoModMenuIntegration"
     ]
   },
   "mixins": [

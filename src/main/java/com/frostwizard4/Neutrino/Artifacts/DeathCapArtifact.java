@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import static com.frostwizard4.Neutrino.SoundRegister.EAT_DEATH_CAP_MUSHROOM;
+import static com.frostwizard4.Neutrino.Misc.SoundRegister.EAT_DEATH_CAP_MUSHROOM;
 
 public class DeathCapArtifact extends Item {
     public DeathCapArtifact(Settings settings) {

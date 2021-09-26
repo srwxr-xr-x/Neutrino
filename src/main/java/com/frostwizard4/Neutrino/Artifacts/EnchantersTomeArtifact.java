@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import static com.frostwizard4.Neutrino.SoundRegister.ENCHANTERS_TOME_ACTIVATE;
+import static com.frostwizard4.Neutrino.Misc.SoundRegister.ENCHANTERS_TOME_ACTIVATE;
 
 public class EnchantersTomeArtifact extends Item {
     public EnchantersTomeArtifact(Settings settings) {

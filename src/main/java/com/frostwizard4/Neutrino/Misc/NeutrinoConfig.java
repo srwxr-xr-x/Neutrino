@@ -1,4 +1,4 @@
-package com.frostwizard4.Neutrino;
+package com.frostwizard4.Neutrino.Misc;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;

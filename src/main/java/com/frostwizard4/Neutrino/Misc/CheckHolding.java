@@ -1,4 +1,4 @@
-package com.frostwizard4.Neutrino;
+package com.frostwizard4.Neutrino.Misc;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.MessageType;

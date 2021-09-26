@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/post_postmortal",
+  "display": {
+    "icon": {
+      "item": "neutrino:gray_jewel"
+    },
+    "title": {
+      "translate": "advancements.neutrino.special_stone.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.special_stone.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_jewel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:gray_jewel"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_jewel"
+    ]
+  ]
+}

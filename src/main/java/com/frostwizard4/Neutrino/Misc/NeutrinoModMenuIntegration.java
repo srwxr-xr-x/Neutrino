@@ -1,4 +1,4 @@
-package com.frostwizard4.Neutrino;
+package com.frostwizard4.Neutrino.Misc;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

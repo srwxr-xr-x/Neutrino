@@ -4,10 +4,8 @@ import com.frostwizard4.Neutrino.Artifacts.*;
 import com.frostwizard4.Neutrino.Blocks.GlassDoor;
 import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
 import com.frostwizard4.Neutrino.Enchantments.LifeStealEnchantment;
-import com.frostwizard4.Neutrino.Items.EmptyStaff;
-import com.frostwizard4.Neutrino.Items.GoatHorn;
-import com.frostwizard4.Neutrino.Items.RustySwordMaterial;
-import com.frostwizard4.Neutrino.Items.ShatteredSwordMaterial;
+import com.frostwizard4.Neutrino.Items.*;
+import com.frostwizard4.Neutrino.Misc.NeutrinoConfig;
 import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
@@ -32,8 +30,9 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
+import org.lwjgl.system.CallbackI;
 
-import static com.frostwizard4.Neutrino.SoundRegister.*;
+import static com.frostwizard4.Neutrino.Misc.SoundRegister.*;
 
 
 public class NeutrinoMain implements ModInitializer {
@@ -63,6 +62,9 @@ public class NeutrinoMain implements ModInitializer {
     public static final ToolItem RUSTY_SWORD = new SwordItem(RustySwordMaterial.INSTANCE, 1, -1.0F, new Item.Settings().group(NEUTRINO_GROUP));
     public static final ToolItem SHATTERED_SWORD = new SwordItem(ShatteredSwordMaterial.INSTANCE, 2, -1.5F, new Item.Settings().group(NEUTRINO_GROUP));
     public static final EmptyStaff EMPTY_STAFF = new EmptyStaff(new FabricItemSettings().group(NEUTRINO_GROUP));
+    public static final EvokersStaff EVOKERS_STAFF = new EvokersStaff(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
+    //public static final DeepSeaStaff DEEP_SEA_STAFF = new DeepSeaStaff(new FabricItemSettings().rarity(Rarity.RARE).group(NEUTRINO_GROUP));
+    public static final Item GRAY_JEWEL = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
 
     public static final NeutrinoConfig nConfig;
     static {
@@ -70,6 +72,7 @@ public class NeutrinoMain implements ModInitializer {
         nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
     }
 
+    //TODO Add Staff Variants of the EMPTY_STAFF
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
@@ -109,6 +112,11 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_staff"), EMPTY_STAFF);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "evokers_staff"), EVOKERS_STAFF);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "gray_jewel"), GRAY_JEWEL);
+
+        // Registry.register(Registry.ITEM, new Identifier("neutrino", "deep_sea_staff"), DEEP_SEA_STAFF);
+
 
         LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
             if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {
@@ -205,6 +213,16 @@ public class NeutrinoMain implements ModInitializer {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .with(ItemEntry.builder(NeutrinoMain.SHATTERED_SWORD)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(5));
+                table.pool(poolBuilder);
+            }
+        });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.SIMPLE_DUNGEON_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(NeutrinoMain.GRAY_JEWEL)
                                 .weight(1))
                         .with(EmptyEntry.Serializer().weight(5));
                 table.pool(poolBuilder);

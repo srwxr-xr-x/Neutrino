@@ -1,11 +1,10 @@
 package com.frostwizard4.Neutrino.mixin;
 
-import com.frostwizard4.Neutrino.CheckHolding;
+import com.frostwizard4.Neutrino.Misc.CheckHolding;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
