@@ -5,6 +5,8 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffer;
@@ -25,6 +27,7 @@ public class VillagerInit {
         TradeOffers.Factory[] weaponsmithLevel5 = new TradeOffers.Factory[]{new TradeOffers.SellEnchantedToolFactory(Items.DIAMOND_SWORD, 8, 3, 30, 0.2F)};
 
         TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(VillagerProfession.WEAPONSMITH, VillagerInit.toIntMap(ImmutableMap.of(1, weaponsmithLevel1, 2, weaponsmithLevel2, 3, weaponsmithLevel3, 4, weaponsmithLevel4, 5, weaponsmithLevel5)));
+
     }
 
     public static class SellSwordFactory implements TradeOffers.Factory {

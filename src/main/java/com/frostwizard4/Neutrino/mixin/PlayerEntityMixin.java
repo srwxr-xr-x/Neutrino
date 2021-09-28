@@ -4,10 +4,14 @@ import com.frostwizard4.Neutrino.Misc.CheckHolding;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -43,6 +47,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Shadow
     public abstract Iterable<ItemStack> getItemsHand();
+
+    @Shadow public abstract PlayerInventory getInventory();
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
@@ -83,9 +89,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                 }
             }
         }
-
     }
 }
+
 
 
 

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "X",
+    "X"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:fermented_spider_eye"
+    },
+    "X": {
+      "tag": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "neutrino:crafting_slab"
+  }
+}
