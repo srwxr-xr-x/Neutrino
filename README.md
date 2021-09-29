@@ -1,5 +1,3 @@
-![Logo](src/main/resources/assets/neutrino/icon.png)
-
 # Neutrino
 
 ![GitHub license](https://img.shields.io/github/license/frostwizard4/neutrino.svg)
@@ -17,6 +15,9 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
 
 ### - [Fabric](https://fabricmc.net/use/)
 ### -  [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+
+## Optional Dependencies
+
 ### -  [Cloth Config API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
 ### -  [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu)
 
