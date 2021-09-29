@@ -51,6 +51,7 @@ public class EvokersStaff extends Item {
 
         if(Screen.hasShiftDown()) {
             tooltip.add(new TranslatableText("item.neutrino.evokers_staff.tooltip2"));
+            tooltip.add(new TranslatableText("item.neutrino.evokers_staff.tooltip3"));
         } else {
             tooltip.add(new TranslatableText("item.neutrino.evokers_staff.shiftdown").formatted(Formatting.DARK_GRAY));
         }

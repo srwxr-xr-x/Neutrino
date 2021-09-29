@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/special_stone",
+  "display": {
+    "icon": {
+      "item": "neutrino:enchanted_diamond_apple"
+    },
+    "title": {
+      "translate": "advancements.neutrino.otherworldly.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.otherworldly.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_enchanted_diamond_apple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:enchanted_diamond_apple"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_enchanted_diamond_apple"
+    ]
+  ]
+}

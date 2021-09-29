@@ -29,7 +29,7 @@ public class SummonEvokerFangs {
             }
         } else {
             Vec3d vector3f = fromPolar(entity.getPitch(0.0f), entity.getHeadYaw());
-            for (j = 0; j < 16; ++j) {
+            for (j = 0; j < 8; ++j) {
                 double l = 1.25D * (double) (j + 1);
                 conjureFangs(entity, entity.getX() + vector3f.getX() * l, entity.getZ() + vector3f.getZ() * l, d, e, f, j);
             }

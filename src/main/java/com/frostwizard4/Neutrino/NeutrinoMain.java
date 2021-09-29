@@ -75,6 +75,7 @@ public class NeutrinoMain implements ModInitializer {
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
+        DAFoodComponents.registerFoods();
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
@@ -220,6 +221,16 @@ public class NeutrinoMain implements ModInitializer {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .with(ItemEntry.builder(NeutrinoMain.GRAY_JEWEL)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(5));
+                table.pool(poolBuilder);
+            }
+        });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.END_CITY_TREASURE_CHEST.equals(id) || LootTables.WOODLAND_MANSION_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(DAFoodComponents.ENCHANTED_DIAMOND_APPLE)
                                 .weight(1))
                         .with(EmptyEntry.Serializer().weight(5));
                 table.pool(poolBuilder);
