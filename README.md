@@ -40,7 +40,10 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Slowly fall through leaves
   - Shattered and Rusty Swords
   - Terracotta Pots
+  - Vampiric & Rock's Ruin Staff
+  - Diamond Apple
 
+  - **For more info, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
 ## Installation
 
 ### Manual installation (recommended)
