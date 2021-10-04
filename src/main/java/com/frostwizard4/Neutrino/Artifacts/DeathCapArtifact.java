@@ -1,18 +1,15 @@
 package com.frostwizard4.Neutrino.Artifacts;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -23,16 +20,23 @@ public class DeathCapArtifact extends Item {
     public DeathCapArtifact(Settings settings) {
         super(settings);
     }
+    int rndDeath = 0;
+
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity playerEntity, Hand hand) {
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        for(int i = 0; i < 50; i++) {
+            rndDeath = (int) (Math.random() * (100 - 1 + 1) + 1);
+        }
+        if(rndDeath > 15 && rndDeath < 30) {
+            user.kill();
+        }
         //Play Sound
-        playerEntity.playSound(EAT_DEATH_CAP_MUSHROOM, 1.0F, 1.0F);
+        user.playSound(EAT_DEATH_CAP_MUSHROOM, 1.0F, 1.0F);
         //Apply Effects
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,400, 2));
-        world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 400,1));
+        world.getClosestPlayer(user,15).addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,400, 2));
+        world.getClosestPlayer(user,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 400,1));
         //Set 30 second Cooldown
-        playerEntity.getItemCooldownManager().set(NeutrinoMain.DEATH_CAP_MUSHROOM, 600);
-        return TypedActionResult.success(playerEntity.getStackInHand(hand));
+        return this.isFood() ? user.eatFood(world, stack) : stack;
     }
 
     @Override
@@ -45,10 +49,5 @@ public class DeathCapArtifact extends Item {
         } else {
             tooltip.add(new TranslatableText("item.neutrino.death_cap_mushroom.shiftdown").formatted(Formatting.DARK_GRAY));
         }
-    }
-
-    @Override
-    public boolean isFood() {
-        return super.isFood();
     }
 }

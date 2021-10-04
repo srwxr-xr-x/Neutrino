@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DXD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "tag": "minecraft:logs"
+    },
+    "X": {
+      "item": "minecraft:apple"
+    }
+  },
+  "result": {
+    "item": "neutrino:wood_apple"
+  }
+}

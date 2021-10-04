@@ -20,11 +20,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.item.*;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.entry.EmptyEntry;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -51,7 +53,6 @@ public class NeutrinoMain implements ModInitializer {
 
     public static final EnchantersTomeArtifact ENCHANTERS_TOME = new EnchantersTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final HarvesterArtifact HARVESTER = new HarvesterArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
-    public static final DeathCapArtifact DEATH_CAP_MUSHROOM = new DeathCapArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.UNCOMMON));
     public static final LightningRodArtifact LIGHTNING_ROD_ARTIFACT = new LightningRodArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final UpdraftTomeArtifact UPDRAFT_TOME = new UpdraftTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
     public static final SoulHealerArtifact SOUL_HEALER = new SoulHealerArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
@@ -75,7 +76,7 @@ public class NeutrinoMain implements ModInitializer {
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
-        DAFoodComponents.registerFoods();
+        NeutrinoFoodComponents.registerFoods();
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
@@ -103,7 +104,6 @@ public class NeutrinoMain implements ModInitializer {
 
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "death_cap_mushroom"), DEATH_CAP_MUSHROOM);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
@@ -140,7 +140,7 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.HERO_OF_THE_VILLAGE_CLERIC_GIFT_GAMEPLAY.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.DEATH_CAP_MUSHROOM)
+                        .with(ItemEntry.builder(NeutrinoFoodComponents.DEATH_CAP_MUSHROOM)
                                 .weight(1))
                         .with(EmptyEntry.Serializer().weight(4));
                 table.pool(poolBuilder);
@@ -230,7 +230,7 @@ public class NeutrinoMain implements ModInitializer {
             if (LootTables.END_CITY_TREASURE_CHEST.equals(id) || LootTables.WOODLAND_MANSION_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(DAFoodComponents.ENCHANTED_DIAMOND_APPLE)
+                        .with(ItemEntry.builder(NeutrinoFoodComponents.ENCHANTED_DIAMOND_APPLE)
                                 .weight(1))
                         .with(EmptyEntry.Serializer().weight(5));
                 table.pool(poolBuilder);

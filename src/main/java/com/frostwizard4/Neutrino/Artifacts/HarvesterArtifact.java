@@ -39,7 +39,7 @@ public class HarvesterArtifact extends Item {
         if(Screen.hasShiftDown()) {
             tooltip.add(new TranslatableText("item.neutrino.harvester.tooltip2"));
         } else {
-            tooltip.add(new TranslatableText("item.neutrino.harvester.shiftdown"));
+            tooltip.add(new TranslatableText("item.neutrino.harvester.shiftdown").formatted(Formatting.DARK_GRAY));
         }
     }
 }

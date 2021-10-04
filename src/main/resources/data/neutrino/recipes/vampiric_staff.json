@@ -7,13 +7,13 @@
   ],
   "key": {
     "#": {
-      "tag": "minecraft:fermented_spider_eye"
+      "item": "minecraft:fermented_spider_eye"
     },
     "X": {
-      "tag": "minecraft:blaze_rod"
+      "item": "minecraft:blaze_rod"
     }
   },
   "result": {
-    "item": "neutrino:crafting_slab"
+    "item": "neutrino:vampiric_staff"
   }
 }

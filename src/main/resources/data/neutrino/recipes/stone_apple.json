@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DXD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:stone"
+    },
+    "X": {
+      "item": "minecraft:apple"
+    }
+  },
+  "result": {
+    "item": "neutrino:stone_apple"
+  }
+}
