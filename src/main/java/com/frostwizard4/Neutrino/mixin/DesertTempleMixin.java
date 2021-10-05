@@ -29,7 +29,5 @@ public abstract class DesertTempleMixin extends StructurePieceWithDimensions {
         this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 5, 1, 10, boundingBox);
         this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 15, 1, 10, boundingBox);
         this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 10, 1, 17, boundingBox);
-
-
     }
 }
