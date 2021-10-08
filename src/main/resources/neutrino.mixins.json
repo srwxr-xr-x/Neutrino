@@ -7,9 +7,12 @@
     "BlocksMixin",
     "DesertTempleMixin",
     "DesertWellMixin",
+    "ElytraItemMixin",
+    "EndGatewayBlockEntityMixin",
     "LeavesBlockMixin",
     "LightningEntityMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "SwampHutMixin"
   ],
   "injectors": {
     "defaultRequire": 1

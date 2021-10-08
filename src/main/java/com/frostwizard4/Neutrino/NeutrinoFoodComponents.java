@@ -1,10 +1,10 @@
 package com.frostwizard4.Neutrino;
 
-import com.frostwizard4.Neutrino.Artifacts.DeathCapArtifact;
-import com.frostwizard4.Neutrino.Items.DiamondApple;
-import com.frostwizard4.Neutrino.Items.DiamondCarrot;
-import com.frostwizard4.Neutrino.Items.EnchantedDiamondApple;
-import com.frostwizard4.Neutrino.Items.WoodApple;
+import com.frostwizard4.Neutrino.artifacts.DeathCapArtifact;
+import com.frostwizard4.Neutrino.items.DiamondApple;
+import com.frostwizard4.Neutrino.items.DiamondCarrot;
+import com.frostwizard4.Neutrino.items.EnchantedDiamondApple;
+import com.frostwizard4.Neutrino.items.WoodApple;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;

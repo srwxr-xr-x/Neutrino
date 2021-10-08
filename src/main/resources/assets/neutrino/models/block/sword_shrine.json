@@ -5,7 +5,7 @@
 		"2": "block/sandstone",
 		"3": "block/sandstone_bottom",
 		"4": "block/sandstone_top",
-		"particle": "neutrino:item/rusty_sword"
+		"particle": "block/sandstone"
 	},
 	"elements": [
 		{
@@ -284,7 +284,7 @@
 		},
 		"gui": {
 			"rotation": [30, 225, 0],
-			"scale": [0.625, 0.625, 0.625]
+			"scale": [0.4, 0.4, 0.4]
 		},
 		"fixed": {
 			"scale": [0.5, 0.5, 0.5]

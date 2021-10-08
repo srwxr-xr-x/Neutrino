@@ -1,9 +1,11 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import net.minecraft.block.Blocks;
 import net.minecraft.structure.DesertTempleGenerator;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructurePieceWithDimensions;
+import net.minecraft.structure.SwampHutGenerator;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -18,17 +20,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
-@Mixin(DesertTempleGenerator.class)
-public abstract class DesertTempleMixin extends StructurePieceWithDimensions {
-    protected DesertTempleMixin(StructurePieceType type, int x, int y, int z, int width, int height, int depth, Direction orientation) {
+@Mixin(SwampHutGenerator.class)
+public abstract class SwampHutMixin extends StructurePieceWithDimensions {
+    protected SwampHutMixin(StructurePieceType type, int x, int y, int z, int width, int height, int depth, Direction orientation) {
         super(type, x, y, z, width, height, depth, orientation);
     }
 
     @Inject(at = @At("RETURN"), method = "generate")
-    public void addTerracottaPot(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 5, 1, 10, boundingBox);
-        this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 15, 1, 10, boundingBox);
-        this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 10, 1, 17, boundingBox);
-        this.addBlock(world, NeutrinoMain.SHATTERED_SWORD_SHRINE.getDefaultState(), 10, 0, 10, boundingBox);
+    public void neutrino$addDaturaFlower(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+        this.addBlock(world, NeutrinoMain.DATURA.getDefaultState(), 2, 2, 0, boundingBox);
     }
 }

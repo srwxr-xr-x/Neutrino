@@ -1,53 +1,32 @@
 package com.frostwizard4.Neutrino;
 
-import com.frostwizard4.Neutrino.Artifacts.*;
-import com.frostwizard4.Neutrino.Blocks.GlassDoor;
-import com.frostwizard4.Neutrino.Blocks.GlassTrapDoor;
-import com.frostwizard4.Neutrino.Enchantments.LifeStealEnchantment;
-import com.frostwizard4.Neutrino.Items.*;
-import com.frostwizard4.Neutrino.Misc.NeutrinoConfig;
-import com.frostwizard4.Neutrino.Slabs.CraftingSlab;
+import com.frostwizard4.Neutrino.artifacts.*;
+import com.frostwizard4.Neutrino.blocks.CraftingSlab;
+import com.frostwizard4.Neutrino.blocks.DaturaFlower;
+import com.frostwizard4.Neutrino.blocks.GlassDoor;
+import com.frostwizard4.Neutrino.blocks.GlassTrapDoor;
+import com.frostwizard4.Neutrino.items.*;
+import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
+import com.frostwizard4.Neutrino.misc.NeutrinoConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
-import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentLevelEntry;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
-import net.minecraft.loot.LootTables;
-import net.minecraft.loot.entry.EmptyEntry;
-import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.HeightmapDecoratorConfig;
-import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
-import static com.frostwizard4.Neutrino.Misc.SoundRegister.*;
+import static com.frostwizard4.Neutrino.misc.SoundRegister.*;
 
 
 public class NeutrinoMain implements ModInitializer {
@@ -55,8 +34,10 @@ public class NeutrinoMain implements ModInitializer {
     public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
     public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
-    public static final Block DUNGEONS_POT = new Block(FabricBlockSettings.of(Material.STONE).strength(1F, 2.2F).sounds(BlockSoundGroup.GLASS).nonOpaque().materialColor(DyeColor.BLACK));
+    public static final Block DUNGEONS_POT = new Block(FabricBlockSettings.of(Material.STONE).strength(1F, 2.2F).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final Block SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SHATTERED_SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
+    public static final DaturaFlower DATURA = new DaturaFlower(StatusEffects.WITHER, 8, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque());
 
     public static final ItemGroup NEUTRINO_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_group")).icon(() -> new ItemStack(HALF_FULL_BOOKSHELF)).build();
     public static final ItemGroup NEUTRINO_DUNGEONS_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_dungeons_group")).icon(() -> new ItemStack(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)).build();
@@ -80,6 +61,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final EvokersStaff EVOKERS_STAFF = new EvokersStaff(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
     public static final Item GRAY_JEWEL = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final VampiricStaff VAMPIRIC_STAFF = new VampiricStaff(ToolMaterials.STONE, 1, 3, new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
+    public static final DaturaEssence DATURA_ESSENCE = new DaturaEssence(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static final NeutrinoConfig nConfig;
     static {
@@ -87,7 +69,6 @@ public class NeutrinoMain implements ModInitializer {
         nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
     }
 
-    //TODO Add Staff Variants of the EMPTY_STAFF
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
@@ -120,6 +101,12 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "sword_shrine"), SWORD_SHRINE);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "sword_shrine"), new BlockItem(SWORD_SHRINE, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "shattered_sword_shrine"), SHATTERED_SWORD_SHRINE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword_shrine"), new BlockItem(SHATTERED_SWORD_SHRINE, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "datura"), DATURA);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "datura"), new BlockItem(DATURA, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
@@ -133,127 +120,9 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "evokers_staff"), EVOKERS_STAFF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "gray_jewel"), GRAY_JEWEL);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "vampiric_staff"), VAMPIRIC_STAFF);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_essence"), DATURA_ESSENCE);
 
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.BASTION_TREASURE_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.SOUL_POUCH)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(14));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.WOODLAND_MANSION_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.SOUL_HEALER)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(2));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.HERO_OF_THE_VILLAGE_CLERIC_GIFT_GAMEPLAY.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoFoodComponents.DEATH_CAP_MUSHROOM)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(4));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.STRONGHOLD_LIBRARY_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.ENCHANTERS_TOME)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(4));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.HERO_OF_THE_VILLAGE_LIBRARIAN_GIFT_GAMEPLAY.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.UPDRAFT_TOME)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(6));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.ABANDONED_MINESHAFT_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.HARVESTER)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(9));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(7));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.VILLAGE_WEAPONSMITH_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1.0F))
-                        .with(ItemEntry.builder(NeutrinoMain.GOAT_HORN)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(4));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.JUNGLE_TEMPLE_CHEST.equals(id) || LootTables.DESERT_PYRAMID_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.RUSTY_SWORD)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(3));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.BASTION_BRIDGE_CHEST.equals(id) || LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.SHATTERED_SWORD)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(5));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.SIMPLE_DUNGEON_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoMain.GRAY_JEWEL)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(5));
-                table.pool(poolBuilder);
-            }
-        });
-        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-            if (LootTables.END_CITY_TREASURE_CHEST.equals(id) || LootTables.WOODLAND_MANSION_CHEST.equals(id)) {
-                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(NeutrinoFoodComponents.ENCHANTED_DIAMOND_APPLE)
-                                .weight(1))
-                        .with(EmptyEntry.Serializer().weight(5));
-                table.pool(poolBuilder);
-            }
-        });
+        LootTableRegister.register();
 
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
@@ -261,5 +130,6 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
+
     }
 }
