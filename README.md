@@ -8,6 +8,8 @@
 [![](http://cf.way2muchnoise.eu/versions//For%20MC_neutrino_all.svg)](https://github.com/Frostwizard4/Neutrino/releases)
 [![](http://cf.way2muchnoise.eu/neutrino.svg)](https://www.curseforge.com/minecraft/mc-mods/neutrino)
 
+[![](https://i.imgur.com/S2a8uqH.png)](https://discord.gg/2Y42CUKXBx)
+
 A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
 
 ---
@@ -43,7 +45,7 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
   - Vampiric & Rock's Ruin Staff
   - Diamond Apple
 
-  - **For more info, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
+  - **For more features, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
 ## Installation
 
 ### Manual installation (recommended)
