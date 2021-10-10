@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "BlocksMixin",
+    "CropBlockMixin",
     "DesertTempleMixin",
     "DesertWellMixin",
     "ElytraItemMixin",

@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Neutrino",
-  "description": "A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!",
+  "description": "A Light, Miscellaneous Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!",
   "authors": [
     "FrostWizard4",
     "The_Fresh_Potato",
@@ -16,7 +16,6 @@
     "homepage": "https://github.com/FrostWizard4/Neutrino",
     "sources": "https://github.com/FrostWizard4/Neutrino"
   },
-
 
   "license": "MIT",
   "icon": "assets/neutrino/icon.png",

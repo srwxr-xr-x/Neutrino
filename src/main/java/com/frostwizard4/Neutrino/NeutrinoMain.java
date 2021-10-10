@@ -1,10 +1,7 @@
 package com.frostwizard4.Neutrino;
 
 import com.frostwizard4.Neutrino.artifacts.*;
-import com.frostwizard4.Neutrino.blocks.CraftingSlab;
-import com.frostwizard4.Neutrino.blocks.DaturaFlower;
-import com.frostwizard4.Neutrino.blocks.GlassDoor;
-import com.frostwizard4.Neutrino.blocks.GlassTrapDoor;
+import com.frostwizard4.Neutrino.blocks.*;
 import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import com.frostwizard4.Neutrino.misc.NeutrinoConfig;
@@ -38,6 +35,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final Block SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
     public static final Block SHATTERED_SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
     public static final DaturaFlower DATURA = new DaturaFlower(StatusEffects.WITHER, 8, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque());
+    public static final ScarecrowBlock SCARECROW = new ScarecrowBlock(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES));
 
     public static final ItemGroup NEUTRINO_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_group")).icon(() -> new ItemStack(HALF_FULL_BOOKSHELF)).build();
     public static final ItemGroup NEUTRINO_DUNGEONS_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_dungeons_group")).icon(() -> new ItemStack(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)).build();
@@ -106,6 +104,9 @@ public class NeutrinoMain implements ModInitializer {
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "datura"), DATURA);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "datura"), new BlockItem(DATURA, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "scarecrow"), SCARECROW);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "scarecrow"), new BlockItem(SCARECROW, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);

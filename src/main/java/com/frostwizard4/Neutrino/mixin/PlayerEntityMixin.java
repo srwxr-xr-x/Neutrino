@@ -15,6 +15,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -55,11 +56,15 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Shadow
     public abstract Iterable<ItemStack> getItemsHand();
 
+    @Shadow public abstract void sendMessage(Text message, boolean actionBar);
+
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
         if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
             if (world.isClient()) {
-                CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
+                //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
+                sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$boomPowerCounter / 10), true);
+
                 //ServerPlayerEntity!!
             }
         }
@@ -69,13 +74,17 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                 if (neutrino$soulPouchCounter >= 3000) {
                     neutrino$soulPouchCounter = 3000;
                     if (world.isClient()) {
-                        CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
+                        //CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
+                        sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), true);
+
                     }
                 } else {
                     if (getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
                         neutrino$soulPouchCounter++;
                         if (world.isClient()) {
-                            CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
+                            //CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
+                            sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$soulPouchCounter / 10), true);
+
                         }
                     }
                 }
@@ -85,12 +94,15 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                 if (neutrino$boomPowerCounter >= 1500) {
                     neutrino$boomPowerCounter = 1500;
                     if (world.isClient()) {
-                        CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
+                        //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
+                        sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$boomPowerCounter / 10), true);
+
                     }
                 } else {
                     neutrino$boomPowerCounter++;
                     if (world.isClient()) {
-                        CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
+                        //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
+                        sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$boomPowerCounter / 10), true);
                     }
                 }
             }
