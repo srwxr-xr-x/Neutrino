@@ -9,6 +9,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -16,9 +17,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
@@ -131,6 +135,36 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
+        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            if (entity.getEntityWorld().isClient) {
+                return ActionResult.PASS;
+            }
 
+            // THINGS, MOBS that needs to apply i-frames when attacking
+            for (String id : NeutrinoConfig.attackExcludedEntities) {
+                Entity attacker = player.getAttacker();
+                if (attacker == null)
+                    break;
+                Identifier loc = EntityType.getId(attacker.getType());
+                if (loc == null)
+                    break;
+                int starIndex = id.indexOf('*');
+                if (starIndex != -1) {
+                    if (loc.toString().contains(id.substring(0, starIndex))) {
+                        return ActionResult.PASS;
+                    }
+                } else if (loc.toString().equals(id)) {
+                    return ActionResult.PASS;
+                }
+
+            }
+
+            if(NeutrinoMain.nConfig.isIFramesOff()) {
+                entity.timeUntilRegen = 0;
+            } else if(NeutrinoMain.nConfig.isIFramesHalf()) {
+                entity.timeUntilRegen = 5;
+            }
+            return ActionResult.PASS;
+        });
     }
 }

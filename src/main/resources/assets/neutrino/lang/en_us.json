@@ -104,5 +104,8 @@
   "text.autoconfig.neutrino.title": "Neutrino Config",
   "text.autoconfig.neutrino.option.leavesMode": "§b*§rSlow Leaves Mode",
   "text.autoconfig.neutrino.option.leavesMode.@Tooltip": "Enable or Disable Leaves slowing you down (On, Off)",
-  "text.autoconfig.neutrino.option.leavesMode.@PrefixText": "          §b* §lYou need to restart Minecraft to apply this!§r"
+  "text.autoconfig.neutrino.option.leavesMode.@PrefixText": "          §b* §lYou need to restart Minecraft to apply this!§r",
+  "text.autoconfig.neutrino.category.Settings": "Leaf Settings",
+  "text.autoconfig.neutrino.category.default": "Invincibility Frames Settings",
+  "text.autoconfig.neutrino.option.iFrames": "Invincibility Frames"
 }
