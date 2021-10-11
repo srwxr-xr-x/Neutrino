@@ -63,7 +63,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
         if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
             if (world.isClient()) {
                 //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
-                sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$boomPowerCounter / 10), true);
+                sendMessage(Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), true);
 
                 //ServerPlayerEntity!!
             }
@@ -95,14 +95,14 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                     neutrino$boomPowerCounter = 1500;
                     if (world.isClient()) {
                         //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
-                        sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$boomPowerCounter / 10), true);
+                        sendMessage(Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), true);
 
                     }
                 } else {
                     neutrino$boomPowerCounter++;
                     if (world.isClient()) {
                         //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
-                        sendMessage(Text.of("Soul Pouch Level: " + (int) neutrino$boomPowerCounter / 10), true);
+                        sendMessage(Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), true);
                     }
                 }
             }

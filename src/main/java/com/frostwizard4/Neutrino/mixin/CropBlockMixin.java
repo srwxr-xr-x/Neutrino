@@ -1,26 +1,13 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
-import com.frostwizard4.Neutrino.blocks.ScarecrowBlock;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.EndGatewayBlockEntity;
-import net.minecraft.block.entity.EndPortalBlockEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
 
@@ -52,12 +39,12 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
                         if(i+3 < this.getMaxAge()) {
                             i+=3;
                         }
-                    }
+                        world.spawnParticles(ParticleTypes.HAPPY_VILLAGER,pos.getX(),pos.getY(),pos.getZ(),4,1,1,1,1);
                     world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
+                    }
                 }
             }
         }
-
     }
 }
 

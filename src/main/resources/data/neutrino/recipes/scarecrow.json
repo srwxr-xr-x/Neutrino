@@ -7,7 +7,7 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:hay_bale"
+      "item": "minecraft:hay_block"
     },
     "P": {
       "item": "minecraft:carved_pumpkin"
@@ -17,6 +17,6 @@
     }
   },
   "result": {
-    "item": "minecraft:chainmail_boots"
+    "item": "neutrino:scarecrow"
   }
 }

@@ -140,7 +140,6 @@ public class NeutrinoMain implements ModInitializer {
                 return ActionResult.PASS;
             }
 
-            // THINGS, MOBS that needs to apply i-frames when attacking
             for (String id : NeutrinoConfig.attackExcludedEntities) {
                 Entity attacker = player.getAttacker();
                 if (attacker == null)
