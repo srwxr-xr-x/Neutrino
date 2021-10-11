@@ -7,11 +7,15 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 @Config(name = "neutrino")
 public class NeutrinoConfig implements ConfigData {
     public static String[] attackExcludedEntities;
+    public static String[] damageSrcWhitelist;
+
     public NeutrinoConfig() {
         this.setDefault();
     }
     private void setDefault() {
         attackExcludedEntities = new String[] {"minecraft:slime", "tconstruct:blueslime", "thaumcraft:thaumslime"};
+        damageSrcWhitelist = new String[] {"inFire", "lava", "cactus", "lightningBolt", "inWall", "hotFloor"};
+
     }
 
     public enum Flags { On, Off }

@@ -135,11 +135,12 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
+
+
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (entity.getEntityWorld().isClient) {
                 return ActionResult.PASS;
             }
-
             for (String id : NeutrinoConfig.attackExcludedEntities) {
                 Entity attacker = player.getAttacker();
                 if (attacker == null)
