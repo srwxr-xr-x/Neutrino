@@ -1,14 +1,20 @@
 package com.frostwizard4.Neutrino;
 
+import com.frostwizard4.Neutrino.entity.EntityRegistry;
+import com.frostwizard4.Neutrino.entity.RatEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
+import software.bernie.example.client.renderer.entity.ExampleGeoRenderer;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.*;
 
 public class NeutrinoClientInit implements ClientModInitializer {
+
     @Override
     public void onInitializeClient() {
 
@@ -27,5 +33,6 @@ public class NeutrinoClientInit implements ClientModInitializer {
                 return 0;
             }
         });
+        EntityRendererRegistry.INSTANCE.register(EntityRegistry.RAT, RatEntityRenderer::new);
     }
 }

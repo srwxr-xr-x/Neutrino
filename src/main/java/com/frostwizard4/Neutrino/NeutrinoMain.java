@@ -2,6 +2,8 @@ package com.frostwizard4.Neutrino;
 
 import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.blocks.*;
+import com.frostwizard4.Neutrino.entity.EntityRegistry;
+import com.frostwizard4.Neutrino.entity.RatEntity;
 import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import com.frostwizard4.Neutrino.misc.NeutrinoConfig;
@@ -12,6 +14,7 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -20,12 +23,15 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
+import software.bernie.example.EntityUtils;
+import software.bernie.geckolib3.GeckoLib;
 
 import static com.frostwizard4.Neutrino.misc.SoundRegister.*;
 
@@ -71,10 +77,14 @@ public class NeutrinoMain implements ModInitializer {
         nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
     }
 
+
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
         NeutrinoFoodComponents.registerFoods();
+        GeckoLib.initialize();
+
+        FabricDefaultAttributeRegistry.register(EntityRegistry.RAT, RatEntity.createRatAttributes());
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
