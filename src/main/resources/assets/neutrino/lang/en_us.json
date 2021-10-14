@@ -40,6 +40,7 @@
   "item.neutrino.diamond_carrot": "Diamond Carrot",
   "item.neutrino.datura_essence": "Datura Essence",
   "item.neutrino.rat_spawn_egg": "Rat Spawn Egg",
+  "entity.neutrino.rat": "Rat",
   "itemGroup.neutrino.neutrino_group": "Neutrino",
   "itemGroup.neutrino.neutrino_dungeons_group": "Minecraft Dungeons Items",
   "item.neutrino.harvester.tooltip": "§oThe Harvester siphons the souls of the dead.",

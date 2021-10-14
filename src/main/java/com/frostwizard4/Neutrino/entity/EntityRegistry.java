@@ -14,11 +14,8 @@ public class EntityRegistry {
 
     public static <T extends Entity> EntityType<T> buildEntity(EntityType.EntityFactory<T> entity,
                                                                float width, float height, SpawnGroup group) {
-        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             return NeutrinoEntityRegistryBuilder.<T>createBuilder(new Identifier("neutrino", "rat")).entity(entity)
                     .category(group).dimensions(EntityDimensions.changing(width, height)).build();
-        }
-        return null;
     }
 
 }
