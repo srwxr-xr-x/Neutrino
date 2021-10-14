@@ -10,7 +10,7 @@
 
 [![](https://i.imgur.com/S2a8uqH.png)](https://discord.gg/2Y42CUKXBx)
 
-A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
+A Light, Exploration Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
 
 ---
 ## Required Dependencies:
