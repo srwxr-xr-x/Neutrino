@@ -2,6 +2,7 @@ package com.frostwizard4.Neutrino;
 
 import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.blocks.*;
+import com.frostwizard4.Neutrino.entity.DuckEntity;
 import com.frostwizard4.Neutrino.entity.EntityRegistry;
 import com.frostwizard4.Neutrino.entity.RatEntity;
 import com.frostwizard4.Neutrino.items.*;
@@ -22,8 +23,11 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.BatEntity;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.ActionResult;
@@ -85,6 +89,7 @@ public class NeutrinoMain implements ModInitializer {
         GeckoLib.initialize();
 
         FabricDefaultAttributeRegistry.register(EntityRegistry.RAT, RatEntity.createRatAttributes());
+        FabricDefaultAttributeRegistry.register(EntityRegistry.DUCK, DuckEntity.createDuckAttributes());
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));

@@ -1,5 +1,6 @@
 package com.frostwizard4.Neutrino;
 
+import com.frostwizard4.Neutrino.entity.DuckEntityRenderer;
 import com.frostwizard4.Neutrino.entity.EntityRegistry;
 import com.frostwizard4.Neutrino.entity.RatEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
@@ -34,5 +35,7 @@ public class NeutrinoClientInit implements ClientModInitializer {
             }
         });
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.RAT, RatEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityRegistry.DUCK, DuckEntityRenderer::new);
+
     }
 }
