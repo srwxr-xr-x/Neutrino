@@ -74,6 +74,7 @@ public class NeutrinoMain implements ModInitializer {
     public static final Item GRAY_JEWEL = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final VampiricStaff VAMPIRIC_STAFF = new VampiricStaff(ToolMaterials.STONE, 1, 3, new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final DaturaEssence DATURA_ESSENCE = new DaturaEssence(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item DUCK_FEATHER = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static final NeutrinoConfig nConfig;
     static {
@@ -141,6 +142,7 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "gray_jewel"), GRAY_JEWEL);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "vampiric_staff"), VAMPIRIC_STAFF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_essence"), DATURA_ESSENCE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "duck_feather"), DUCK_FEATHER);
 
         LootTableRegister.register();
 

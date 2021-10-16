@@ -10,7 +10,7 @@ public class EntityRegistry {
     public static final EntityType<RatEntity> RAT = buildEntity(RatEntity::new, RatEntity.class,
             .6F, 0.4F, SpawnGroup.MONSTER);
     public static final EntityType<DuckEntity> DUCK = buildEntity(DuckEntity::new, DuckEntity.class,
-            .6F, 0.4F, SpawnGroup.CREATURE);
+            .6F, 0.5F, SpawnGroup.CREATURE);
 
     public static <T extends Entity> EntityType<T> buildEntity(EntityType.EntityFactory<T> entity, Class<T> entityClass, float width, float height, SpawnGroup group) {
         String name = entityClass.getSimpleName().toLowerCase();

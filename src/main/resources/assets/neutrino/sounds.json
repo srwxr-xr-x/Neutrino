@@ -40,5 +40,11 @@
     "sounds": [
       "neutrino:war_horn_use"
     ]
+  },
+  "duck_call": {
+    "subtitle": "subtitles.neutrino.duck_call",
+    "sounds": [
+      "neutrino:duck_call"
+    ]
   }
 }

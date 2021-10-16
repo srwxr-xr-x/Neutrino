@@ -25,4 +25,8 @@ public class SoundRegister {
 
     public static final Identifier WAR_HORN_USE_ID = new Identifier("neutrino:war_horn_use");
     public static SoundEvent WAR_HORN_USE = new SoundEvent(WAR_HORN_USE_ID);
+
+    public static final Identifier DUCK_CALL_ID = new Identifier("neutrino:duck_call");
+    public static SoundEvent DUCK_CALL = new SoundEvent(DUCK_CALL_ID);
+
 }

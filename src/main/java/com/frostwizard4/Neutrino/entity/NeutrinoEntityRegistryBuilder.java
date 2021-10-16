@@ -78,8 +78,9 @@ public class NeutrinoEntityRegistryBuilder<E extends Entity> {
         }
 
         EntityType<E> entityType = Registry.register(Registry.ENTITY_TYPE, name, entityBuilder.build(name.getPath()));
-        Registry.register(Registry.ITEM, new Identifier(name.getNamespace(), String.format("%s_spawn_egg", name.getPath())), new SpawnEggItem((EntityType<? extends MobEntity>) entityType, 3224639,
-                2105125, (new Item.Settings()).group(ItemGroup.MISC)));
+            Registry.register(Registry.ITEM, new Identifier(name.getNamespace(), String.format("%s_spawn_egg", name.getPath())), new SpawnEggItem((EntityType<? extends MobEntity>) entityType, 3224639,
+                    2105125, (new Item.Settings()).group(ItemGroup.MISC)));
+
         return entityType;
     }
 

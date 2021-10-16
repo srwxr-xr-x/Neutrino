@@ -1,11 +1,14 @@
 package com.frostwizard4.Neutrino.entity;
 
+import com.frostwizard4.Neutrino.misc.SoundRegister;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -35,6 +38,9 @@ public class RatEntity extends HostileEntity implements IAnimatable {
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController<>(this, "rat_controller", 0, this::predicate));
+    }
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_BAT_AMBIENT;
     }
 
     @Override

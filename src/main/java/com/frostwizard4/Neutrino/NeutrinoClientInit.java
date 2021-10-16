@@ -8,9 +8,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
-import software.bernie.example.client.renderer.entity.ExampleGeoRenderer;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.*;
 

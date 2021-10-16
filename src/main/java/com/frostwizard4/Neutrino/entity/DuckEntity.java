@@ -1,5 +1,7 @@
 package com.frostwizard4.Neutrino.entity;
 
+import com.frostwizard4.Neutrino.misc.SoundRegister;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -11,10 +13,13 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -89,6 +94,7 @@ public class DuckEntity extends AnimalEntity implements IAnimatable {
         }
 
     }
+
     protected boolean hasWings() {
         return this.field_28627 > this.field_28639;
     }
@@ -100,7 +106,13 @@ public class DuckEntity extends AnimalEntity implements IAnimatable {
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
+    protected SoundEvent getAmbientSound() {
+        return SoundRegister.DUCK_CALL;
+    }
 
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15F, 1.0F);
+    }
     @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
@@ -114,13 +126,16 @@ public class DuckEntity extends AnimalEntity implements IAnimatable {
         super.initGoals();
     }
 
-
     @Nullable
     @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return EntityRegistry.DUCK.create(world);
-
     }
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.isOf(Items.BREAD);
+    }
+
     static {
         BREEDING_INGREDIENT = Ingredient.ofItems(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS);
     }
