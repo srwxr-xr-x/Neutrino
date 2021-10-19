@@ -124,6 +124,12 @@
   "text.autoconfig.neutrino.option.leavesMode.@Tooltip": "Enable or Disable Leaves slowing you down (On, Off)",
   "text.autoconfig.neutrino.option.leavesMode.@PrefixText": "          §b* §lYou need to restart Minecraft to apply this!§r",
   "text.autoconfig.neutrino.category.Settings": "Leaf Settings",
-  "text.autoconfig.neutrino.category.default": "Invincibility Frames Settings",
-  "text.autoconfig.neutrino.option.iFrames": "Invincibility Frames"
+  "text.autoconfig.neutrino.category.default": "Other Settings",
+  "text.autoconfig.neutrino.option.spawnRat.@PrefixText": "          §b* §lYou need to restart Minecraft to apply this!§r",
+  "text.autoconfig.neutrino.option.iFrames": "Invincibility Frames",
+  "text.autoconfig.neutrino.option.spawnDuck": "§b*§rDuck Spawning",
+  "text.autoconfig.neutrino.option.spawnDuck.@Tooltip": "Enable or Disable Leaves Duck spawning (On, Off)",
+  "text.autoconfig.neutrino.option.spawnRat": "§b*§rRat Spawning",
+  "text.autoconfig.neutrino.option.spawnRat.@Tooltip": "Enable or Disable Leaves Rat spawning (On, Off)",
+  "text.autoconfig.neutrino.category.Entity_Settings": "Entity Settings"
 }

@@ -110,10 +110,13 @@ public class NeutrinoMain implements ModInitializer {
         FabricDefaultAttributeRegistry.register(EntityRegistry.DUCK, DuckEntity.createDuckAttributes());
         FabricDefaultAttributeRegistry.register(EntityRegistry.WITHERLING, WitherlingEntity.createWitherlingAttributes());
 
-        BiomeModifications.addSpawn(BiomeSelectors.categories(DefaultBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, EntityRegistry.WITHERLING, 100, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, EntityRegistry.RAT, 10, 1, 2);
-        BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.CREATURE, EntityRegistry.DUCK, 100, 1, 4);
-
+        BiomeModifications.addSpawn(BiomeSelectors.categories(DefaultBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, EntityRegistry.WITHERLING, 1, 1, 1);
+        if(nConfig.isRatOn()) {
+            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, EntityRegistry.RAT, 5, 1, 1);
+        }
+        if(nConfig.isDuckOn()) {
+            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.CREATURE, EntityRegistry.DUCK, 100, 1, 4);
+        }
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
