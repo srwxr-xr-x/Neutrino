@@ -29,4 +29,10 @@ public class SoundRegister {
     public static final Identifier DUCK_CALL_ID = new Identifier("neutrino:duck_call");
     public static SoundEvent DUCK_CALL = new SoundEvent(DUCK_CALL_ID);
 
+    public static final Identifier WITHERLING_IDLE_ID = new Identifier("neutrino:witherling_idle");
+    public static SoundEvent WITHERLING_IDLE = new SoundEvent(WITHERLING_IDLE_ID);
+
+    public static final Identifier WITHERLING_ATTACK_ID = new Identifier("neutrino:witherling_attack");
+    public static SoundEvent WITHERLING_ATTACK = new SoundEvent(WITHERLING_ATTACK_ID);
+
 }

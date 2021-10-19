@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "XX"
+  ],
+  "key": {
+    "X": {
+      "item": "neutrino:withering_heart_fragment"
+    }
+  },
+  "result": {
+    "item": "neutrino:withering_heart"
+  }
+}

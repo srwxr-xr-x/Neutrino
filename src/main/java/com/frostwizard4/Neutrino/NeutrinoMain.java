@@ -5,12 +5,17 @@ import com.frostwizard4.Neutrino.blocks.*;
 import com.frostwizard4.Neutrino.entity.DuckEntity;
 import com.frostwizard4.Neutrino.entity.EntityRegistry;
 import com.frostwizard4.Neutrino.entity.RatEntity;
+import com.frostwizard4.Neutrino.entity.WitherlingEntity;
 import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import com.frostwizard4.Neutrino.misc.NeutrinoConfig;
+import com.frostwizard4.Neutrino.misc.WitherPotion;
+import com.google.common.collect.Lists;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -24,18 +29,26 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.*;
+import net.minecraft.potion.Potion;
+import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.DefaultBiomeCreator;
 import software.bernie.example.EntityUtils;
 import software.bernie.geckolib3.GeckoLib;
+
+import java.util.List;
+import java.util.function.Predicate;
 
 import static com.frostwizard4.Neutrino.misc.SoundRegister.*;
 
@@ -75,22 +88,31 @@ public class NeutrinoMain implements ModInitializer {
     public static final VampiricStaff VAMPIRIC_STAFF = new VampiricStaff(ToolMaterials.STONE, 1, 3, new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final DaturaEssence DATURA_ESSENCE = new DaturaEssence(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final Item DUCK_FEATHER = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item WITHERING_HEART = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
+    public static final Item WITHERING_HEART_FRAGMENT = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
 
     public static final NeutrinoConfig nConfig;
+
     static {
         AutoConfig.register(NeutrinoConfig.class, GsonConfigSerializer::new);
         nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
     }
 
-
+    //TODO ADD BREWING STAND RECIPE!
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
         NeutrinoFoodComponents.registerFoods();
         GeckoLib.initialize();
+        WitherPotion.init();
 
         FabricDefaultAttributeRegistry.register(EntityRegistry.RAT, RatEntity.createRatAttributes());
         FabricDefaultAttributeRegistry.register(EntityRegistry.DUCK, DuckEntity.createDuckAttributes());
+        FabricDefaultAttributeRegistry.register(EntityRegistry.WITHERLING, WitherlingEntity.createWitherlingAttributes());
+
+        BiomeModifications.addSpawn(BiomeSelectors.categories(DefaultBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, EntityRegistry.WITHERLING, 100, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, EntityRegistry.RAT, 10, 1, 2);
+        BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.CREATURE, EntityRegistry.DUCK, 100, 1, 4);
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
@@ -143,6 +165,8 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "vampiric_staff"), VAMPIRIC_STAFF);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_essence"), DATURA_ESSENCE);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "duck_feather"), DUCK_FEATHER);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart"), WITHERING_HEART);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart_fragment"), WITHERING_HEART_FRAGMENT);
 
         LootTableRegister.register();
 
@@ -152,7 +176,6 @@ public class NeutrinoMain implements ModInitializer {
         Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
-
 
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (entity.getEntityWorld().isClient) {

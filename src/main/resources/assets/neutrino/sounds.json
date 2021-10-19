@@ -46,5 +46,17 @@
     "sounds": [
       "neutrino:duck_call"
     ]
+  },
+  "witherling_idle": {
+    "subtitle": "subtitles.neutrino.witherling_idle",
+    "sounds": [
+      "neutrino:witherling_idle"
+    ]
+  },
+  "witherling_attack": {
+    "subtitle": "subtitles.neutrino.witherling_attack",
+    "sounds": [
+      "neutrino:witherling_attack"
+    ]
   }
 }

@@ -5,10 +5,9 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "BlocksMixin",
-    "BowItemMixin",
+    "BrewingRecipeRegistryAccessor",
     "ChorusFruitItemMixin",
     "CropBlockMixin",
-    "DefaultBiomeFeaturesMixin",
     "DesertTempleMixin",
     "DesertWellMixin",
     "EggEntityMixin",
