@@ -119,6 +119,8 @@
   "advancements.neutrino.special_stone.description": "Obtain a Jewel, a powerful stone used with staffs!",
   "advancements.neutrino.otherworldly.title": "Otherworldly",
   "advancements.neutrino.otherworldly.description": "Obtain a Enchanted Diamond Apple, A truly godly food.",
+  "advancements.neutrino.kill_witherling.title":  "One Step Closer",
+  "advancements.neutrino.kill_witherling.description": "Kill a witherling, a servant of the Wither.",
   "text.autoconfig.neutrino.title": "Neutrino Config",
   "text.autoconfig.neutrino.option.leavesMode": "§b*§rSlow Leaves Mode",
   "text.autoconfig.neutrino.option.leavesMode.@Tooltip": "Enable or Disable Leaves slowing you down (On, Off)",

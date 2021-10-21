@@ -13,7 +13,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
-import static com.frostwizard4.Neutrino.misc.SoundRegister.WAR_HORN_USE;
+import static com.frostwizard4.Neutrino.registry.SoundRegister.WAR_HORN_USE;
 
 public class GoatHorn extends Item {
     public GoatHorn(Settings settings) {

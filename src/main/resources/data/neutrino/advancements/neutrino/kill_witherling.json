@@ -1,0 +1,39 @@
+{
+  "parent": "neutrino:neutrino/otherworldly",
+  "display": {
+    "icon": {
+      "item": "neutrino:withering_heart"
+    },
+    "title": {
+      "translate": "advancements.neutrino.kill_witherling.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.kill_witherling.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "killed_dragon": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "neutrino:witherling"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "killed_dragon"
+    ]
+  ]
+}

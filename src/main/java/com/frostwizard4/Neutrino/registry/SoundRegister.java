@@ -1,7 +1,8 @@
-package com.frostwizard4.Neutrino.misc;
+package com.frostwizard4.Neutrino.registry;
 
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class SoundRegister {
 
@@ -35,4 +36,13 @@ public class SoundRegister {
     public static final Identifier WITHERLING_ATTACK_ID = new Identifier("neutrino:witherling_attack");
     public static SoundEvent WITHERLING_ATTACK = new SoundEvent(WITHERLING_ATTACK_ID);
 
+    public static void init() {
+        Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
+        Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
+        Registry.register(Registry.SOUND_EVENT, LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
+        Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
+        Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
+        Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
+
+    }
 }

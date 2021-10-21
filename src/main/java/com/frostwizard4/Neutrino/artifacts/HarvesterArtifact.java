@@ -16,7 +16,7 @@ import net.minecraft.world.explosion.Explosion;
 
 import java.util.List;
 
-import static com.frostwizard4.Neutrino.misc.SoundRegister.HARVESTER_ACTIVATE;
+import static com.frostwizard4.Neutrino.registry.SoundRegister.HARVESTER_ACTIVATE;
 
 public class HarvesterArtifact extends Item {
     public HarvesterArtifact(Settings settings) {

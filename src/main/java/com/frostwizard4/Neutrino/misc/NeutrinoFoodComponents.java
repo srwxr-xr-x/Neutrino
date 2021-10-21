@@ -1,4 +1,4 @@
-package com.frostwizard4.Neutrino;
+package com.frostwizard4.Neutrino.misc;
 
 import com.frostwizard4.Neutrino.artifacts.DeathCapArtifact;
 import com.frostwizard4.Neutrino.items.DiamondApple;

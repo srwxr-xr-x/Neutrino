@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-import static com.frostwizard4.Neutrino.misc.SoundRegister.LIGHTNING_ROD_ACTIVATE;
+import static com.frostwizard4.Neutrino.registry.SoundRegister.LIGHTNING_ROD_ACTIVATE;
 
 public class LightningRodArtifact extends Item {
     public LightningRodArtifact(Settings settings) {

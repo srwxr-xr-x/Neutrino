@@ -1,7 +1,7 @@
 package com.frostwizard4.Neutrino.entity;
 
-import com.frostwizard4.Neutrino.misc.SoundRegister;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -9,7 +9,10 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -17,6 +20,8 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+
+import java.util.Random;
 
 public class RatEntity extends HostileEntity implements IAnimatable {
     AnimationFactory factory = new AnimationFactory(this);
@@ -60,5 +65,4 @@ public class RatEntity extends HostileEntity implements IAnimatable {
         this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, true));
         super.initGoals();
     }
-
 }

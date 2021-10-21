@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import static com.frostwizard4.Neutrino.misc.SoundRegister.UPDRAFT_TOME_ACTIVATE;
+import static com.frostwizard4.Neutrino.registry.SoundRegister.UPDRAFT_TOME_ACTIVATE;
 
 public class UpdraftTomeArtifact extends Item {
     public UpdraftTomeArtifact(Settings settings) {

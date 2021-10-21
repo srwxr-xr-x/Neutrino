@@ -1,7 +1,7 @@
 package com.frostwizard4.Neutrino.artifacts;
 
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
-import com.frostwizard4.Neutrino.misc.SoundRegister;
+import com.frostwizard4.Neutrino.registry.SoundRegister;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;

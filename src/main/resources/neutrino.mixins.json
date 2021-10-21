@@ -1,5 +1,5 @@
 {
-  "required": false,
+  "required": true,
   "minVersion": "0.8",
   "package": "com.frostwizard4.Neutrino.mixin",
   "compatibilityLevel": "JAVA_16",

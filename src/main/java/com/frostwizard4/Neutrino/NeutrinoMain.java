@@ -2,56 +2,30 @@ package com.frostwizard4.Neutrino;
 
 import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.blocks.*;
-import com.frostwizard4.Neutrino.entity.DuckEntity;
-import com.frostwizard4.Neutrino.entity.EntityRegistry;
-import com.frostwizard4.Neutrino.entity.RatEntity;
-import com.frostwizard4.Neutrino.entity.WitherlingEntity;
 import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import com.frostwizard4.Neutrino.misc.NeutrinoConfig;
+import com.frostwizard4.Neutrino.misc.NeutrinoFoodComponents;
 import com.frostwizard4.Neutrino.misc.WitherPotion;
-import com.google.common.collect.Lists;
+import com.frostwizard4.Neutrino.registry.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.BatEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.*;
-import net.minecraft.potion.Potion;
-import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeCreator;
-import software.bernie.example.EntityUtils;
 import software.bernie.geckolib3.GeckoLib;
-
-import java.util.List;
-import java.util.function.Predicate;
-
-import static com.frostwizard4.Neutrino.misc.SoundRegister.*;
-
 
 public class NeutrinoMain implements ModInitializer {
 
@@ -92,122 +66,22 @@ public class NeutrinoMain implements ModInitializer {
     public static final Item WITHERING_HEART_FRAGMENT = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
 
     public static final NeutrinoConfig nConfig;
-
     static {
         AutoConfig.register(NeutrinoConfig.class, GsonConfigSerializer::new);
         nConfig = AutoConfig.getConfigHolder(NeutrinoConfig.class).getConfig();
     }
 
-    //TODO ADD BREWING STAND RECIPE!
     @Override
     public void onInitialize() {
         VillagerInit.fillTradeData();
         NeutrinoFoodComponents.registerFoods();
         GeckoLib.initialize();
         WitherPotion.init();
-
-        FabricDefaultAttributeRegistry.register(EntityRegistry.RAT, RatEntity.createRatAttributes());
-        FabricDefaultAttributeRegistry.register(EntityRegistry.DUCK, DuckEntity.createDuckAttributes());
-        FabricDefaultAttributeRegistry.register(EntityRegistry.WITHERLING, WitherlingEntity.createWitherlingAttributes());
-
-        BiomeModifications.addSpawn(BiomeSelectors.categories(DefaultBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, EntityRegistry.WITHERLING, 1, 1, 1);
-        if(nConfig.isRatOn()) {
-            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, EntityRegistry.RAT, 5, 1, 1);
-        }
-        if(nConfig.isDuckOn()) {
-            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.CREATURE, EntityRegistry.DUCK, 100, 1, 4);
-        }
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "half_full_bookshelf"), new BlockItem(HALF_FULL_BOOKSHELF, new FabricItemSettings().group(NEUTRINO_GROUP)));
-
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "dungeons_pot"), DUNGEONS_POT);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "dungeons_pot"), new BlockItem(DUNGEONS_POT, new FabricItemSettings().group(NEUTRINO_GROUP)));
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "glass_door"), new BlockItem(GLASS_DOOR, new FabricItemSettings().group(NEUTRINO_GROUP)));
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "glass_door"), GLASS_DOOR);
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "glass_trapdoor"), new BlockItem(GLASS_TRAPDOOR, new FabricItemSettings().group(NEUTRINO_GROUP)));
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "glass_trapdoor"), GLASS_TRAPDOOR);
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "dirt_slab"), new BlockItem(DIRT_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "dirt_slab"), DIRT_SLAB);
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "gravel_slab"), new BlockItem(GRAVEL_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "gravel_slab"), GRAVEL_SLAB);
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "sand_slab"), new BlockItem(SAND_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "sand_slab"), SAND_SLAB);
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "crafting_slab"), new BlockItem(CRAFTING_SLAB, new FabricItemSettings().group(NEUTRINO_GROUP)));
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "crafting_slab"), CRAFTING_SLAB);
-
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "sword_shrine"), SWORD_SHRINE);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "sword_shrine"), new BlockItem(SWORD_SHRINE, new FabricItemSettings().group(NEUTRINO_GROUP)));
-
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "shattered_sword_shrine"), SHATTERED_SWORD_SHRINE);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword_shrine"), new BlockItem(SHATTERED_SWORD_SHRINE, new FabricItemSettings().group(NEUTRINO_GROUP)));
-
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "datura"), DATURA);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "datura"), new BlockItem(DATURA, new FabricItemSettings().group(NEUTRINO_GROUP)));
-
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "scarecrow"), SCARECROW);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "scarecrow"), new BlockItem(SCARECROW, new FabricItemSettings().group(NEUTRINO_GROUP)));
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_staff"), EMPTY_STAFF);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "evokers_staff"), EVOKERS_STAFF);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "gray_jewel"), GRAY_JEWEL);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "vampiric_staff"), VAMPIRIC_STAFF);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_essence"), DATURA_ESSENCE);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "duck_feather"), DUCK_FEATHER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart"), WITHERING_HEART);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart_fragment"), WITHERING_HEART_FRAGMENT);
-
+        BlockRegistry.init();
+        ItemRegistry.init();
+        MiscEntityRegistry.init();
         LootTableRegister.register();
-
-        Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, LIGHTNING_ROD_ACTIVATE_ID, LIGHTNING_ROD_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
-        Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
-
-        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
-            if (entity.getEntityWorld().isClient) {
-                return ActionResult.PASS;
-            }
-            for (String id : NeutrinoConfig.attackExcludedEntities) {
-                Entity attacker = player.getAttacker();
-                if (attacker == null)
-                    break;
-                Identifier loc = EntityType.getId(attacker.getType());
-                if (loc == null)
-                    break;
-                int starIndex = id.indexOf('*');
-                if (starIndex != -1) {
-                    if (loc.toString().contains(id.substring(0, starIndex))) {
-                        return ActionResult.PASS;
-                    }
-                } else if (loc.toString().equals(id)) {
-                    return ActionResult.PASS;
-                }
-
-            }
-
-            if(NeutrinoMain.nConfig.isIFramesOff()) {
-                entity.timeUntilRegen = 0;
-            } else if(NeutrinoMain.nConfig.isIFramesHalf()) {
-                entity.timeUntilRegen = 5;
-            }
-            return ActionResult.PASS;
-        });
+        SoundRegister.init();
+        MiscellaneousRegistry.init();
     }
 }
