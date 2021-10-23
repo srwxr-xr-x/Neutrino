@@ -2,6 +2,7 @@ package com.frostwizard4.Neutrino.artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
@@ -56,7 +57,7 @@ public class LightningRodArtifact extends Item {
                 summonLightning(playerEntity, world);
             }
             //Set 2 second Cooldown
-            playerEntity.getItemCooldownManager().set(NeutrinoMain.LIGHTNING_ROD_ARTIFACT, 40);
+            playerEntity.getItemCooldownManager().set(ItemRegistry.LIGHTNING_ROD_ARTIFACT, 40);
             ((PlayerEntityAccess) playerEntity).neutrino$setPowerCount(((PlayerEntityAccess) playerEntity).neutrino$getPowerCount() - 150);
         } else {
             if(world.isClient()) {

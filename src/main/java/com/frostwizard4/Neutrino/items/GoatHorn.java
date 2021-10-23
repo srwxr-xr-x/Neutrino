@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.items;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -32,7 +33,7 @@ public class GoatHorn extends Item {
             }
         }
         //Set 20 second Cooldown
-        playerEntity.getItemCooldownManager().set(NeutrinoMain.GOAT_HORN, 400);
+        playerEntity.getItemCooldownManager().set(ItemRegistry.GOAT_HORN, 400);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }
 }

@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -32,7 +33,7 @@ public class EnchantersTomeArtifact extends Item {
         world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 400,1));
         world.getClosestPlayer(playerEntity,15).addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE,400, 2));
         //Add 25 second Cooldown
-        playerEntity.getItemCooldownManager().set(NeutrinoMain.ENCHANTERS_TOME, 500);
+        playerEntity.getItemCooldownManager().set(ItemRegistry.ENCHANTERS_TOME, 500);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }
     @Override

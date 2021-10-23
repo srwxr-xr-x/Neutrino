@@ -2,6 +2,7 @@ package com.frostwizard4.Neutrino.items;
 
 import com.frostwizard4.Neutrino.misc.SummonEvokerFangs;
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,7 +29,7 @@ public class EvokersStaff extends Item {
         //Summon Evoker Fangs
         SummonEvokerFangs.summonFangs(playerEntity);
         //Set 20 second Cooldown
-        playerEntity.getItemCooldownManager().set(NeutrinoMain.EVOKERS_STAFF, 300);
+        playerEntity.getItemCooldownManager().set(ItemRegistry.EVOKERS_STAFF, 300);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }
     @Override

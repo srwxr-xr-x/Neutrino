@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.blocks;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.BlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -31,7 +32,7 @@ public class ScarecrowBlock extends Block {
         return world.getBlockState(pos.down()).getMaterial().isSolid();
     }
     public void onProjectileHit(World world, BlockState state, BlockHitResult hit, ProjectileEntity projectile) {
-        if(state.getBlock() == NeutrinoMain.SCARECROW) {
+        if(state.getBlock() == BlockRegistry.SCARECROW) {
             world.breakBlock(hit.getBlockPos(), true, projectile);
         }
     }

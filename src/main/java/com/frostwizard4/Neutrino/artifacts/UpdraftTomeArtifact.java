@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.artifacts;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -39,7 +40,7 @@ public class UpdraftTomeArtifact extends Item {
             }
         }
         //Set 10 second Cooldown
-        playerEntity.getItemCooldownManager().set(NeutrinoMain.UPDRAFT_TOME, 200);
+        playerEntity.getItemCooldownManager().set(ItemRegistry.UPDRAFT_TOME, 200);
         return TypedActionResult.success(playerEntity.getStackInHand(hand));
     }
     @Override

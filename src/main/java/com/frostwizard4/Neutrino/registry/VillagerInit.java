@@ -43,7 +43,7 @@ public class VillagerInit {
         @Nullable
         public TradeOffer create(Entity entity, Random random) {
             int rnd = (int)(Math.random() * (30 - 10 + 1)) + 10;
-            return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(NeutrinoMain.RUSTY_SWORD), EnchantmentHelper.enchant(random, new ItemStack(Items.IRON_SWORD), rnd * 2, false), this.maxUses, this.experience, 0.2F);
+            return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(ItemRegistry.RUSTY_SWORD), EnchantmentHelper.enchant(random, new ItemStack(Items.IRON_SWORD), rnd * 2, false), this.maxUses, this.experience, 0.2F);
         }
     }
 
@@ -61,7 +61,7 @@ public class VillagerInit {
         @Nullable
         public TradeOffer create(Entity entity, Random random) {
             int rnd = (int)(Math.random() * (30 - 10 + 1)) + 10;
-            return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(NeutrinoMain.SHATTERED_SWORD), EnchantmentHelper.enchant(random, new ItemStack(Items.DIAMOND_SWORD), rnd * 2, false), this.maxUses, this.experience, 0.2F);
+            return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(ItemRegistry.SHATTERED_SWORD), EnchantmentHelper.enchant(random, new ItemStack(Items.DIAMOND_SWORD), rnd * 2, false), this.maxUses, this.experience, 0.2F);
         }
     }
 

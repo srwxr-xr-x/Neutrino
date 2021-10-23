@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.BlockRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -38,6 +39,6 @@ public abstract class DesertWellMixin extends Feature<DefaultFeatureConfig> {
         StructureWorldAccess structureWorldAccess = context.getWorld();
         BlockPos blockPos = context.getOrigin();
 
-        structureWorldAccess.setBlockState(blockPos.add(0, -2, 0), NeutrinoMain.SWORD_SHRINE.getDefaultState(), Block.NOTIFY_LISTENERS);
+        structureWorldAccess.setBlockState(blockPos.add(0, -2, 0), BlockRegistry.SWORD_SHRINE.getDefaultState(), Block.NOTIFY_LISTENERS);
     }
 }

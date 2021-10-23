@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.entity;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import com.frostwizard4.Neutrino.registry.SoundRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -138,7 +139,7 @@ public class WitherlingEntity extends HostileEntity implements IAnimatable, Rang
 
     protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops) {
         super.dropEquipment(source, lootingMultiplier, allowDrops);
-        ItemEntity itemEntity = this.dropItem(NeutrinoMain.WITHERING_HEART);
+        ItemEntity itemEntity = this.dropItem(ItemRegistry.WITHERING_HEART);
         if (itemEntity != null) {
             itemEntity.setCovetedItem();
         }

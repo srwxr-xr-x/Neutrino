@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.BlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -35,7 +36,7 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
             if (i < this.getMaxAge()) {
                 float f = getAvailableMoisture(this, world, pos);
                 if (random.nextInt((int)(25.0F / f) + 1) == 0) {
-                    if(BlockPos.findClosest(pos, 10, 10, _pos -> world.getBlockState(_pos).isOf(NeutrinoMain.SCARECROW)).isPresent()) {
+                    if(BlockPos.findClosest(pos, 10, 10, _pos -> world.getBlockState(_pos).isOf(BlockRegistry.SCARECROW)).isPresent()) {
                         if(i+3 < this.getMaxAge()) {
                             i+=3;
                         }

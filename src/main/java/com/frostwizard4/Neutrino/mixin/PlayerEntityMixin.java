@@ -1,15 +1,16 @@
 package com.frostwizard4.Neutrino.mixin;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -47,16 +48,13 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
-        if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT)) {
+        if (getMainHandStack().isOf(ItemRegistry.HARVESTER) || getMainHandStack().isOf(ItemRegistry.LIGHTNING_ROD_ARTIFACT)) {
             if (world.isClient()) {
-                //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);
                 sendMessage(Text.of("Soul Level: " + (int) neutrino$boomPowerCounter / 10), true);
-
-                //ServerPlayerEntity!!
             }
         }
         if (isOnSoulSpeedBlock()) {
-            if (getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
+            if (getMainHandStack().isOf(ItemRegistry.SOUL_POUCH)) {
                 displaySoulSpeedEffects();
                 if (neutrino$soulPouchCounter >= 3000) {
                     neutrino$soulPouchCounter = 3000;
@@ -66,7 +64,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
                     }
                 } else {
-                    if (getMainHandStack().isOf(NeutrinoMain.SOUL_POUCH)) {
+                    if (getMainHandStack().isOf(ItemRegistry.SOUL_POUCH)) {
                         neutrino$soulPouchCounter++;
                         if (world.isClient()) {
                             //CheckHolding.sendBundleChatMessage(neutrino$soulPouchCounter);
@@ -76,7 +74,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                     }
                 }
             }
-            if (getMainHandStack().isOf(NeutrinoMain.HARVESTER) || getMainHandStack().isOf(NeutrinoMain.LIGHTNING_ROD_ARTIFACT) || getMainHandStack().isOf(NeutrinoMain.SOUL_HEALER)) {
+            if (getMainHandStack().isOf(ItemRegistry.HARVESTER) || getMainHandStack().isOf(ItemRegistry.LIGHTNING_ROD_ARTIFACT) || getMainHandStack().isOf(ItemRegistry.SOUL_HEALER)) {
                 displaySoulSpeedEffects();
                 if (neutrino$boomPowerCounter >= 1500) {
                     neutrino$boomPowerCounter = 1500;
@@ -97,15 +95,17 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     }
 
     @Inject(at = @At("HEAD"), method = "tick()V")
-    private void neutrino$freezeHeight(CallbackInfo ci) {
-        if(getY() >= 175 && !(getEquippedStack(EquipmentSlot.FEET).isOf(Items.LEATHER_BOOTS))
-                && !(getEquippedStack(EquipmentSlot.LEGS).isOf(Items.LEATHER_LEGGINGS))
-                && !(getEquippedStack(EquipmentSlot.CHEST).isOf(Items.LEATHER_CHESTPLATE))
-                && !(getEquippedStack(EquipmentSlot.HEAD).isOf(Items.LEATHER_HELMET))) {
-            if (getY() >= 230 && !(getEquippedStack(EquipmentSlot.FEET).isOf(Items.LEATHER_BOOTS))
-                    && !(getEquippedStack(EquipmentSlot.LEGS).isOf(Items.LEATHER_LEGGINGS))
-                    && !(getEquippedStack(EquipmentSlot.CHEST).isOf(Items.LEATHER_CHESTPLATE))
-                    && !(getEquippedStack(EquipmentSlot.HEAD).isOf(Items.LEATHER_HELMET))) {
+    private void neutrino$freezePlayer(CallbackInfo ci) {
+        if(getY() >= 175 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+            if (getY() >= 230 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+                this.setFrozenTicks(200);
+                this.damage(DamageSource.FREEZE, 0.5F);
+            }
+            this.setFrozenTicks(150);
+
+        }
+        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+            if(world.isRaining() || world.isThundering() && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
             }

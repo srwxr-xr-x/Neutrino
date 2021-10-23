@@ -8,6 +8,7 @@ import java.util.Optional;
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.mixin.BrewingRecipeRegistryAccessor;
 
+import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
@@ -24,7 +25,7 @@ public final class WitherPotion {
     private static final Collection<RecipeToInit> RECIPES = new ArrayList<RecipeToInit>();
 
 
-    public static final Potion WITHER = register("wither", new Potion(new StatusEffectInstance(StatusEffects.WITHER, 45 * 20)), NeutrinoMain.WITHERING_HEART, Potions.AWKWARD);
+    public static final Potion WITHER = register("wither", new Potion(new StatusEffectInstance(StatusEffects.WITHER, 45 * 20)), ItemRegistry.WITHERING_HEART, Potions.AWKWARD);
     public static final Potion LONG_WITHER = register("long_wither", new Potion(new StatusEffectInstance(StatusEffects.WITHER, 90 * 20)));
     public static final Potion STRONG_WITHER = register("strong_wither", new Potion(new StatusEffectInstance(StatusEffects.WITHER, 450, 1)));
 

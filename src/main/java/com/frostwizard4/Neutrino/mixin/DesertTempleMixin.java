@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.BlockRegistry;
 import net.minecraft.structure.DesertTempleGenerator;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.structure.StructurePieceWithDimensions;
@@ -26,9 +27,9 @@ public abstract class DesertTempleMixin extends StructurePieceWithDimensions {
 
     @Inject(at = @At("RETURN"), method = "generate")
     public void addTerracottaPot(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 5, 1, 10, boundingBox);
-        this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 15, 1, 10, boundingBox);
-        this.addBlock(world, NeutrinoMain.DUNGEONS_POT.getDefaultState(), 10, 1, 17, boundingBox);
-        this.addBlock(world, NeutrinoMain.SHATTERED_SWORD_SHRINE.getDefaultState(), 10, 0, 10, boundingBox);
+        this.addBlock(world, BlockRegistry.DUNGEONS_POT.getDefaultState(), 5, 1, 10, boundingBox);
+        this.addBlock(world, BlockRegistry.DUNGEONS_POT.getDefaultState(), 15, 1, 10, boundingBox);
+        this.addBlock(world, BlockRegistry.DUNGEONS_POT.getDefaultState(), 10, 1, 17, boundingBox);
+        this.addBlock(world, BlockRegistry.SHATTERED_SWORD_SHRINE.getDefaultState(), 10, 0, 10, boundingBox);
     }
 }

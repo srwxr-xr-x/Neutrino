@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.registry.BlockRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.structure.DesertTempleGenerator;
 import net.minecraft.structure.StructurePieceType;
@@ -28,6 +29,6 @@ public abstract class SwampHutMixin extends StructurePieceWithDimensions {
 
     @Inject(at = @At("RETURN"), method = "generate")
     public void neutrino$addDaturaFlower(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        this.addBlock(world, NeutrinoMain.DATURA.getDefaultState(), 2, 2, 0, boundingBox);
+        this.addBlock(world, BlockRegistry.DATURA.getDefaultState(), 2, 2, 0, boundingBox);
     }
 }
