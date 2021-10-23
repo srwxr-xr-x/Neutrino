@@ -17,6 +17,7 @@ A Light, Exploration Quark Spin-Off Fabric Mod for Minecraft, inspired by The Cr
 
 ### - [Fabric](https://fabricmc.net/use/)
 ### -  [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+### - [GeckoLib](https://www.curseforge.com/minecraft/mc-mods/geckolib)
 
 ## Optional Dependencies
 
