@@ -48,24 +48,10 @@ A Light, Exploration Quark Spin-Off Fabric Mod for Minecraft, inspired by The Cr
 
   - **For more features, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
 ## Installation
-
-### Manual installation (recommended)
-
-You will need Fabric Loader 0.10.x or newer installed in your game in order to load Neutrino. If you haven't installed
-Fabric mods before, you can find a variety of community guides for doing so [here](https://fabricmc.net/wiki/install).
-
-### Reporting Issues
-
-You can report bugs and crashes by opening an issue on our [issue tracker](https://github.com/frostwizard4/neutrino/issues).
-
-### Building with Gradle
-
-Neutrino uses a typical Gradle project structure and can be built by simply running the default `build` task. After Gradle
-finishes building the project, you can find the built mod in `build/libs`. Feel free to open a pull request!
-
+ See the [Setup Guide!](https://github.com/FrostWizard4/Neutrino/blob/1.17.1/setup-guide.md)
+ 
 ### Development
 
-If you are going to help develop the mod (which I highly recommend!) I only ask that you add your feature to the bullet point list
-on this `readme`!
+If you are going to help develop the mod (which I highly recommend!) I only ask that you add your feature to the wiki, and use the same coding conventions as me! 
 
 _Note: If the mixin's in the mod's source code have errors, I suggest opening the game in your ide and closing the project to fix it._
