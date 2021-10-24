@@ -54,6 +54,6 @@ That configuration is now saved and can be selected from the configurations drop
 
 A JAR (Java ARchive) is a file used to distribute Java applications. Just as with running the code, a run configuration must be set up to create the jar. Follow the above steps, but with 'build' instead of 'runClient'. Running this configuration will generate a distributable JAR file in the `/build/libs` folder.
 
-Note that by distributing your modification of Neutrino, you are bound by the terms of the GPL3 license, which requires that you make any modifications you have made open-source. If you followed this guide and are using version control, that is already set up for you as your forked repository is publicly hosted on GitHub. Just make sure to push any changes you make back to that repository.
+Note that by distributing your modification of Neutrino, you are bound by the terms of the GPLv3 license, which requires that you make any modifications you have made open-source. If you followed this guide and are using version control, that is already set up for you as your forked repository is publicly hosted on GitHub. Just make sure to push any changes you make back to that repository.
 
 Note that JAR files will require a [Java runtime enviroment](https://java.com/en/download/win10.jsp) to be installed on a user's computer in order to work.
