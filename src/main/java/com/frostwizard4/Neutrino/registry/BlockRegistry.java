@@ -13,7 +13,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-import static com.frostwizard4.Neutrino.NeutrinoMain.*;
+import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;
 
 public class BlockRegistry {
     public static final SlabBlock DIRT_SLAB = new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(1.5f, 1.5f).sounds(BlockSoundGroup.GRASS));

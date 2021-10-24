@@ -134,8 +134,11 @@
   "text.autoconfig.neutrino.option.spawnRat.@PrefixText": "          §b* §lYou need to restart Minecraft to apply this!§r",
   "text.autoconfig.neutrino.option.iFrames": "Invincibility Frames",
   "text.autoconfig.neutrino.option.spawnDuck": "§b*§rDuck Spawning",
-  "text.autoconfig.neutrino.option.spawnDuck.@Tooltip": "Enable or Disable Leaves Duck spawning (On, Off)",
+  "text.autoconfig.neutrino.option.spawnDuck.@Tooltip": "Enable or Disable Duck spawning (On, Off)",
   "text.autoconfig.neutrino.option.spawnRat": "§b*§rRat Spawning",
-  "text.autoconfig.neutrino.option.spawnRat.@Tooltip": "Enable or Disable Leaves Rat spawning (On, Off)",
-  "text.autoconfig.neutrino.category.Entity_Settings": "Entity Settings"
+  "text.autoconfig.neutrino.option.spawnRat.@Tooltip": "Enable or Disable Rat spawning (On, Off)",
+  "text.autoconfig.neutrino.category.Entity_Settings": "Entity Settings",
+  "text.autoconfig.neutrino.category.Biome_Settings": "Biome Settings",
+  "text.autoconfig.neutrino.option.coldBiomeMode": "Freezing in Cold Biomes",
+  "text.autoconfig.neutrino.option.coldBiomeMode.@Tooltip": "Enable or Disable Cold Biome freezing (On, Off)"
 }

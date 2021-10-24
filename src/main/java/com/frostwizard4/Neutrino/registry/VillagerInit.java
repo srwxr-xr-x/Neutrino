@@ -1,6 +1,5 @@
 package com.frostwizard4.Neutrino.registry;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;

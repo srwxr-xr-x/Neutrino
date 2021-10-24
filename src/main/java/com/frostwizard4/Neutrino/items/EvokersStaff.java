@@ -1,7 +1,6 @@
 package com.frostwizard4.Neutrino.items;
 
 import com.frostwizard4.Neutrino.misc.SummonEvokerFangs;
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;

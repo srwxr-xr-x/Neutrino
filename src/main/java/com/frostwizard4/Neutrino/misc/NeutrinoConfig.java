@@ -56,5 +56,14 @@ public class NeutrinoConfig implements ConfigData {
         return leavesMode == Flags.Off;
     }
 
+    @ConfigEntry.Category("Biome_Settings")
+    @ConfigEntry.Gui.Tooltip(count = 1)
+    public Flags coldBiomeMode = Flags.On;
+    public boolean isColdBiomeOn() {
+        return coldBiomeMode == Flags.On;
+    }
+    public boolean isColdBiomeOff() {
+        return coldBiomeMode == Flags.Off;
+    }
 }
 

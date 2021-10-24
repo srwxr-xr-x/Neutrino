@@ -8,7 +8,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeCreator;
 
-import static com.frostwizard4.Neutrino.NeutrinoMain.*;
+import static com.frostwizard4.Neutrino.NeutrinoMain.nConfig;
 
 public class MiscEntityRegistry {
     public static void init() {

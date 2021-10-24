@@ -1,13 +1,7 @@
 
 package com.frostwizard4.Neutrino.misc;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
-
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.mixin.BrewingRecipeRegistryAccessor;
-
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -17,6 +11,10 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Optional;
 
 public final class WitherPotion {
 

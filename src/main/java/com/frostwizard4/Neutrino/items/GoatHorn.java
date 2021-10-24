@@ -1,6 +1,5 @@
 package com.frostwizard4.Neutrino.items;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffectInstance;

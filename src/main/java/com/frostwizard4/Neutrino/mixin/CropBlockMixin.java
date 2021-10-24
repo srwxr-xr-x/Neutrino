@@ -1,6 +1,5 @@
 package com.frostwizard4.Neutrino.mixin;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.registry.BlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.particle.ParticleTypes;

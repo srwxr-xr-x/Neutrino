@@ -1,6 +1,5 @@
 package com.frostwizard4.Neutrino.artifacts;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.client.MinecraftClient;

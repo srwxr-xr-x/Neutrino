@@ -1,7 +1,6 @@
 package com.frostwizard4.Neutrino.registry;
 
 import com.frostwizard4.Neutrino.misc.NeutrinoFoodComponents;
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.loot.LootTables;

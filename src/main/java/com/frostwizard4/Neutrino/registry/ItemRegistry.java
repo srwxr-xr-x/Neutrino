@@ -12,7 +12,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
-import static com.frostwizard4.Neutrino.NeutrinoMain.*;
+import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_DUNGEONS_GROUP;
+import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;
 
 public class ItemRegistry {
     public static final EnchantersTomeArtifact ENCHANTERS_TOME = new EnchantersTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
@@ -58,6 +59,5 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart_fragment"), WITHERING_HEART_FRAGMENT);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur"), ALPACA_FUR);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur_sweater"), ALPACA_FUR_SWEATER);
-
     }
 }
