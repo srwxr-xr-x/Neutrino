@@ -1,0 +1,161 @@
+@startuml
+
+title __REGISTRY's Class Diagram__\n
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.BlockRegistry {
+          {static} + CRAFTING_SLAB : CraftingSlab
+          {static} + DATURA : DaturaFlower
+          {static} + DIRT_SLAB : SlabBlock
+          {static} + DUNGEONS_POT : Block
+          {static} + GLASS_DOOR : GlassDoor
+          {static} + GLASS_TRAPDOOR : GlassTrapDoor
+          {static} + GRAVEL_SLAB : SlabBlock
+          {static} + HALF_FULL_BOOKSHELF : Block
+          {static} + SAND_SLAB : SlabBlock
+          {static} + SCARECROW : ScarecrowBlock
+          {static} + SHATTERED_SWORD_SHRINE : Block
+          {static} + SWORD_SHRINE : Block
+          {static} + init()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.ItemRegistry {
+          {static} + ALPACA_FUR : Item
+          {static} + ALPACA_FUR_SWEATER : Item
+          {static} + DATURA_ESSENCE : DaturaEssence
+          {static} + DUCK_FEATHER : Item
+          {static} + EMPTY_STAFF : EmptyStaff
+          {static} + ENCHANTERS_TOME : EnchantersTomeArtifact
+          {static} + EVOKERS_STAFF : EvokersStaff
+          {static} + FUR_ARMOR_MATERIAL : ArmorMaterial
+          {static} + GOAT_HORN : GoatHorn
+          {static} + GRAY_JEWEL : Item
+          {static} + HARVESTER : HarvesterArtifact
+          {static} + LIFE_STEAL : Enchantment
+          {static} + LIGHTNING_ROD_ARTIFACT : LightningRodArtifact
+          {static} + RUSTY_SWORD : ToolItem
+          {static} + SHATTERED_SWORD : ToolItem
+          {static} + SOUL_HEALER : SoulHealerArtifact
+          {static} + SOUL_POUCH : SoulPouchItem
+          {static} + UPDRAFT_TOME : UpdraftTomeArtifact
+          {static} + VAMPIRIC_STAFF : VampiricStaff
+          {static} + WITHERING_HEART : Item
+          {static} + WITHERING_HEART_FRAGMENT : Item
+          {static} + init()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.LootTableRegister {
+          {static} + register()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.MiscEntityRegistry {
+          {static} + init()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.MiscellaneousRegistry {
+          {static} + init()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.SoundRegister {
+          {static} + DUCK_CALL : SoundEvent
+          {static} + DUCK_CALL_ID : Identifier
+          {static} + EAT_DEATH_CAP_MUSHROOM : SoundEvent
+          {static} + EAT_DEATH_CAP_MUSHROOM_ID : Identifier
+          {static} + ENCHANTERS_TOME_ACTIVATE : SoundEvent
+          {static} + ENCHANTERS_TOME_ACTIVATE_ID : Identifier
+          {static} + HARVESTER_ACTIVATE : SoundEvent
+          {static} + HARVESTER_ACTIVATE_ID : Identifier
+          {static} + LIGHTNING_ROD_ACTIVATE : SoundEvent
+          {static} + LIGHTNING_ROD_ACTIVATE_ID : Identifier
+          {static} + SOUL_HEALER_ACTIVATE : SoundEvent
+          {static} + SOUL_HEALER_ACTIVATE_ID : Identifier
+          {static} + UPDRAFT_TOME_ACTIVATE : SoundEvent
+          {static} + UPDRAFT_TOME_ACTIVATE_ID : Identifier
+          {static} + WAR_HORN_USE : SoundEvent
+          {static} + WAR_HORN_USE_ID : Identifier
+          {static} + WITHERLING_ATTACK : SoundEvent
+          {static} + WITHERLING_ATTACK_ID : Identifier
+          {static} + WITHERLING_IDLE : SoundEvent
+          {static} + WITHERLING_IDLE_ID : Identifier
+          {static} + init()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.VillagerInit {
+          {static} + fillTradeData()
+          {static} - toIntMap()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.VillagerInit.SellShatteredSwordFactory {
+          - experience : int
+          - maxUses : int
+          - price : int
+          + SellShatteredSwordFactory()
+          + create()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace registry {
+      class com.frostwizard4.Neutrino.registry.VillagerInit.SellSwordFactory {
+          - experience : int
+          - maxUses : int
+          - price : int
+          + SellSwordFactory()
+          + create()
+      }
+    }
+  }
+  
+
+  com.frostwizard4.Neutrino.registry.VillagerInit +-down- com.frostwizard4.Neutrino.registry.VillagerInit.SellShatteredSwordFactory
+  com.frostwizard4.Neutrino.registry.VillagerInit +-down- com.frostwizard4.Neutrino.registry.VillagerInit.SellSwordFactory
+  com.frostwizard4.Neutrino.registry.VillagerInit.SellShatteredSwordFactory .up.|> net.minecraft.village.TradeOffers.Factory
+  com.frostwizard4.Neutrino.registry.VillagerInit.SellSwordFactory .up.|> net.minecraft.village.TradeOffers.Factory
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

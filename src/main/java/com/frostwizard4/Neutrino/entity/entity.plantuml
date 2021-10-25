@@ -1,0 +1,231 @@
+@startuml
+
+title __ENTITY's Class Diagram__\n
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.AlpacaEntity {
+          + randomShear : int
+          + sheared : boolean
+          ~ factory : AnimationFactory
+          {static} - BREEDING_INGREDIENT : Ingredient
+          {static} + createAlpacaAttributes()
+          + createChild()
+          + getFactory()
+          + interactMob()
+          + isBreedingItem()
+          + isShearable()
+          + registerControllers()
+          + sheared()
+          # AlpacaEntity()
+          # getAmbientSound()
+          # getDeathSound()
+          # getHurtSound()
+          # initGoals()
+          # mobTick()
+          # playStepSound()
+          - predicate()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.AlpacaEntityRenderer {
+          + AlpacaEntityRenderer()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.AlpacaModel {
+          + getAnimationFileLocation()
+          + getModelLocation()
+          + getTextureLocation()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.DuckEntity {
+          + eggLayTime : int
+          + flapProgress : float
+          + flapSpeed : float
+          + maxWingDeviation : float
+          + prevFlapProgress : float
+          + prevMaxWingDeviation : float
+          ~ factory : AnimationFactory
+          {static} - BREEDING_INGREDIENT : Ingredient
+          - field_28639 : float
+          + createChild()
+          {static} + createDuckAttributes()
+          + getFactory()
+          + handleFallDamage()
+          + isBreedingItem()
+          + registerControllers()
+          + tickMovement()
+          # DuckEntity()
+          # addFlapEffects()
+          # getAmbientSound()
+          # hasWings()
+          # initGoals()
+          # playStepSound()
+          - predicate()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.DuckEntityRenderer {
+          + DuckEntityRenderer()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.DuckModel {
+          + getAnimationFileLocation()
+          + getModelLocation()
+          + getTextureLocation()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.EntityRegistry {
+          {static} + ALPACA : EntityType<AlpacaEntity>
+          {static} + ALPACA_SPAWN_EGG : Item
+          {static} + DUCK : EntityType<DuckEntity>
+          {static} + DUCK_SPAWN_EGG : Item
+          {static} + RAT : EntityType<RatEntity>
+          {static} + RAT_SPAWN_EGG : Item
+          {static} + WITHERLING : EntityType<WitherlingEntity>
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.RatEntity {
+          ~ factory : AnimationFactory
+          {static} + createRatAttributes()
+          + getFactory()
+          + registerControllers()
+          # RatEntity()
+          # getAmbientSound()
+          # initGoals()
+          - predicate()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.RatEntityRenderer {
+          + RatEntityRenderer()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.RatModel {
+          + getAnimationFileLocation()
+          + getModelLocation()
+          + getTextureLocation()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.WitherlingEntity {
+          ~ factory : AnimationFactory
+          + attack()
+          + canSpawn()
+          {static} + createWitherlingAttributes()
+          + getFactory()
+          + getLimitPerChunk()
+          + handleFallDamage()
+          + registerControllers()
+          + tickMovement()
+          # WitherlingEntity()
+          # dropEquipment()
+          # getAmbientSound()
+          # getHurtSound()
+          # initGoals()
+          # mobTick()
+          - getHeadX()
+          - getHeadY()
+          - getHeadZ()
+          - predicate()
+          - shootSkullAt()
+          - shootSkullAt()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.WitherlingEntityRenderer {
+          + WitherlingEntityRenderer()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace entity {
+      class com.frostwizard4.Neutrino.entity.WitherlingModel {
+          + getAnimationFileLocation()
+          + getModelLocation()
+          + getTextureLocation()
+      }
+    }
+  }
+  
+
+  com.frostwizard4.Neutrino.entity.AlpacaEntity .up.|> net.minecraft.entity.Shearable
+  com.frostwizard4.Neutrino.entity.AlpacaEntity .up.|> software.bernie.geckolib3.core.IAnimatable
+  com.frostwizard4.Neutrino.entity.AlpacaEntity -up-|> net.minecraft.entity.passive.AnimalEntity
+  com.frostwizard4.Neutrino.entity.AlpacaEntityRenderer -up-|> software.bernie.geckolib3.renderers.geo.GeoEntityRenderer
+  com.frostwizard4.Neutrino.entity.AlpacaModel -up-|> software.bernie.geckolib3.model.AnimatedGeoModel
+  com.frostwizard4.Neutrino.entity.DuckEntity .up.|> software.bernie.geckolib3.core.IAnimatable
+  com.frostwizard4.Neutrino.entity.DuckEntity -up-|> net.minecraft.entity.passive.AnimalEntity
+  com.frostwizard4.Neutrino.entity.DuckEntityRenderer -up-|> software.bernie.geckolib3.renderers.geo.GeoEntityRenderer
+  com.frostwizard4.Neutrino.entity.DuckModel -up-|> software.bernie.geckolib3.model.AnimatedGeoModel
+  com.frostwizard4.Neutrino.entity.RatEntity .up.|> software.bernie.geckolib3.core.IAnimatable
+  com.frostwizard4.Neutrino.entity.RatEntity -up-|> net.minecraft.entity.mob.HostileEntity
+  com.frostwizard4.Neutrino.entity.RatEntityRenderer -up-|> software.bernie.geckolib3.renderers.geo.GeoEntityRenderer
+  com.frostwizard4.Neutrino.entity.RatModel -up-|> software.bernie.geckolib3.model.AnimatedGeoModel
+  com.frostwizard4.Neutrino.entity.WitherlingEntity .up.|> net.minecraft.entity.ai.RangedAttackMob
+  com.frostwizard4.Neutrino.entity.WitherlingEntity .up.|> software.bernie.geckolib3.core.IAnimatable
+  com.frostwizard4.Neutrino.entity.WitherlingEntity -up-|> net.minecraft.entity.mob.HostileEntity
+  com.frostwizard4.Neutrino.entity.WitherlingEntityRenderer -up-|> software.bernie.geckolib3.renderers.geo.GeoEntityRenderer
+  com.frostwizard4.Neutrino.entity.WitherlingModel -up-|> software.bernie.geckolib3.model.AnimatedGeoModel
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

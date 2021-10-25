@@ -1,0 +1,183 @@
+@startuml
+
+title __MIXIN's Class Diagram__\n
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      class com.frostwizard4.Neutrino.mixin.BlocksMixin {
+          {static} - appendNewSettings()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      interface com.frostwizard4.Neutrino.mixin.BrewingRecipeRegistryAccessor {
+          {static} + invokeRegisterPotionRecipe()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      class com.frostwizard4.Neutrino.mixin.ChorusFruitItemMixin {
+          ~ neutrino$rndEndermite : int
+          + ChorusFruitItemMixin()
+          + neutrino$spawnEndermite()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.ClientPlayerEntityMixin {
+          # client : MinecraftClient
+          + ClientPlayerEntityMixin()
+          - neutrino$moodSoundPlay()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.CropBlockMixin {
+          {abstract} + getMaxAge()
+          + randomTick()
+          {abstract} + withAge()
+          # CropBlockMixin()
+          {abstract} # getAge()
+          {static} # getAvailableMoisture()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.DesertTempleMixin {
+          + addTerracottaPot()
+          # DesertTempleMixin()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.DesertWellMixin {
+          + DesertWellMixin()
+          + addTerracottaPot()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.EggEntityMixin {
+          + EggEntityMixin()
+          - addDuck()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      class com.frostwizard4.Neutrino.mixin.ElytraItemMixin {
+          + ElytraItemMixin()
+          + canRepair()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      class com.frostwizard4.Neutrino.mixin.EndGatewayBlockEntityMixin {
+          # EndGatewayBlockEntityMixin()
+          {static} - serverTick()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      class com.frostwizard4.Neutrino.mixin.LeavesBlockMixin {
+          + LeavesBlockMixin()
+          + onEntityCollision()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.LightningEntityMixin {
+          ~ neutrino$rndStrike : int
+          + LightningEntityMixin()
+          - neutrino$createExplosion()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.PlayerEntityMixin {
+          - neutrino$boomPowerCounter : float
+          - neutrino$soulPouchCounter : float
+          + neutrino$getPowerCount()
+          + neutrino$getSoulPouchCount()
+          + neutrino$setPowerCount()
+          + neutrino$setSoulPouchCount()
+          {abstract} + sendMessage()
+          # PlayerEntityMixin()
+          {abstract} # isOnSoulSpeedBlock()
+          - neutrino$checkHolding()
+          - neutrino$freezePlayer()
+      }
+    }
+  }
+  
+
+  namespace com.frostwizard4.Neutrino {
+    namespace mixin {
+      abstract class com.frostwizard4.Neutrino.mixin.SwampHutMixin {
+          + neutrino$addDaturaFlower()
+          # SwampHutMixin()
+      }
+    }
+  }
+  
+
+  com.frostwizard4.Neutrino.mixin.ChorusFruitItemMixin -up-|> net.minecraft.item.Item
+  com.frostwizard4.Neutrino.mixin.ClientPlayerEntityMixin -up-|> net.minecraft.client.network.AbstractClientPlayerEntity
+  com.frostwizard4.Neutrino.mixin.CropBlockMixin .up.|> net.minecraft.block.Fertilizable
+  com.frostwizard4.Neutrino.mixin.CropBlockMixin -up-|> net.minecraft.block.PlantBlock
+  com.frostwizard4.Neutrino.mixin.DesertTempleMixin -up-|> net.minecraft.structure.StructurePieceWithDimensions
+  com.frostwizard4.Neutrino.mixin.DesertWellMixin -up-|> net.minecraft.world.gen.feature.Feature
+  com.frostwizard4.Neutrino.mixin.EggEntityMixin -up-|> net.minecraft.entity.projectile.thrown.ThrownItemEntity
+  com.frostwizard4.Neutrino.mixin.ElytraItemMixin .up.|> net.minecraft.item.Wearable
+  com.frostwizard4.Neutrino.mixin.ElytraItemMixin -up-|> net.minecraft.item.Item
+  com.frostwizard4.Neutrino.mixin.EndGatewayBlockEntityMixin -up-|> net.minecraft.block.entity.EndPortalBlockEntity
+  com.frostwizard4.Neutrino.mixin.LeavesBlockMixin -up-|> net.minecraft.block.Block
+  com.frostwizard4.Neutrino.mixin.LightningEntityMixin -up-|> net.minecraft.entity.Entity
+  com.frostwizard4.Neutrino.mixin.PlayerEntityMixin .up.|> com.frostwizard4.Neutrino.PlayerEntityAccess
+  com.frostwizard4.Neutrino.mixin.PlayerEntityMixin -up-|> net.minecraft.entity.LivingEntity
+  com.frostwizard4.Neutrino.mixin.SwampHutMixin -up-|> net.minecraft.structure.StructurePieceWithDimensions
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
