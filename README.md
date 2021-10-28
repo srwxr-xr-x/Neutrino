@@ -20,11 +20,6 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
 ### -  [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
 ### -  [GeckoLib](https://www.curseforge.com/minecraft/mc-mods/geckolib)
 
-## Optional Dependencies
-
-### -  [Cloth Config API (Fabric)](https://www.curseforge.com/minecraft/mc-mods/cloth-config)
-### -  [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu)
-
 ## Features:
  
   - Half Full Bookshelfs
