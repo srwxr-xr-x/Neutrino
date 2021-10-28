@@ -40,8 +40,8 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
                             i+=3;
                         }
                         world.spawnParticles(ParticleTypes.HAPPY_VILLAGER,pos.getX(),pos.getY(),pos.getZ(),4,1,1,1,1);
-                    world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
                     }
+                    world.setBlockState(pos, this.withAge(i + 1), Block.NOTIFY_LISTENERS);
                 }
             }
         }
