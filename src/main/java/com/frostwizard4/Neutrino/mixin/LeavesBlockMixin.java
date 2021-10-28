@@ -1,6 +1,6 @@
 package com.frostwizard4.Neutrino.mixin;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
+import com.frostwizard4.Neutrino.misc.Config;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
@@ -18,7 +18,7 @@ public class LeavesBlockMixin extends Block {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if(NeutrinoMain.nConfig.isLeavesOn()) {
+        if(Config.lines.get(1).endsWith("On")) {
             entity.slowMovement(state, new Vec3d(0.95D, 0.99D, 0.95D));
         }
     }

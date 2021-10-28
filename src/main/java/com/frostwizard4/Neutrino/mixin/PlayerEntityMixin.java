@@ -2,6 +2,7 @@ package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
+import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -95,7 +96,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$freezePlayer(CallbackInfo ci) {
-        if(getY() >= 175 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+        if(getY() >= 175 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On")) {
             if (getY() >= 230 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
@@ -103,7 +104,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             this.setFrozenTicks(150);
 
         }
-        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && NeutrinoMain.nConfig.isColdBiomeOn()) {
+        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On")) {
             if(world.isRaining() || world.isThundering() && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);

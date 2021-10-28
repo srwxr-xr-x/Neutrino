@@ -73,7 +73,7 @@ public class WitherlingEntity extends HostileEntity implements IAnimatable, Rang
         this.goalSelector.add(2, new ProjectileAttackGoal(this, 2.0D, 80, 20.0F));
         this.goalSelector.add(7, new AttackGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         this.goalSelector.add(7, new WanderAroundGoal(this, 1.0D));
         super.initGoals();
     }

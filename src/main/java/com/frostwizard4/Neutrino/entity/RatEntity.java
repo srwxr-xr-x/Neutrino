@@ -1,8 +1,8 @@
 package com.frostwizard4.Neutrino.entity;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.AttackGoal;
-import net.minecraft.entity.ai.goal.FollowTargetGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -59,7 +59,7 @@ public class RatEntity extends HostileEntity implements IAnimatable {
         this.goalSelector.add(7, new AttackGoal(this));
         this.goalSelector.add(8, new MeleeAttackGoal(this, 0.60D, false));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
         super.initGoals();
     }
 }
