@@ -4,18 +4,24 @@ import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.PhantomEntity;
+import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.SpawnHelper;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Random;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEntityAccess {
@@ -110,6 +116,43 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                 this.damage(DamageSource.FREEZE, 0.5F);
             }
             this.setFrozenTicks(150);
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "tick()V")
+    private void neutrino$redSun(CallbackInfo ci) {
+        Random random = new Random();
+        boolean isRedSun = false;
+        BlockPos blockPos2;
+        BlockPos blockPos3;
+        BlockPos blockPos = this.getBlockPos();
+
+
+        if(world.getTimeOfDay() == 23000) {
+            if (random.nextInt(10) == 2) {
+                isRedSun = true;
+            }
+        }
+        if(isRedSun) {
+            isRedSun = false;
+            this.sendMessage(Text.of("§c§o§lA Red Sun rises...."), true);
+            blockPos2 = blockPos.east(-10 + random.nextInt(21)).south(-10 + random.nextInt(21));
+            blockPos3 = blockPos.west(-10 + random.nextInt(21)).north(-10 + random.nextInt(21));
+
+            for (int spawnNumber = 0; spawnNumber < 5; ++spawnNumber) {
+                ZombieEntity zombieEntity = EntityType.ZOMBIE.create(world);
+                if (zombieEntity != null) {
+                    zombieEntity.refreshPositionAndAngles(blockPos2, 0.0F, 0.0F);
+                }
+                world.spawnEntity(zombieEntity);
+            }
+            for (int spawnNumber = 0; spawnNumber < 5; ++spawnNumber) {
+                ZombieEntity zombieEntity = EntityType.ZOMBIE.create(world);
+                if (zombieEntity != null) {
+                    zombieEntity.refreshPositionAndAngles(blockPos3, 0.0F, 0.0F);
+                }
+                world.spawnEntity(zombieEntity);
+            }
         }
     }
 }

@@ -67,6 +67,9 @@ public class WitherlingEntity extends HostileEntity implements IAnimatable, Rang
     public static DefaultAttributeContainer.Builder createWitherlingAttributes() {
         return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 100.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 15.0D).add(EntityAttributes.GENERIC_ARMOR, 1.3D);
     }
+    public WitherlingEntity(World world) {
+        this(EntityType.ZOMBIE, world);
+    }
 
     @Override
     protected void initGoals() {
