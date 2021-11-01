@@ -8,10 +8,15 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeIds;
+import net.minecraft.world.biome.layer.AddBaseBiomesLayer;
+import net.minecraft.world.biome.source.BiomeArray;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -48,6 +53,10 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     protected abstract boolean isOnSoulSpeedBlock();
 
     @Shadow public abstract void sendMessage(Text message, boolean actionBar);
+
+    @Shadow public abstract boolean damage(DamageSource source, float amount);
+
+    @Shadow public abstract int getSleepTimer();
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
@@ -149,6 +158,17 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                     zombieEntity.refreshPositionAndAngles(blockPos3, 0.0F, 0.0F);
                 }
                 world.spawnEntity(zombieEntity);
+            }
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "tick()V")
+    private void neutrino$tickRun(CallbackInfo ci) {
+        if(!this.isTouchingWaterOrRain() && Config.lines.get(6).endsWith("On")) {
+            if(world.getBiome(getBlockPos()).getCategory().equals(Biome.Category.DESERT) && this.getEntityWorld().isSkyVisible(getBlockPos())) {
+                if(world.getTimeOfDay() > 5500 && world.getTimeOfDay() < 6500 && world.getTime() % 25 == 0) {
+                    this.damage(DamageSource.HOT_FLOOR, 0.3f);
+                }
             }
         }
     }

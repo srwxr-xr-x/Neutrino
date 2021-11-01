@@ -7,15 +7,16 @@ import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class WishboneItem extends Item {
+
     public WishboneItem(Settings settings) {
         super(settings);
     }
+
     public ActionResult useOnBlock (ItemUsageContext itemUsageContext){
         World world = itemUsageContext.getWorld();
         if (itemUsageContext.getPlayer() != null) {
