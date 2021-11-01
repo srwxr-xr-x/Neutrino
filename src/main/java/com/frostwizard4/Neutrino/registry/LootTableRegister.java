@@ -132,5 +132,15 @@ public class LootTableRegister {
                 table.pool(poolBuilder);
             }
         });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.FISHING_GAMEPLAY.equals(id) || LootTables.FISHING_FISH_GAMEPLAY.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(ItemRegistry.WISHBONE)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(10));
+                table.pool(poolBuilder);
+            }
+        });
     }
 }

@@ -55,6 +55,7 @@ public class WitherlingEntity extends HostileEntity implements IAnimatable, Rang
     protected SoundEvent getAmbientSound() {
         return SoundRegister.WITHERLING_IDLE;
     }
+
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundRegister.WITHERLING_ATTACK;
     }

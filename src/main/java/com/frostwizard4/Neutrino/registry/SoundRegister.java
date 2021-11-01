@@ -36,6 +36,9 @@ public class SoundRegister {
     public static final Identifier WITHERLING_ATTACK_ID = new Identifier("neutrino:witherling_attack");
     public static SoundEvent WITHERLING_ATTACK = new SoundEvent(WITHERLING_ATTACK_ID);
 
+    public static final Identifier WISHBONE_SNAP_ID = new Identifier("neutrino:wishbone_snap");
+    public static SoundEvent WISHBONE_SNAP = new SoundEvent(WISHBONE_SNAP_ID);
+
     public static void init() {
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
@@ -43,6 +46,6 @@ public class SoundRegister {
         Registry.register(Registry.SOUND_EVENT, UPDRAFT_TOME_ACTIVATE_ID, UPDRAFT_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, SOUL_HEALER_ACTIVATE_ID, SOUL_HEALER_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, WAR_HORN_USE_ID, WAR_HORN_USE);
-
+        Registry.register(Registry.SOUND_EVENT, WISHBONE_SNAP_ID, WISHBONE_SNAP);
     }
 }

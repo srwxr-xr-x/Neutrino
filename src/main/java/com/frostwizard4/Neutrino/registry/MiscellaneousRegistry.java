@@ -1,6 +1,5 @@
 package com.frostwizard4.Neutrino.registry;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.misc.Config;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.Entity;

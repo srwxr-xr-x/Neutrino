@@ -58,5 +58,11 @@
     "sounds": [
       "neutrino:witherling_attack"
     ]
+  },
+  "wishbone_snap": {
+    "subtitle": "subtitles.neutrino.wishbone_snap",
+    "sounds": [
+      "neutrino:wishbone_snap"
+    ]
   }
 }

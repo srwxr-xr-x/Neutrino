@@ -37,6 +37,7 @@ public class ItemRegistry {
     public static final Item ALPACA_FUR = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final ArmorMaterial FUR_ARMOR_MATERIAL = new FurArmorMaterial();
     public static final Item ALPACA_FUR_SWEATER = new ArmorItem(FUR_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(NEUTRINO_GROUP));
+    public static final Item WISHBONE = new WishboneItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
 
     public static void init() {
 
@@ -59,5 +60,6 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart_fragment"), WITHERING_HEART_FRAGMENT);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur"), ALPACA_FUR);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur_sweater"), ALPACA_FUR_SWEATER);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "wishbone"), WISHBONE);
     }
 }
