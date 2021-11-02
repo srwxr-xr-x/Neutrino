@@ -17,7 +17,7 @@ public class WishboneItem extends Item {
         super(settings);
     }
 
-    public ActionResult useOnBlock (ItemUsageContext itemUsageContext){
+    public ActionResult useOnBlock(ItemUsageContext itemUsageContext){
         World world = itemUsageContext.getWorld();
         if (itemUsageContext.getPlayer() != null) {
             itemUsageContext.getPlayer().playSound(SoundRegister.WISHBONE_SNAP, 1, 1);

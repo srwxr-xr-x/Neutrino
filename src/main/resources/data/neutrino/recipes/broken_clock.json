@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB"
+  ],
+  "key": {
+    "A": {
+      "item": "neutrino:broken_clock"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:clock"
+  }
+}

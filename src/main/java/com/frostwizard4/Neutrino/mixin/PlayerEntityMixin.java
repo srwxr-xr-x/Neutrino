@@ -1,22 +1,27 @@
 package com.frostwizard4.Neutrino.mixin;
 
+import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.player.HungerManager;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeIds;
-import net.minecraft.world.biome.layer.AddBaseBiomesLayer;
-import net.minecraft.world.biome.source.BiomeArray;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -30,7 +35,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
-
+    int i = 0;
     private float neutrino$boomPowerCounter = 0;
     private float neutrino$soulPouchCounter = 0;
 
@@ -56,7 +61,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Shadow public abstract boolean damage(DamageSource source, float amount);
 
-    @Shadow public abstract int getSleepTimer();
+    @Shadow @Final private PlayerInventory inventory;
+
+    @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
@@ -158,12 +165,13 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                     zombieEntity.refreshPositionAndAngles(blockPos3, 0.0F, 0.0F);
                 }
                 world.spawnEntity(zombieEntity);
+
             }
         }
     }
 
     @Inject(at = @At("HEAD"), method = "tick()V")
-    private void neutrino$tickRun(CallbackInfo ci) {
+    private void neutrino$tickSun(CallbackInfo ci) {
         if(!this.isTouchingWaterOrRain() && Config.lines.get(6).endsWith("On")) {
             if(world.getBiome(getBlockPos()).getCategory().equals(Biome.Category.DESERT) && this.getEntityWorld().isSkyVisible(getBlockPos())) {
                 if(world.getTimeOfDay() > 5500 && world.getTimeOfDay() < 6500 && world.getTime() % 25 == 0) {
@@ -172,6 +180,30 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             }
         }
     }
+
+    @Inject(at = @At("HEAD"), method = "tick()V")
+    private void neutrino$tickClockandCompass(CallbackInfo ci) {
+        Random random = new Random();
+        if(inventory.contains(Items.CLOCK.getDefaultStack())) {
+            i++;
+            if(i == 1000 + random.nextInt(19000)) {
+                i = 0;
+                inventory.setStack(inventory.getSlotWithStack(Items.CLOCK.getDefaultStack()), ItemRegistry.BROKEN_CLOCK.getDefaultStack());
+                this.playSound(SoundEvents.ENTITY_ITEM_BREAK,1,1);
+                world.addBlockBreakParticles(getBlockPos(), Blocks.GOLD_BLOCK.getDefaultState());
+            }
+        }
+        if(inventory.contains(Items.COMPASS.getDefaultStack())) {
+            i++;
+            if(i == 1000 + random.nextInt(19000)) {
+                i = 0;
+                inventory.setStack(inventory.getSlotWithStack(Items.CLOCK.getDefaultStack()), ItemRegistry.BROKEN_COMPASS.getDefaultStack());
+                this.playSound(SoundEvents.ENTITY_ITEM_BREAK,1,1);
+                world.addBlockBreakParticles(getBlockPos(), Blocks.IRON_BLOCK.getDefaultState());
+            }
+        }
+    }
+
 }
 
 

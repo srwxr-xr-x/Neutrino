@@ -6,10 +6,14 @@ import com.frostwizard4.Neutrino.misc.WitherPotion;
 import com.frostwizard4.Neutrino.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.GeckoLib;
+
+import static net.minecraft.server.command.CommandManager.literal;
 
 public class NeutrinoMain implements ModInitializer {
     public static final ItemGroup NEUTRINO_GROUP = FabricItemGroupBuilder.create(new Identifier("neutrino", "neutrino_group")).icon(() -> new ItemStack(BlockRegistry.HALF_FULL_BOOKSHELF)).build();
@@ -28,6 +32,5 @@ public class NeutrinoMain implements ModInitializer {
         LootTableRegister.register();
         SoundRegister.init();
         MiscellaneousRegistry.init();
-
     }
 }

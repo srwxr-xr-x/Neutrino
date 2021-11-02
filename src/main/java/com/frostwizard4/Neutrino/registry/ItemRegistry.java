@@ -5,12 +5,20 @@ import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
+
+import java.util.List;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_DUNGEONS_GROUP;
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;
@@ -38,6 +46,8 @@ public class ItemRegistry {
     public static final ArmorMaterial FUR_ARMOR_MATERIAL = new FurArmorMaterial();
     public static final Item ALPACA_FUR_SWEATER = new ArmorItem(FUR_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(NEUTRINO_GROUP));
     public static final Item WISHBONE = new WishboneItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
+    public static final Item BROKEN_CLOCK = new BrokenClock(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item BROKEN_COMPASS = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static void init() {
 
@@ -61,5 +71,8 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur"), ALPACA_FUR);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur_sweater"), ALPACA_FUR_SWEATER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "wishbone"), WISHBONE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_clock"), BROKEN_CLOCK);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_compass"), BROKEN_COMPASS);
+
     }
 }
