@@ -3,6 +3,8 @@ package com.frostwizard4.Neutrino.registry;
 import com.frostwizard4.Neutrino.armor.FurArmorMaterial;
 import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.items.*;
+import com.frostwizard4.Neutrino.misc.DaturaBlade;
+import com.frostwizard4.Neutrino.misc.DaturaToolMaterial;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.gui.screen.Screen;
@@ -48,9 +50,9 @@ public class ItemRegistry {
     public static final Item WISHBONE = new WishboneItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final Item BROKEN_CLOCK = new BrokenClock(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final Item BROKEN_COMPASS = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final ToolItem DATURA_BLADE = new DaturaBlade(DaturaToolMaterial.INSTANCE, 1, 0.5F, new Item.Settings().group(NEUTRINO_GROUP));
 
     public static void init() {
-
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
@@ -73,6 +75,6 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "wishbone"), WISHBONE);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_clock"), BROKEN_CLOCK);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_compass"), BROKEN_COMPASS);
-
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_blade"), DATURA_BLADE);
     }
 }

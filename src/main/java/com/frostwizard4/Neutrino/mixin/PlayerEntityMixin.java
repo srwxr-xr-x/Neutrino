@@ -1,23 +1,22 @@
 package com.frostwizard4.Neutrino.mixin;
 
-import com.frostwizard4.Neutrino.NeutrinoMain;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
+import net.fabricmc.fabric.api.renderer.v1.RendererAccess;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -28,6 +27,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
 import java.util.Random;
 
 @Mixin(PlayerEntity.class)
@@ -140,38 +140,36 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
         BlockPos blockPos3;
         BlockPos blockPos = this.getBlockPos();
 
-
         if(world.getTimeOfDay() == 23000) {
-            if (random.nextInt(10) == 2) {
+            if (random.nextInt(7) == 2) {
                 isRedSun = true;
             }
         }
         if(isRedSun) {
             isRedSun = false;
             this.sendMessage(Text.of("§c§o§lA Red Sun rises...."), true);
-            blockPos2 = blockPos.east(-10 + random.nextInt(21)).south(-10 + random.nextInt(21));
-            blockPos3 = blockPos.west(-10 + random.nextInt(21)).north(-10 + random.nextInt(21));
 
-            for (int spawnNumber = 0; spawnNumber < 5; ++spawnNumber) {
+            for (int spawnNumber = 0; spawnNumber < 10; ++spawnNumber) {
+                blockPos2 = blockPos.east(-10 + random.nextInt(21)).south(-10 + random.nextInt(21));
                 ZombieEntity zombieEntity = EntityType.ZOMBIE.create(world);
                 if (zombieEntity != null) {
                     zombieEntity.refreshPositionAndAngles(blockPos2, 0.0F, 0.0F);
                 }
                 world.spawnEntity(zombieEntity);
             }
-            for (int spawnNumber = 0; spawnNumber < 5; ++spawnNumber) {
-                ZombieEntity zombieEntity = EntityType.ZOMBIE.create(world);
-                if (zombieEntity != null) {
-                    zombieEntity.refreshPositionAndAngles(blockPos3, 0.0F, 0.0F);
+            for (int spawnNumber = 0; spawnNumber < 10; ++spawnNumber) {
+                blockPos3 = blockPos.west(-10 + random.nextInt(21)).north(-10 + random.nextInt(21));
+                CreeperEntity creeperEntity = EntityType.CREEPER.create(world);
+                if (creeperEntity != null) {
+                    creeperEntity.refreshPositionAndAngles(blockPos3, 0.0F, 0.0F);
                 }
-                world.spawnEntity(zombieEntity);
-
+                world.spawnEntity(creeperEntity);
             }
         }
     }
 
     @Inject(at = @At("HEAD"), method = "tick()V")
-    private void neutrino$tickSun(CallbackInfo ci) {
+    private void neutrino$tickDesert(CallbackInfo ci) {
         if(!this.isTouchingWaterOrRain() && Config.lines.get(6).endsWith("On")) {
             if(world.getBiome(getBlockPos()).getCategory().equals(Biome.Category.DESERT) && this.getEntityWorld().isSkyVisible(getBlockPos())) {
                 if(world.getTimeOfDay() > 5500 && world.getTimeOfDay() < 6500 && world.getTime() % 25 == 0) {
@@ -203,7 +201,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             }
         }
     }
-
 }
 
 
