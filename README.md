@@ -14,6 +14,7 @@
 A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by The Creeper's Compendium!
 
 ---
+![](https://raw.githubusercontent.com/FrostWizard4/Neutrino/1.17.1/Wiki-Images/main-page.png)
 ## Required Dependencies:
 
 ### - [Fabric](https://fabricmc.net/use/)
@@ -21,28 +22,7 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
 ### -  [GeckoLib](https://www.curseforge.com/minecraft/mc-mods/geckolib)
 
 ## Features:
- 
-  - Half Full Bookshelfs
-  - Glass Doors
-  - Glass Trapdoors
-  - Sand Slab
-  - Gravel Slab
-  - Dirt Slab
-  - Crafting Table Slab
-  - Enchanter's Tome from Minecraft Dungeons
-  - Harvester from Minecraft Dungeons
-  - Death Cap Mushroom from Minecraft Dungeons
-  - Lightning Rod from Minecraft Dungeons
-  - Updraft Tome from Minecraft Dungeons
-  - Life Steal Enchantment
-  - No Collision Leaves
-  - Slowly fall through leaves
-  - Shattered and Rusty Swords
-  - Terracotta Pots
-  - Vampiric & Rock's Ruin Staff
-  - Diamond Apple
-
-  - **For more features, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
+  - **For features, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
 ## Installation
 
 ### Manual installation (recommended)
