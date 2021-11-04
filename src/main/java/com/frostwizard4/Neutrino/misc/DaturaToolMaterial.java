@@ -1,7 +1,6 @@
 package com.frostwizard4.Neutrino.misc;
 
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 

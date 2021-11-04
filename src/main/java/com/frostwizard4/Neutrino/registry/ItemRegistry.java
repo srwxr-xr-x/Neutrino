@@ -7,20 +7,12 @@ import com.frostwizard4.Neutrino.misc.DaturaBlade;
 import com.frostwizard4.Neutrino.misc.DaturaToolMaterial;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
-
-import java.util.List;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_DUNGEONS_GROUP;
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;

@@ -3,7 +3,6 @@ package com.frostwizard4.Neutrino.mixin;
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
-import net.fabricmc.fabric.api.renderer.v1.RendererAccess;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -27,7 +26,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
 import java.util.Random;
 
 @Mixin(PlayerEntity.class)

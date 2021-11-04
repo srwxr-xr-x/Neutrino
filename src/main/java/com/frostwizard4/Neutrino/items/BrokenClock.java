@@ -1,7 +1,5 @@
 package com.frostwizard4.Neutrino.items;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

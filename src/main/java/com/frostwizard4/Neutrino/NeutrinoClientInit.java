@@ -35,6 +35,7 @@ public class NeutrinoClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.DUCK, DuckEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.WITHERLING, WitherlingEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.ALPACA, AlpacaEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityRegistry.DESERT_SERPENT, DesertSerpentEntityRenderer::new);
 
     }
 }
