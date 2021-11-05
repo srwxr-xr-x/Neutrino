@@ -29,6 +29,7 @@ public class BlockRegistry {
     public static final Block SHATTERED_SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
     public static final DaturaFlower DATURA = new DaturaFlower(StatusEffects.WITHER, 8, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque());
     public static final ScarecrowBlock SCARECROW = new ScarecrowBlock(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES));
+    public static final Block CHIPMUNK = new ChipmunkBlock(FabricBlockSettings.of(Material.WOOL).strength(0.5F, 0.5F).nonOpaque().breakByTool(FabricToolTags.SHEARS));
 
     public static void init() {
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
@@ -66,6 +67,10 @@ public class BlockRegistry {
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "scarecrow"), SCARECROW);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "scarecrow"), new BlockItem(SCARECROW, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "chipmunk"), CHIPMUNK);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "chipmunk"), new BlockItem(CHIPMUNK, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
     }
 
 }

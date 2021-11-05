@@ -1,5 +1,6 @@
 package com.frostwizard4.Neutrino.entity;
 
+import com.frostwizard4.Neutrino.registry.SoundRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
@@ -13,6 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -58,9 +60,8 @@ public class DesertSerpentEntity extends HostileDataEntity implements IAnimatabl
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        this.goalSelector.add(1, new DesertSerpentEntity.AttackGoal(this));
-
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.goalSelector.add(1, new AttackGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createSerpentAttributes() {
@@ -77,7 +78,7 @@ public class DesertSerpentEntity extends HostileDataEntity implements IAnimatabl
         super.updateGoalControls();
     }
 
-    class AttackGoal extends Goal {
+    static class AttackGoal extends Goal {
         private final DesertSerpentEntity ghast;
         public int cooldown;
 
@@ -106,7 +107,6 @@ public class DesertSerpentEntity extends HostileDataEntity implements IAnimatabl
         public void tick() {
             LivingEntity livingEntity = this.ghast.getTarget();
             if (this.ghast.canSee(livingEntity) && livingEntity != null) {
-                double d0 = this.ghast.squaredDistanceTo(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
                 ++this.cooldown;
                 if (this.cooldown == 14) {
                     if(livingEntity.distanceTo(this.ghast) <= 2) {
@@ -123,36 +123,28 @@ public class DesertSerpentEntity extends HostileDataEntity implements IAnimatabl
                 --this.cooldown;
             }
         }
-        protected double getSquaredMaxAttackDistance(LivingEntity entity) {
-            return (double)(this.ghast.getWidth() * 2.0F * this.ghast.getWidth() * 2.0F + entity.getWidth());
-        }
     }
     @Override
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return 1.74F;
+        return 0F;
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_ZOMBIE_STEP;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.ENTITY_ZOMBIE_STEP;
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_ZOMBIE_STEP;
+        return SoundRegister.SERPENT_RATTLE;
     }
 
     protected SoundEvent getStepSound() {
-        return SoundEvents.ENTITY_ZOMBIE_STEP;
+        return SoundEvents.ENTITY_HUSK_STEP;
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(this.getStepSound(), 0.15F, 1.0F);
+    }
+
+    @Override
+    public boolean isInsideWall() {
+        return false;
     }
 }

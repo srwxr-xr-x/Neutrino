@@ -64,5 +64,18 @@
     "sounds": [
       "neutrino:wishbone_snap"
     ]
+  },
+  "serpent_rattle": {
+    "subtitle": "subtitles.neutrino.serpent_rattle",
+    "sounds": [
+      "neutrino:serpent_rattle"
+    ]
+  },
+  "serpent_attack": {
+    "subtitle": "subtitles.neutrino.serpent_attack",
+    "sounds": [
+      "neutrino:serpent_attack"
+    ]
   }
+
 }

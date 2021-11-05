@@ -152,5 +152,15 @@ public class LootTableRegister {
                 table.pool(poolBuilder);
             }
         });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.PILLAGER_OUTPOST_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(BlockRegistry.CHIPMUNK.asItem())
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(10));
+                table.pool(poolBuilder);
+            }
+        });
     }
 }
