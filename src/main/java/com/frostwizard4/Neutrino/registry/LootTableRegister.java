@@ -156,7 +156,7 @@ public class LootTableRegister {
             if (LootTables.PILLAGER_OUTPOST_CHEST.equals(id)) {
                 FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(BlockRegistry.CHIPMUNK.asItem())
+                        .with(ItemEntry.builder(BlockRegistry.ALPACA_COLLECTIBLE.asItem())
                                 .weight(1))
                         .with(EmptyEntry.Serializer().weight(10));
                 table.pool(poolBuilder);

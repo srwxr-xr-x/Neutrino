@@ -1,18 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "DA"
+    "AD"
   ],
   "key": {
     "D": {
-      "item": "neutrino:datura"
+      "item": "minecraft:flower_pot"
     },
     "A": {
-      "item": "neutrino:empty_dropper_bottle"
+      "item": "minecraft:oak_sapling"
     }
-
   },
   "result": {
-    "item": "neutrino:datura_essence"
+    "item": "neutrino:bonsai_tree"
   }
 }

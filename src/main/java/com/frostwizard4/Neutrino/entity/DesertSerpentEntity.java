@@ -1,6 +1,7 @@
 package com.frostwizard4.Neutrino.entity;
 
 import com.frostwizard4.Neutrino.registry.SoundRegister;
+import com.frostwizard4.Neutrino.registry.StatusEffectRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
@@ -10,6 +11,8 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -112,6 +115,8 @@ public class DesertSerpentEntity extends HostileDataEntity implements IAnimatabl
                     if(livingEntity.distanceTo(this.ghast) <= 2) {
                         this.ghast.setAttackingState(1);
                         this.ghast.tryAttack(livingEntity);
+                        StatusEffectInstance instance = new StatusEffectInstance(StatusEffectRegistry.SNAKE_POISON, 100000, 1);
+                        livingEntity.addStatusEffect(instance);
                     }
                 }
                 if (this.cooldown == 27) {
@@ -132,15 +137,6 @@ public class DesertSerpentEntity extends HostileDataEntity implements IAnimatabl
     @Override
     protected SoundEvent getAmbientSound() {
         return SoundRegister.SERPENT_RATTLE;
-    }
-
-    protected SoundEvent getStepSound() {
-        return SoundEvents.ENTITY_HUSK_STEP;
-    }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(this.getStepSound(), 0.15F, 1.0F);
     }
 
     @Override

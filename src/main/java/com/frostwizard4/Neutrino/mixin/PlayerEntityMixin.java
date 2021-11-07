@@ -1,14 +1,16 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
+import com.frostwizard4.Neutrino.entity.EntityRegistry;
+import com.frostwizard4.Neutrino.entity.WitherlingEntity;
 import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -17,6 +19,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
@@ -26,6 +29,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Objects;
 import java.util.Random;
 
 @Mixin(PlayerEntity.class)
@@ -101,6 +105,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
                     }
                 } else {
+
                     neutrino$boomPowerCounter++;
                     if (world.isClient()) {
                         //CheckHolding.sendChatMessage(neutrino$boomPowerCounter);

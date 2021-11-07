@@ -6,6 +6,7 @@ import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.DaturaBlade;
 import com.frostwizard4.Neutrino.misc.DaturaToolMaterial;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
+import com.frostwizard4.Neutrino.mixin.MilkBucketItemOverride;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,6 +17,7 @@ import net.minecraft.util.registry.Registry;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_DUNGEONS_GROUP;
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;
+import static net.minecraft.item.ItemGroup.FOOD;
 
 public class ItemRegistry {
     public static final EnchantersTomeArtifact ENCHANTERS_TOME = new EnchantersTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
@@ -43,6 +45,9 @@ public class ItemRegistry {
     public static final Item BROKEN_CLOCK = new BrokenClock(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final Item BROKEN_COMPASS = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final ToolItem DATURA_BLADE = new DaturaBlade(DaturaToolMaterial.INSTANCE, 1, 0.5F, new Item.Settings().group(NEUTRINO_GROUP));
+    public static final AntivenomItem ANTIVENOM = new AntivenomItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE).recipeRemainder(ItemRegistry.EMPTY_DROPPER_BOTTLE));
+    public static final Item EMPTY_DROPPER_BOTTLE = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item SNAKE_FANG = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static void init() {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
@@ -68,5 +73,8 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_clock"), BROKEN_CLOCK);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_compass"), BROKEN_COMPASS);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_blade"), DATURA_BLADE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "antivenom"), ANTIVENOM);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_dropper_bottle"), EMPTY_DROPPER_BOTTLE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "snake_fang"), SNAKE_FANG);
     }
 }

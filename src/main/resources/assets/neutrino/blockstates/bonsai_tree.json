@@ -1,7 +1,7 @@
 {
     "variants": {
       "": {
-        "model": "neutrino:block/chipmunk"
+        "model": "neutrino:block/bonsai_tree"
       }
     }
   }

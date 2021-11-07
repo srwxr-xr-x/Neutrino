@@ -1,18 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "DA"
+    "AD"
   ],
   "key": {
     "D": {
-      "item": "neutrino:datura"
+      "item": "neutrino:snake_fang"
     },
     "A": {
       "item": "neutrino:empty_dropper_bottle"
     }
-
   },
   "result": {
-    "item": "neutrino:datura_essence"
+    "item": "neutrino:antivenom"
   }
 }

@@ -17,19 +17,20 @@ import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;
 
 public class BlockRegistry {
     public static final SlabBlock DIRT_SLAB = new SlabBlock(FabricBlockSettings.of(Material.SOIL).strength(1.5f, 1.5f).sounds(BlockSoundGroup.GRASS));
-    public static final SlabBlock GRAVEL_SLAB = new SlabBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GRAVEL));
-    public static final SlabBlock SAND_SLAB = new SlabBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.SAND));
+    public static final SandSlab GRAVEL_SLAB = new SandSlab(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GRAVEL));
+    public static final SandSlab SAND_SLAB = new SandSlab(FabricBlockSettings.of(Material.AGGREGATE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.SAND));
     public static final CraftingSlab CRAFTING_SLAB = new CraftingSlab(FabricBlockSettings.of(Material.WOOD).strength(1.5f, 1.5f).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
 
     public static final Block HALF_FULL_BOOKSHELF = new Block(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES));
     public static final GlassDoor GLASS_DOOR = new GlassDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final GlassTrapDoor GLASS_TRAPDOOR = new GlassTrapDoor(FabricBlockSettings.of(Material.GLASS).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque());
     public static final Block DUNGEONS_POT = new Block(FabricBlockSettings.of(Material.STONE).strength(1F, 2.2F).sounds(BlockSoundGroup.GLASS).nonOpaque());
-    public static final Block SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
-    public static final Block SHATTERED_SWORD_SHRINE = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SWORD_SHRINE = new SwordShrine(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
+    public static final Block SHATTERED_SWORD_SHRINE = new ShatteredSwordShrine(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).nonOpaque().breakByTool(FabricToolTags.PICKAXES));
     public static final DaturaFlower DATURA = new DaturaFlower(StatusEffects.WITHER, 8, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque());
     public static final ScarecrowBlock SCARECROW = new ScarecrowBlock(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES));
-    public static final Block CHIPMUNK = new ChipmunkBlock(FabricBlockSettings.of(Material.WOOL).strength(0.5F, 0.5F).nonOpaque().breakByTool(FabricToolTags.SHEARS));
+    public static final Block ALPACA_COLLECTIBLE = new AlpacaBlock(FabricBlockSettings.of(Material.WOOL).strength(0.5F, 0.5F).nonOpaque().breakByTool(FabricToolTags.SHEARS));
+    public static final Block BONSAI_TREE = new BonsaiBlock(FabricBlockSettings.of(Material.WOOD).strength(0.5F, 0.5F).nonOpaque().breakByTool(FabricToolTags.AXES));
 
     public static void init() {
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
@@ -68,8 +69,11 @@ public class BlockRegistry {
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "scarecrow"), SCARECROW);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "scarecrow"), new BlockItem(SCARECROW, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
-        Registry.register(Registry.BLOCK, new Identifier("neutrino", "chipmunk"), CHIPMUNK);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "chipmunk"), new BlockItem(CHIPMUNK, new FabricItemSettings().group(NEUTRINO_GROUP)));
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "alpaca_collectible"), ALPACA_COLLECTIBLE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_collectible"), new BlockItem(ALPACA_COLLECTIBLE, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "bonsai_tree"), BONSAI_TREE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "bonsai_tree"), new BlockItem(BONSAI_TREE, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
     }
 

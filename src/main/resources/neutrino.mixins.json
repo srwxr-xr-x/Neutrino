@@ -12,10 +12,11 @@
     "DesertTempleMixin",
     "DesertWellMixin",
     "EggEntityMixin",
-    "ElytraItemMixin",
     "EndGatewayBlockEntityMixin",
+    "ItemMixin",
     "LeavesBlockMixin",
     "LightningEntityMixin",
+    "MilkBucketItemOverride",
     "PlayerEntityMixin",
     "SwampHutMixin"
   ],
