@@ -16,7 +16,7 @@
     "ItemMixin",
     "LeavesBlockMixin",
     "LightningEntityMixin",
-    "MilkBucketItemOverride",
+    "MilkBucketItemMixin",
     "PlayerEntityMixin",
     "SwampHutMixin"
   ],

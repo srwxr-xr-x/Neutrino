@@ -1,5 +1,6 @@
 package com.frostwizard4.Neutrino.entity;
 
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
@@ -13,7 +14,11 @@ public class RatModel extends AnimatedGeoModel<RatEntity> {
     @Override
     public Identifier getTextureLocation(RatEntity object)
     {
-        return new Identifier("neutrino", "textures/entity/rat_tail.png");
+        if("Burrito".equals(Formatting.strip(object.getName().getString()))) {
+            return new Identifier("neutrino", "textures/entity/mouse.png");
+        } else {
+            return new Identifier("neutrino", "textures/entity/rat_tail.png");
+        }
     }
 
     @Override

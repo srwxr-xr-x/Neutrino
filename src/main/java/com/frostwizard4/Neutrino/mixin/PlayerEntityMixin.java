@@ -126,7 +126,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             this.setFrozenTicks(150);
 
         }
-        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On")) {
+        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On") ) {
             if(world.isRaining() || world.isThundering() && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);

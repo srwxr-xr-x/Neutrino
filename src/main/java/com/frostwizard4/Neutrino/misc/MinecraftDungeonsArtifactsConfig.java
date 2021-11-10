@@ -3,20 +3,20 @@ package com.frostwizard4.Neutrino.misc;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Config {
+public class MinecraftDungeonsArtifactsConfig {
     public static ArrayList<String> lines = new ArrayList<>();
 
     public static void init() {
-
-        final File nConfig = new File(System.getProperty("user.dir"), "neutrino.conf");
+        final File nConfig = new File(System.getProperty("user.dir"), "neutrino-dungeons.conf");
         if(!nConfig.exists()) {
             try {
                 nConfig.createNewFile();
             } catch (IOException e) {
-                System.err.println("Can't find neutrino.conf");
+                System.err.println("Can't find neutrino-dungeons.conf");
             }
             writeData(nConfig);
         }
+
         if(nConfig.exists() && nConfig.isFile() && nConfig.canRead()) {
             try(BufferedReader in = new BufferedReader(new FileReader(nConfig))) {
                 String currentLine;
@@ -24,25 +24,22 @@ public class Config {
                     lines.add(currentLine);
                 }
             } catch (IOException e) {
-                System.err.println("Can't find neutrino.conf");
+                System.err.println("Can't find neutrino-dungeons.conf");
             }
         }
     }
 
     private static void writeData(File config) {
         try(PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(config)))) {
-            out.println("## Auto generated Neutrino Config! ##");
-            out.println("Slow Leaves: On");
-            out.println("Invincibility Frames: On");
-            out.println("Rat Spawning: On");
-            out.println("Duck Spawning: On");
-            out.println("Freeze in Cold Biomes: On");
-            out.println("Burn in Deserts: On");
-            out.println("Rat Spawn Rate: 5");
-            out.println("Duck Spawn Rate: 10");
-
+            out.println("## Auto generated Neutrino Dungeons Config! ##");
+            out.println("Enchanters Tome: On");
+            out.println("Harvester: On");
+            out.println("Lightning Rod: On");
+            out.println("Updraft Tome: On");
+            out.println("Soul Healer: On");
+            out.println("Soul Pouch: On");
         } catch (IOException e) {
-            System.err.println("Can't find neutrino.conf");
+            System.err.println("Can't find neutrino-dungeons.conf");
         }
     }
 }

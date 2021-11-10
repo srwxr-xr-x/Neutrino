@@ -9,6 +9,8 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeCreator;
 
+import java.util.ArrayList;
+
 public class MiscEntityRegistry {
     public static void init() {
         FabricDefaultAttributeRegistry.register(EntityRegistry.RAT, RatEntity.createRatAttributes());
@@ -21,10 +23,12 @@ public class MiscEntityRegistry {
         BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.DESERT), SpawnGroup.MONSTER, EntityRegistry.DESERT_SERPENT, 5, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.categories(DefaultBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, com.frostwizard4.Neutrino.entity.EntityRegistry.WITHERLING, 1, 1, 1);
         if(Config.lines.get(3).endsWith("On")) {
-            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, com.frostwizard4.Neutrino.entity.EntityRegistry.RAT, 5, 1, 1);
+            String ratSpawnRate = Config.lines.get(7);
+            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, com.frostwizard4.Neutrino.entity.EntityRegistry.RAT, Integer.parseInt(ratSpawnRate.replaceAll("[^0-9]", "")), 1, 1);
         }
         if(Config.lines.get(4).endsWith("On")) {
-            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.CREATURE, com.frostwizard4.Neutrino.entity.EntityRegistry.DUCK, 10, 1, 4);
+            String duckSpawnRate = Config.lines.get(8);
+            BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.CREATURE, com.frostwizard4.Neutrino.entity.EntityRegistry.DUCK,  Integer.parseInt(duckSpawnRate.replaceAll("[^0-9]", "")), 1, 4);
         }
 
     }

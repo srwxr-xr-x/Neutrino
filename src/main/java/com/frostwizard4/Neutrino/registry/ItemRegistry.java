@@ -6,7 +6,7 @@ import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.DaturaBlade;
 import com.frostwizard4.Neutrino.misc.DaturaToolMaterial;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
-import com.frostwizard4.Neutrino.mixin.MilkBucketItemOverride;
+import com.frostwizard4.Neutrino.misc.MinecraftDungeonsArtifactsConfig;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
@@ -17,7 +17,6 @@ import net.minecraft.util.registry.Registry;
 
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_DUNGEONS_GROUP;
 import static com.frostwizard4.Neutrino.NeutrinoMain.NEUTRINO_GROUP;
-import static net.minecraft.item.ItemGroup.FOOD;
 
 public class ItemRegistry {
     public static final EnchantersTomeArtifact ENCHANTERS_TOME = new EnchantersTomeArtifact(new FabricItemSettings().group(NEUTRINO_DUNGEONS_GROUP).rarity(Rarity.RARE));
@@ -50,12 +49,24 @@ public class ItemRegistry {
     public static final Item SNAKE_FANG = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static void init() {
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
+        if(MinecraftDungeonsArtifactsConfig.lines.get(1).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(2).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(3).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(4).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(5).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(6).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
+        }
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
