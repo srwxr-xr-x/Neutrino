@@ -43,9 +43,17 @@ public class EntityRegistry {
                     .trackRangeBlocks(90)
                     .trackedUpdateRate(4)
                     .build());
+    public static final EntityType<DesertSerpentEntity> DESERT_SERPENT = Registry.register(Registry.ENTITY_TYPE, new Identifier("neutrino", "desert_serpent"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, DesertSerpentEntity::new)
+                    .spawnGroup(SpawnGroup.MONSTER)
+                    .dimensions(EntityDimensions.fixed(0.6F, 0.4F))
+                    .trackRangeBlocks(90)
+                    .trackedUpdateRate(4)
+                    .build());
 
     public static final Item RAT_SPAWN_EGG = Registry.register(Registry.ITEM, new Identifier("neutrino", "rat_spawn_egg"), new SpawnEggItem(RAT, 3224639, 2105125, new Item.Settings().group(ItemGroup.MISC)));
     public static final Item DUCK_SPAWN_EGG = Registry.register(Registry.ITEM, new Identifier("neutrino", "duck_spawn_egg"), new SpawnEggItem(DUCK, 4672575, 6308916, new Item.Settings().group(ItemGroup.MISC)));
     public static final Item ALPACA_SPAWN_EGG = Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_spawn_egg"), new SpawnEggItem(ALPACA, 14928533, 12886649, new Item.Settings().group(ItemGroup.MISC)));
+    public static final Item DESERT_SERPENT_SPAWN_EGG = Registry.register(Registry.ITEM, new Identifier("neutrino", "desert_serpent_spawn_egg"), new SpawnEggItem(DESERT_SERPENT, 16243877, 10181948, new Item.Settings().group(ItemGroup.MISC)));
 
 }

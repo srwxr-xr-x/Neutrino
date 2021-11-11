@@ -1,11 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "D"
+    "DA"
   ],
   "key": {
     "D": {
       "item": "neutrino:datura"
+    },
+    "A": {
+      "item": "neutrino:empty_dropper_bottle"
     }
 
   },

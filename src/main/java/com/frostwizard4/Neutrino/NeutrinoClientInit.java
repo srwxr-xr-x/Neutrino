@@ -19,6 +19,7 @@ public class NeutrinoClientInit implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_TRAPDOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DATURA, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BONSAI_TREE, RenderLayer.getCutout());
 
         FabricModelPredicateProviderRegistry.register(ItemRegistry.SOUL_POUCH, new Identifier("filled"), (stack, world, entity, seed) -> {
             if (entity != null) {
@@ -35,6 +36,7 @@ public class NeutrinoClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.DUCK, DuckEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.WITHERLING, WitherlingEntityRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityRegistry.ALPACA, AlpacaEntityRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityRegistry.DESERT_SERPENT, DesertSerpentEntityRenderer::new);
 
     }
 }

@@ -3,7 +3,10 @@ package com.frostwizard4.Neutrino.registry;
 import com.frostwizard4.Neutrino.armor.FurArmorMaterial;
 import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.items.*;
+import com.frostwizard4.Neutrino.misc.DaturaBlade;
+import com.frostwizard4.Neutrino.misc.DaturaToolMaterial;
 import com.frostwizard4.Neutrino.misc.LifeStealEnchantment;
+import com.frostwizard4.Neutrino.misc.MinecraftDungeonsArtifactsConfig;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
@@ -37,15 +40,33 @@ public class ItemRegistry {
     public static final Item ALPACA_FUR = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final ArmorMaterial FUR_ARMOR_MATERIAL = new FurArmorMaterial();
     public static final Item ALPACA_FUR_SWEATER = new ArmorItem(FUR_ARMOR_MATERIAL, EquipmentSlot.CHEST, new Item.Settings().group(NEUTRINO_GROUP));
+    public static final Item WISHBONE = new WishboneItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
+    public static final Item BROKEN_CLOCK = new BrokenClock(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item BROKEN_COMPASS = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final ToolItem DATURA_BLADE = new DaturaBlade(DaturaToolMaterial.INSTANCE, 1, 0.5F, new Item.Settings().group(NEUTRINO_GROUP));
+    public static final AntivenomItem ANTIVENOM = new AntivenomItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE).recipeRemainder(ItemRegistry.EMPTY_DROPPER_BOTTLE));
+    public static final Item EMPTY_DROPPER_BOTTLE = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item SNAKE_FANG = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static void init() {
-
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
-        Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
+        if(MinecraftDungeonsArtifactsConfig.lines.get(1).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "enchanters_tome"), ENCHANTERS_TOME);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(2).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "harvester"), HARVESTER);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(3).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "lightning_rod_artifact"), LIGHTNING_ROD_ARTIFACT);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(4).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "updraft_tome"), UPDRAFT_TOME);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(5).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_healer"), SOUL_HEALER);
+        }
+        if(MinecraftDungeonsArtifactsConfig.lines.get(6).endsWith("On")) {
+            Registry.register(Registry.ITEM, new Identifier("neutrino", "soul_pouch"), SOUL_POUCH);
+        }
         Registry.register(Registry.ITEM, new Identifier("neutrino", "goat_horn"), GOAT_HORN);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "rusty_sword"), RUSTY_SWORD);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "shattered_sword"), SHATTERED_SWORD);
@@ -59,5 +80,12 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "withering_heart_fragment"), WITHERING_HEART_FRAGMENT);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur"), ALPACA_FUR);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "alpaca_fur_sweater"), ALPACA_FUR_SWEATER);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "wishbone"), WISHBONE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_clock"), BROKEN_CLOCK);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "broken_compass"), BROKEN_COMPASS);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "datura_blade"), DATURA_BLADE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "antivenom"), ANTIVENOM);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_dropper_bottle"), EMPTY_DROPPER_BOTTLE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "snake_fang"), SNAKE_FANG);
     }
 }

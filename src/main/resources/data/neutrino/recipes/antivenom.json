@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AD"
+  ],
+  "key": {
+    "D": {
+      "item": "neutrino:snake_fang"
+    },
+    "A": {
+      "item": "neutrino:empty_dropper_bottle"
+    }
+  },
+  "result": {
+    "item": "neutrino:antivenom"
+  }
+}
