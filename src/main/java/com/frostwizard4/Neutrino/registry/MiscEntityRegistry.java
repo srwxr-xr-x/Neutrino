@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.DefaultBiomeCreator;
+import net.minecraft.world.biome.TheNetherBiomeCreator;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,9 @@ public class MiscEntityRegistry {
         FabricDefaultAttributeRegistry.register(EntityRegistry.DESERT_SERPENT, DesertSerpentEntity.createSerpentAttributes());
 
         BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.EXTREME_HILLS), SpawnGroup.CREATURE, EntityRegistry.ALPACA, 5, 4, 6);
+        BiomeModifications.addSpawn(BiomeSelectors.categories(TheNetherBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, com.frostwizard4.Neutrino.entity.EntityRegistry.WITHERLING, 1, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.categories(Biome.Category.DESERT), SpawnGroup.MONSTER, EntityRegistry.DESERT_SERPENT, 5, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.categories(DefaultBiomeCreator.createSoulSandValley().getCategory()), SpawnGroup.MONSTER, com.frostwizard4.Neutrino.entity.EntityRegistry.WITHERLING, 1, 1, 1);
+
         if(Config.lines.get(3).endsWith("On")) {
             String ratSpawnRate = Config.lines.get(7);
             BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.MONSTER, com.frostwizard4.Neutrino.entity.EntityRegistry.RAT, Integer.parseInt(ratSpawnRate.replaceAll("[^0-9]", "")), 1, 1);
