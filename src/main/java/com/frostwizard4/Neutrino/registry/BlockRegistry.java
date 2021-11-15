@@ -31,6 +31,7 @@ public class BlockRegistry {
     public static final ScarecrowBlock SCARECROW = new ScarecrowBlock(FabricBlockSettings.of(Material.WOOD).strength(1.5F, 1.5F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES));
     public static final Block ALPACA_COLLECTIBLE = new AlpacaBlock(FabricBlockSettings.of(Material.WOOL).strength(0.5F, 0.5F).nonOpaque().breakByTool(FabricToolTags.SHEARS));
     public static final Block BONSAI_TREE = new BonsaiBlock(FabricBlockSettings.of(Material.WOOD).strength(0.5F, 0.5F).nonOpaque().breakByTool(FabricToolTags.AXES));
+    public static final Block TANZANITE = new TanzaniteOre(FabricBlockSettings.of(Material.STONE).strength(1.5F, 0.8F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
 
     public static void init() {
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "half_full_bookshelf"), HALF_FULL_BOOKSHELF);
@@ -74,6 +75,9 @@ public class BlockRegistry {
 
         Registry.register(Registry.BLOCK, new Identifier("neutrino", "bonsai_tree"), BONSAI_TREE);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "bonsai_tree"), new BlockItem(BONSAI_TREE, new FabricItemSettings().group(NEUTRINO_GROUP)));
+
+        Registry.register(Registry.BLOCK, new Identifier("neutrino", "tanzanite"), TANZANITE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "tanzanite"), new BlockItem(TANZANITE, new FabricItemSettings().group(NEUTRINO_GROUP)));
 
     }
 

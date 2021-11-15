@@ -18,7 +18,7 @@
     "sources": "https://github.com/FrostWizard4/Neutrino"
   },
 
-  "license": "MIT",
+  "license": "GPL3",
   "icon": "assets/neutrino/icon.png",
 
   "environment": "*",
@@ -33,7 +33,7 @@
   "mixins": [
     "neutrino.mixins.json"
   ],
-  "accessWidener": "VillagerTrades.accessWidener",
+  "accessWidenerPath": "VillagerTrades.accessWidener",
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",

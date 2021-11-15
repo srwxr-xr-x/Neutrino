@@ -42,13 +42,7 @@ public class NeutrinoMain implements ModInitializer {
         MiscellaneousRegistry.init();
         StatusEffectRegistry.init();
         VillagerInit.fillTradeData();
-        CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
-            dispatcher.register(literal("soullevel").requires(source -> source.hasPermissionLevel(2)).then(argument("amount", IntegerArgumentType.integer(0, 3000)).executes(ctx -> {
-                        ServerPlayerEntity source = ctx.getSource().getPlayer();
-                        ((PlayerEntityAccess) source).neutrino$setPowerCount(IntegerArgumentType.getInteger(ctx, "amount") * 10);
-                        source.sendMessage(Text.of("§l§9Soul level§r§7 is set to " + (IntegerArgumentType.getInteger(ctx, "amount")) + "!"), false);
-                        return 1;
-                    })));
-        });
+        CommandRegistry.init();
+        OreRegistry.init();
     }
 }
