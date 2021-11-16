@@ -14,7 +14,6 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
@@ -26,7 +25,7 @@ public abstract class DesertTempleMixin extends ShiftableStructurePiece {
     }
 
     @Inject(at = @At("RETURN"), method = "generate")
-    public void addTerracottaPot(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos, CallbackInfo ci) {
+    public void addTerracottaPot(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         this.addBlock(world, BlockRegistry.DUNGEONS_POT.getDefaultState(), 5, 1, 10, boundingBox);
         this.addBlock(world, BlockRegistry.DUNGEONS_POT.getDefaultState(), 15, 1, 10, boundingBox);
         this.addBlock(world, BlockRegistry.DUNGEONS_POT.getDefaultState(), 10, 1, 17, boundingBox);
