@@ -16,7 +16,7 @@
     "hidden": false
   },
   "criteria": {
-    "killed_dragon": {
+    "killed_witherling": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "entity": [
@@ -33,7 +33,7 @@
   },
   "requirements": [
     [
-      "killed_dragon"
+      "killed_witherling"
     ]
   ]
 }

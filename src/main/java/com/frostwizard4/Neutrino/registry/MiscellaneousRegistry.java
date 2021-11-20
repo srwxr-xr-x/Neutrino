@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 public class MiscellaneousRegistry {
     public static String[] attackExcludedEntities;
     public static void init() {
-        attackExcludedEntities = new String[] {"minecraft:slime", "tconstruct:blueslime", "thaumcraft:thaumslime"};
+        attackExcludedEntities = new String[] {"minecraft:slime"};
 
         AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (entity.getEntityWorld().isClient) {

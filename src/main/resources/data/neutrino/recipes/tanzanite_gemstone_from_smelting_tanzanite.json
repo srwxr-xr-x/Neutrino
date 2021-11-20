@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "iron_ingot",
+  "ingredient": {
+    "item": "neutrino:tanzanite_crystal"
+  },
+  "result": "neutrino:tanzanite_gemstone",
+  "experience": 0.7,
+  "cookingtime": 2000
+}

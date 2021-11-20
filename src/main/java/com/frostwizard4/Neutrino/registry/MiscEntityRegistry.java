@@ -9,8 +9,6 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeCreator;
 
-import java.util.ArrayList;
-
 public class MiscEntityRegistry {
     public static void init() {
         FabricDefaultAttributeRegistry.register(EntityRegistry.RAT, RatEntity.createRatAttributes());

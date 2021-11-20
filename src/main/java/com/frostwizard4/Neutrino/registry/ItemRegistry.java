@@ -1,6 +1,6 @@
 package com.frostwizard4.Neutrino.registry;
 
-import com.frostwizard4.Neutrino.armor.FurArmorMaterial;
+import com.frostwizard4.Neutrino.armor.*;
 import com.frostwizard4.Neutrino.artifacts.*;
 import com.frostwizard4.Neutrino.items.*;
 import com.frostwizard4.Neutrino.misc.DaturaBlade;
@@ -47,6 +47,12 @@ public class ItemRegistry {
     public static final AntivenomItem ANTIVENOM = new AntivenomItem(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.RARE).recipeRemainder(ItemRegistry.EMPTY_DROPPER_BOTTLE));
     public static final Item EMPTY_DROPPER_BOTTLE = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
     public static final Item SNAKE_FANG = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
+    public static final Item TANZANITE_CRYSTAL = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item TANZANITE_GEMSTONE = new Item(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.EPIC));
+    public static final Item JEWELED_DIAMOND_CHESTPLATE = new JeweledChestplate(new JeweledArmorMaterial(), EquipmentSlot.CHEST, new Item.Settings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
+    public static final Item JEWELED_DIAMOND_HELMET = new JeweledHelmet(new JeweledArmorMaterial(), EquipmentSlot.HEAD, new Item.Settings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
+    public static final Item JEWELED_DIAMOND_BOOTS = new JeweledBoots(new JeweledArmorMaterial(), EquipmentSlot.FEET, new Item.Settings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
+    public static final Item JEWELED_DIAMOND_LEGGINGS = new JeweledLeggings(new JeweledArmorMaterial(), EquipmentSlot.LEGS, new Item.Settings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
 
     public static void init() {
         if(MinecraftDungeonsArtifactsConfig.lines.get(1).endsWith("On")) {
@@ -87,5 +93,12 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "antivenom"), ANTIVENOM);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "empty_dropper_bottle"), EMPTY_DROPPER_BOTTLE);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "snake_fang"), SNAKE_FANG);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "tanzanite_crystal"), TANZANITE_CRYSTAL);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "tanzanite_gemstone"), TANZANITE_GEMSTONE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "jeweled_diamond_helmet"), JEWELED_DIAMOND_HELMET);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "jeweled_diamond_chestplate"), JEWELED_DIAMOND_CHESTPLATE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "jeweled_diamond_leggings"), JEWELED_DIAMOND_LEGGINGS);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "jeweled_diamond_boots"), JEWELED_DIAMOND_BOOTS);
+
     }
 }

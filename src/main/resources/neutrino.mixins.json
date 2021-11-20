@@ -4,6 +4,7 @@
   "package": "com.frostwizard4.Neutrino.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "BlastFurnaceBlockMixin",
     "BlocksMixin",
     "BrewingRecipeRegistryAccessor",
     "ChorusFruitItemMixin",
@@ -13,6 +14,7 @@
     "DesertWellMixin",
     "EggEntityMixin",
     "EndGatewayBlockEntityMixin",
+    "FurnaceBlockMixin",
     "ItemMixin",
     "LeavesBlockMixin",
     "LightningEntityMixin",

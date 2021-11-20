@@ -1,0 +1,77 @@
+{
+  "parent": "neutrino:neutrino/kill_witherling",
+  "display": {
+    "icon": {
+      "item": "neutrino:jeweled_diamond_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.neutrino.get_jeweled_armor.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.get_jeweled_armor.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "jeweled_diamond_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:jeweled_diamond_helmet"
+            ]
+          }
+        ]
+      }
+    },
+    "jeweled_diamond_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:jeweled_diamond_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "jeweled_diamond_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:jeweled_diamond_leggings"
+            ]
+          }
+        ]
+      }
+    },
+    "jeweled_diamond_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:jeweled_diamond_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "jeweled_diamond_helmet",
+      "jeweled_diamond_chestplate",
+      "jeweled_diamond_leggings",
+      "jeweled_diamond_boots"
+    ]
+  ]
+}

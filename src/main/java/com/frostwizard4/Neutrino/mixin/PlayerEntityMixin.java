@@ -1,25 +1,25 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
-import com.frostwizard4.Neutrino.entity.EntityRegistry;
-import com.frostwizard4.Neutrino.entity.WitherlingEntity;
 import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.TargetPredicate;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.CreeperEntity;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
@@ -29,7 +29,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
 import java.util.Random;
 
 @Mixin(PlayerEntity.class)
@@ -66,6 +65,10 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Shadow @Final private PlayerInventory inventory;
 
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
+
+    @Shadow public abstract Iterable<ItemStack> getArmorItems();
+
+    @Shadow public abstract boolean isCreative();
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
@@ -118,16 +121,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$freezePlayer(CallbackInfo ci) {
-        if(getY() >= 175 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On")) {
-            if (getY() >= 230 && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+        if(getY() >= 175 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On")) {
+            if (getY() >= 230 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
             }
             this.setFrozenTicks(150);
 
         }
-        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On") ) {
-            if(world.isRaining() || world.isThundering() && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On") ) {
+            if(world.isRaining() || world.isThundering() && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
             }
@@ -202,6 +205,24 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                 this.playSound(SoundEvents.ENTITY_ITEM_BREAK,1,1);
                 world.addBlockBreakParticles(getBlockPos(), Blocks.IRON_BLOCK.getDefaultState());
             }
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "tick()V")
+    private void neutrino$tickWitherTanzanite(CallbackInfo ci) {
+        if(this.hasStatusEffect(StatusEffects.WITHER)) {
+            if(this.inventory.getArmorStack(0).isOf(ItemRegistry.JEWELED_DIAMOND_BOOTS) && this.inventory.getArmorStack(1).isOf(ItemRegistry.JEWELED_DIAMOND_LEGGINGS) && this.inventory.getArmorStack(2).isOf(ItemRegistry.JEWELED_DIAMOND_CHESTPLATE) && this.inventory.getArmorStack(3).isOf(ItemRegistry.JEWELED_DIAMOND_HELMET)) {
+                int duration = this.getStatusEffect(StatusEffects.WITHER).getDuration();
+                int amplifier = this.getStatusEffect(StatusEffects.WITHER).getAmplifier();
+                this.removeStatusEffect(StatusEffects.WITHER);
+                this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, duration, amplifier));
+            }
+        }
+        if(this.isOnFire() && (this.inventory.getArmorStack(0).isOf(ItemRegistry.JEWELED_DIAMOND_BOOTS) || this.inventory.getArmorStack(1).isOf(ItemRegistry.JEWELED_DIAMOND_LEGGINGS) || this.inventory.getArmorStack(2).isOf(ItemRegistry.JEWELED_DIAMOND_CHESTPLATE) || this.inventory.getArmorStack(3).isOf(ItemRegistry.JEWELED_DIAMOND_HELMET))) {
+            this.damage(DamageSource.ON_FIRE, 0.5F);
+        }
+        if(this.getDamageTracker().wasRecentlyAttacked() && this.getDamageTracker().getMostRecentDamage() != null && this.getDamageTracker().getMostRecentDamage().getDamageSource().isMagic()) {
+            this.heal(this.getDamageTracker().getMostRecentDamage().getDamage() - (this.getDamageTracker().getMostRecentDamage().getDamage() / 2));
         }
     }
 }

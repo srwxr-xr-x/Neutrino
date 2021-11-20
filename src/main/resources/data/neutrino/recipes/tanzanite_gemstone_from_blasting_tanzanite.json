@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "tanzanite",
+  "ingredient": {
+    "item": "neutrino:tanzanite_crystal"
+  },
+  "result": "neutrino:tanzanite_gemstone",
+  "experience": 0.7,
+  "cookingtime": 1000
+}

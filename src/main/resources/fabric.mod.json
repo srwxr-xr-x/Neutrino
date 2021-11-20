@@ -33,7 +33,7 @@
   "mixins": [
     "neutrino.mixins.json"
   ],
-  "accessWidenerPath": "VillagerTrades.accessWidener",
+  "accessWidener": "VillagerTrades.accessWidener",
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
