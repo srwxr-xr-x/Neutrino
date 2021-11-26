@@ -22,7 +22,9 @@ A Light, Quality of Life Quark Spin-Off Fabric Mod for Minecraft, inspired by Th
 ### -  [GeckoLib](https://www.curseforge.com/minecraft/mc-mods/geckolib)
 
 ## Features:
-  - **For features, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
+  - **Neutrino adds miscellanous items & blocks that are meant to enhance the vanilla Minecraft experience.**
+    **For example, a Scarecrow was added for Halloween, an Alarm Clock lets you choose when you want to wake up, and much more!**
+  - **For all features, go to the [wiki!](https://github.com/FrostWizard4/Neutrino/wiki)**
 ## Installation
 
 ### Manual installation (recommended)
