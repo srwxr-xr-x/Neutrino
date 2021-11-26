@@ -20,6 +20,7 @@
     "LightningEntityMixin",
     "MilkBucketItemMixin",
     "PlayerEntityMixin",
+    "ServerWorldMixin",
     "SwampHutMixin"
   ],
   "injectors": {

@@ -15,11 +15,11 @@ public class NeutrinoClientInit implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(GLASS_TRAPDOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(DATURA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BONSAI_TREE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ALARM_BLOCK, RenderLayer.getCutout());
 
         FabricModelPredicateProviderRegistry.register(ItemRegistry.SOUL_POUCH, new Identifier("filled"), (stack, world, entity, seed) -> {
             if (entity != null) {

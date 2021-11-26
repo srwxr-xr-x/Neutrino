@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "RGR",
+    "RRR"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "item": "minecraft:clock"
+    },
+    "R": {
+      "item": "minecraft:redstone_dust"
+    }
+  },
+  "result": {
+    "item": "neutrino:alarm_clock"
+  }
+}
