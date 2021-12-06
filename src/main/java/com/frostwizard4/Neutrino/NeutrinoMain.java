@@ -49,6 +49,6 @@ public class NeutrinoMain implements ModInitializer {
         StatusEffectRegistry.init();
         VillagerInit.fillTradeData();
         CommandRegistry.init();
-        OreRegistry.init();
+        //OreRegistry.init();
     }
 }

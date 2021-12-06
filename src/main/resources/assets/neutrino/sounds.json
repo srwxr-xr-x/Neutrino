@@ -76,6 +76,12 @@
     "sounds": [
       "neutrino:serpent_attack"
     ]
+  },
+  "music_disc_paradise": {
+    "subtitle": "subtitles.neutrino.music_disc_paradise",
+    "sounds": [
+      "neutrino:music_disc_paradise"
+    ]
   }
 
 }

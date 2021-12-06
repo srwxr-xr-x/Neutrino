@@ -1,5 +1,7 @@
 package com.frostwizard4.Neutrino.misc;
 
+import net.fabricmc.loader.api.FabricLoader;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -7,7 +9,11 @@ public class MinecraftDungeonsArtifactsConfig {
     public static ArrayList<String> lines = new ArrayList<>();
 
     public static void init() {
-        final File nConfig = new File(System.getProperty("user.dir"), "neutrino-dungeons.conf");
+        final File configDir = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), "neutrino");
+        if (!configDir.exists()){
+            configDir.mkdirs();
+        }
+        final File nConfig = new File(configDir, "neutrino-dungeons.conf");
         if(!nConfig.exists()) {
             try {
                 nConfig.createNewFile();

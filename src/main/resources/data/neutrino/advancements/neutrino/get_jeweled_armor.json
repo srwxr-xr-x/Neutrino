@@ -1,5 +1,5 @@
 {
-  "parent": "neutrino:neutrino/kill_witherling",
+  "parent": "neutrino:neutrino/mine_tanzanite",
   "display": {
     "icon": {
       "item": "neutrino:jeweled_diamond_chestplate",
