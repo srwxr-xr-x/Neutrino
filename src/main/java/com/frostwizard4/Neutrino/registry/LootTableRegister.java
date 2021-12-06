@@ -162,5 +162,15 @@ public class LootTableRegister {
                 table.pool(poolBuilder);
             }
         });
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
+            if (LootTables.JUNGLE_TEMPLE_CHEST.equals(id)) {
+                FabricLootPoolBuilder poolBuilder = FabricLootPoolBuilder.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(ItemRegistry.MUSIC_DISC_PARADISE)
+                                .weight(1))
+                        .with(EmptyEntry.Serializer().weight(20));
+                table.pool(poolBuilder);
+            }
+        });
     }
 }

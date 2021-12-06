@@ -44,6 +44,10 @@ public class SoundRegister {
 
     public static final Identifier SERPENT_ATTACK_ID = new Identifier("neutrino:serpent_attack");
     public static SoundEvent SERPENT_ATTACK = new SoundEvent(SERPENT_ATTACK_ID);
+
+    public static final Identifier MUSIC_DISC_PARADISE_ID = new Identifier("neutrino:music_disc_paradise");
+    public static SoundEvent MUSIC_DISC_PARADISE = new SoundEvent(MUSIC_DISC_PARADISE_ID);
+
     public static void init() {
         Registry.register(Registry.SOUND_EVENT, ENCHANTERS_TOME_ACTIVATE_ID, ENCHANTERS_TOME_ACTIVATE);
         Registry.register(Registry.SOUND_EVENT, HARVESTER_ACTIVATE_ID, HARVESTER_ACTIVATE);
@@ -54,6 +58,6 @@ public class SoundRegister {
         Registry.register(Registry.SOUND_EVENT, WISHBONE_SNAP_ID, WISHBONE_SNAP);
         Registry.register(Registry.SOUND_EVENT, SERPENT_RATTLE_ID, SERPENT_RATTLE);
         Registry.register(Registry.SOUND_EVENT, SERPENT_ATTACK_ID, SERPENT_ATTACK);
-
+        Registry.register(Registry.SOUND_EVENT, MUSIC_DISC_PARADISE_ID, MUSIC_DISC_PARADISE);
     }
 }

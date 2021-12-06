@@ -1,0 +1,37 @@
+{
+  "parent": "neutrino:neutrino/kill_witherling",
+  "display": {
+    "icon": {
+      "item": "neutrino:tanzanite_crystal"
+    },
+    "title": {
+      "translate": "advancements.neutrino.mine_tanzanite.title"
+    },
+    "description": {
+      "translate": "advancements.neutrino.mine_tanzanite.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "tanzanite_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "neutrino:tanzanite_crystal"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tanzanite_crystal"
+    ]
+  ]
+}
