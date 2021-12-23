@@ -41,6 +41,7 @@ public abstract class ServerWorldMixin extends World implements StructureWorldAc
 
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;setTimeOfDay(J)V", shift = At.Shift.AFTER))
     public void neutrino$tickSleeping(BooleanSupplier shouldKeepTicking, CallbackInfo ci) {
+        System.out.println(AlarmClock.getTimeToWake());
         int i;
         i = this.getGameRules().getInt(GameRules.PLAYERS_SLEEPING_PERCENTAGE);
         if (this.sleepManager.canSkipNight(i) && this.sleepManager.canResetTime(i, this.players)) {

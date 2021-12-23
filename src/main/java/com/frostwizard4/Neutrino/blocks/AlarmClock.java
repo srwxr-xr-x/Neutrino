@@ -24,7 +24,7 @@ public class AlarmClock extends HorizontalFacingBlock {
     public AlarmClock(Settings settings) {
         super(settings);
     }
-    private static long time = 23000L;
+    private static long time = 1L;
 
     public static long getTimeToWake() {
         return time;
@@ -41,7 +41,7 @@ public class AlarmClock extends HorizontalFacingBlock {
             time = 42000L;
         } else if(i == 5 || i == 6) {
             player.sendMessage(Text.of("Wake Time set to: Morning"), true);
-            time = 23000L;
+            time = 1L;
         }
         i++;
         i = (i == 7) ? 1 : i;

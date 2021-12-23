@@ -8,6 +8,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
 
@@ -28,8 +31,9 @@ public abstract class CropBlockMixin extends PlantBlock implements Fertilizable 
     protected CropBlockMixin(Settings settings) {
         super(settings);
     }
-    @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+
+    @Inject(method = "randomTick", at = @At(value = "INVOKE", target = "net/minecraft/block/CropBlock.withAge (I)Lnet/minecraft/block/BlockState;", shift = At.Shift.AFTER))
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
         if (world.getBaseLightLevel(pos, 0) >= 9) {
             int i = this.getAge(state);
             if (i < this.getMaxAge()) {
