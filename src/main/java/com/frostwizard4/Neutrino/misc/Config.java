@@ -46,7 +46,7 @@ public class Config {
             out.println("Burn in Deserts: On");
             out.println("Rat Spawn Rate: 5");
             out.println("Duck Spawn Rate: 10");
-
+            out.println("Solid Player Placed Leaves: Off");
         } catch (IOException e) {
             System.err.println("Can't find neutrino.conf");
         }

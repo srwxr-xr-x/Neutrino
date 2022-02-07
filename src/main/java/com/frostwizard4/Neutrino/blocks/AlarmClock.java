@@ -4,9 +4,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.entity.AreaEffectCloudEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.potion.Potions;
 import net.minecraft.state.StateManager;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockRotation;
@@ -19,6 +26,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.event.GameEvent;
 
 public class AlarmClock extends HorizontalFacingBlock {
     public AlarmClock(Settings settings) {
@@ -69,5 +77,13 @@ public class AlarmClock extends HorizontalFacingBlock {
     }
     public BlockState rotate(BlockState state, BlockRotation rotation) {
         return (BlockState)state.with(FACING, rotation.rotate((Direction)state.get(FACING)));
+    }
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        time = 1L;
+        this.spawnBreakParticles(world, player, pos, state);
+        if (state.isIn(BlockTags.GUARDED_BY_PIGLINS)) {
+            PiglinBrain.onGuardedBlockInteracted(player, false);
+        }
+        world.emitGameEvent((Entity)player, GameEvent.BLOCK_DESTROY, pos);
     }
 }
