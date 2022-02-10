@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class Config {
     public static ArrayList<String> lines = new ArrayList<>();
 
+    static {
+        Config.init();
+    }
     public static void init() {
 
         final File configDir = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), "neutrino");
@@ -46,7 +49,7 @@ public class Config {
             out.println("Burn in Deserts: On");
             out.println("Rat Spawn Rate: 5");
             out.println("Duck Spawn Rate: 10");
-            out.println("Solid Player Placed Leaves: Off");
+            out.println("Natural Leaf Collision: Off");
         } catch (IOException e) {
             System.err.println("Can't find neutrino.conf");
         }

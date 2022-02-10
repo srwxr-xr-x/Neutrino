@@ -31,7 +31,7 @@ public class LeavesBlockMixin extends Block {
     }
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if(state.get(PERSISTENT) && Config.lines.get(9).endsWith("On")) {
+        if(!state.get(PERSISTENT) && Config.lines.get(9).endsWith("On")) {
             return VoxelShapes.cuboid(0, 0, 0, 1, 1, 1);
         } else {
             return VoxelShapes.empty();

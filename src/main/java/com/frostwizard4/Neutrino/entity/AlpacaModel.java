@@ -1,6 +1,5 @@
 package com.frostwizard4.Neutrino.entity;
 
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 

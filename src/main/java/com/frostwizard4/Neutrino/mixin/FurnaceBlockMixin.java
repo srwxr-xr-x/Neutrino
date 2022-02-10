@@ -6,7 +6,6 @@ import net.minecraft.block.BlastFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
