@@ -15,10 +15,13 @@
     "EggEntityMixin",
     "EndGatewayBlockEntityMixin",
     "FurnaceBlockMixin",
+    "GetCategoryInvoker",
+    "InGameOverlayRendererMixin",
     "ItemMixin",
     "LeavesBlockMixin",
     "LightningEntityMixin",
     "MilkBucketItemMixin",
+    "ModelLoaderMixin",
     "PlayerEntityMixin",
     "ServerWorldMixin",
     "SwampHutMixin"

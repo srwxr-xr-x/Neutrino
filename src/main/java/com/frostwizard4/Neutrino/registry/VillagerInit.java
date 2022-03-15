@@ -10,6 +10,7 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.map.MapIcon;
+import net.minecraft.tag.ConfiguredStructureFeatureTags;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
@@ -30,8 +31,8 @@ public class VillagerInit {
 
         TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(VillagerProfession.WEAPONSMITH, VillagerInit.toIntMap(ImmutableMap.of(1, weaponsmithLevel1, 2, weaponsmithLevel2, 3, weaponsmithLevel3, 4, weaponsmithLevel4, 5, weaponsmithLevel5)));
         TradeOffers.Factory[] cartographerLevel1 = new TradeOffers.Factory[]{new TradeOffers.BuyForOneEmeraldFactory(Items.PAPER, 24, 16, 2), new TradeOffers.SellItemFactory(Items.MAP, 7, 1, 1)};
-        TradeOffers.Factory[] cartographerLevel2 = new TradeOffers.Factory[]{new TradeOffers.BuyForOneEmeraldFactory(Items.GLASS_PANE, 11, 16, 10), new TradeOffers.SellMapFactory(13, StructureFeature.MONUMENT, MapIcon.Type.MONUMENT, 12, 5)};
-        TradeOffers.Factory[] cartographerLevel3 = new TradeOffers.Factory[]{new TradeOffers.BuyForOneEmeraldFactory(Items.COMPASS, 1, 12, 20), new TradeOffers.SellMapFactory(14, StructureFeature.MANSION, MapIcon.Type.MANSION, 12, 10)};
+        TradeOffers.Factory[] cartographerLevel2 = new TradeOffers.Factory[]{new TradeOffers.BuyForOneEmeraldFactory(Items.GLASS_PANE, 11, 16, 10), new TradeOffers.SellMapFactory(13, ConfiguredStructureFeatureTags.ON_OCEAN_EXPLORER_MAPS, "filled_map.monument", MapIcon.Type.MONUMENT, 12, 5)};
+        TradeOffers.Factory[] cartographerLevel3 = new TradeOffers.Factory[]{new TradeOffers.BuyForOneEmeraldFactory(Items.COMPASS, 1, 12, 20), new TradeOffers.SellMapFactory(14, ConfiguredStructureFeatureTags.ON_WOODLAND_EXPLORER_MAPS, "filled_map.mansion", MapIcon.Type.MANSION, 12, 10)};
         TradeOffers.Factory[] cartographerLevel4 = new TradeOffers.Factory[]{new TradeOffers.SellItemFactory(Items.ITEM_FRAME, 7, 1, 15), new TradeOffers.SellItemFactory(Items.WHITE_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.BLUE_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.LIGHT_BLUE_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.RED_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.PINK_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.GREEN_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.LIME_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.GRAY_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.BLACK_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.PURPLE_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.MAGENTA_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.CYAN_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.BROWN_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.YELLOW_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.ORANGE_BANNER, 3, 1, 15), new TradeOffers.SellItemFactory(Items.LIGHT_GRAY_BANNER, 3, 1, 15)};
         TradeOffers.Factory[] cartographerLevel5 = new TradeOffers.Factory[]{new TradeOffers.SellItemFactory(Items.GLOBE_BANNER_PATTERN, 8, 1, 30), new BuyForFortyEmeraldFactory(BlockRegistry.ALPACA_COLLECTIBLE, 1, 2, 50)};
         TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(VillagerProfession.CARTOGRAPHER, VillagerInit.toIntMap(ImmutableMap.of(1, cartographerLevel1, 2, cartographerLevel2, 3, cartographerLevel3, 4, cartographerLevel4, 5, cartographerLevel5)));

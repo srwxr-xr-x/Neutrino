@@ -37,11 +37,11 @@ public class SandSlab extends FallingBlock implements Waterloggable {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= world.getBottomY()) {
             if(state.get(TYPE).equals(SlabType.BOTTOM)) {
-                FallingBlockEntity fallingBlockEntity = new FallingBlockEntity(world, (double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, world.getBlockState(pos));
+                FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, new BlockPos((double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D), world.getBlockState(pos));
                 this.configureFallingBlockEntity(fallingBlockEntity);
                 world.spawnEntity(fallingBlockEntity);
             } else if(state.get(TYPE).equals(SlabType.TOP)) {
-                FallingBlockEntity fallingBlockEntity = new FallingBlockEntity(world, (double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, this.getDefaultState().with(TYPE, SlabType.BOTTOM));
+                FallingBlockEntity fallingBlockEntity = FallingBlockEntity.spawnFromBlock(world, new BlockPos((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D), this.getDefaultState().with(TYPE, SlabType.BOTTOM));
                 this.configureFallingBlockEntity(fallingBlockEntity);
                 world.spawnEntity(fallingBlockEntity);
             }

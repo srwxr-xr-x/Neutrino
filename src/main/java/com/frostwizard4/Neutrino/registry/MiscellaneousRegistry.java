@@ -1,11 +1,13 @@
 package com.frostwizard4.Neutrino.registry;
 
-import com.frostwizard4.Neutrino.misc.Config;
+import com.frostwizard4.Neutrino.misc.InvincibilityFrameMode;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+
+import static com.frostwizard4.Neutrino.misc.ConfigHolder.config;
 
 public class MiscellaneousRegistry {
     public static String[] attackExcludedEntities;
@@ -34,9 +36,9 @@ public class MiscellaneousRegistry {
 
             }
 
-            if(Config.lines.get(2).endsWith("Off")) {
+            if(config.invincibilityFrameMode == InvincibilityFrameMode.OFF) {
                 entity.timeUntilRegen = 0;
-            } else if(Config.lines.get(2).endsWith("Half")) {
+            } else if(config.invincibilityFrameMode == InvincibilityFrameMode.HALF) { // half
                 entity.timeUntilRegen = 5;
             }
             return ActionResult.PASS;

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "neutrino:alarm_clock",
+    "neutrino:bonsai_tree",
+    "neutrino:scarecrow",
+    "neutrino:half_full_bookshelf",
+    "neutrino:crafting_slab"
+  ]
+}

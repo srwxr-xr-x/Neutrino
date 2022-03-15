@@ -1,7 +1,6 @@
 package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
-import com.frostwizard4.Neutrino.misc.Config;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -21,7 +20,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -30,6 +28,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
+
+import static com.frostwizard4.Neutrino.misc.ConfigHolder.config;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEntityAccess {
@@ -69,6 +69,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
     @Shadow public abstract boolean isCreative();
+
+    @Shadow public abstract PlayerInventory getInventory();
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
@@ -121,7 +123,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$freezePlayer(CallbackInfo ci) {
-        if(getY() >= 175 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On")) {
+        if(getY() >= 175 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && config.coldBiomeFreezing) {
             if (getY() >= 230 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
@@ -129,7 +131,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
             this.setFrozenTicks(150);
 
         }
-        if(world.getBiome(getBlockPos()).isCold(getBlockPos()) && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && Config.lines.get(5).endsWith("On") ) {
+        if(world.getBiome(getBlockPos()).value().isCold(getBlockPos()) && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && config.coldBiomeFreezing) {
             if(world.isRaining() || world.isThundering() && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
@@ -176,8 +178,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$tickDesert(CallbackInfo ci) {
-        if(!this.isTouchingWaterOrRain() && Config.lines.get(6).endsWith("On")) {
-            if(world.getBiome(getBlockPos()).getCategory().equals(Biome.Category.DESERT) && this.getEntityWorld().isSkyVisible(getBlockPos())) {
+        if(!this.isTouchingWaterOrRain() && config.burnInDesert) {
+            if(world.getBiome(getBlockPos()).value().isHot(getBlockPos()) && this.getEntityWorld().isSkyVisible(getBlockPos())) {
                 if(world.getTimeOfDay() > 5500 && world.getTimeOfDay() < 6500 && world.getTime() % 25 == 0) {
                     this.damage(DamageSource.HOT_FLOOR, 0.3f);
                 }

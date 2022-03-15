@@ -54,6 +54,7 @@ public class ItemRegistry {
     public static final Item JEWELED_DIAMOND_BOOTS = new JeweledBoots(new JeweledArmorMaterial(), EquipmentSlot.FEET, new Item.Settings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final Item JEWELED_DIAMOND_LEGGINGS = new JeweledLeggings(new JeweledArmorMaterial(), EquipmentSlot.LEGS, new Item.Settings().group(NEUTRINO_GROUP).rarity(Rarity.RARE));
     public static final Item MUSIC_DISC_PARADISE = new MusicDiscItem(1, SoundRegister.MUSIC_DISC_PARADISE, new Item.Settings().maxCount(1).group(ItemGroup.MISC).rarity(Rarity.RARE));
+    public static final Item COPPER_TALISMAN = new CopperTalisman(new FabricItemSettings().group(NEUTRINO_GROUP).rarity(Rarity.COMMON));
 
     public static void init() {
         if(MinecraftDungeonsArtifactsConfig.lines.get(1).endsWith("On")) {
@@ -101,5 +102,7 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier("neutrino", "jeweled_diamond_leggings"), JEWELED_DIAMOND_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "jeweled_diamond_boots"), JEWELED_DIAMOND_BOOTS);
         Registry.register(Registry.ITEM, new Identifier("neutrino", "music_disc_paradise"), MUSIC_DISC_PARADISE);
+        Registry.register(Registry.ITEM, new Identifier("neutrino", "copper_talisman"), COPPER_TALISMAN);
+
     }
 }
