@@ -4,6 +4,7 @@
   "package": "com.frostwizard4.Neutrino.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AbstractFireBlockMixin",
     "BlastFurnaceBlockMixin",
     "BlocksMixin",
     "BrewingRecipeRegistryAccessor",

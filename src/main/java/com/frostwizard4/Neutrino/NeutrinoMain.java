@@ -31,5 +31,6 @@ public class NeutrinoMain implements ModInitializer {
         CommandRegistry.init();
         GsonConfigWriter.init();
         ConfigHolder.init();
+        ParticleRegistry.init();
     }
 }

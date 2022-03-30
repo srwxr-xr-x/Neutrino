@@ -2,7 +2,6 @@ package com.frostwizard4.Neutrino.mixin;
 
 import com.frostwizard4.Neutrino.PlayerEntityAccess;
 import com.frostwizard4.Neutrino.registry.ItemRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -14,9 +13,7 @@ import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -183,29 +180,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
                 if(world.getTimeOfDay() > 5500 && world.getTimeOfDay() < 6500 && world.getTime() % 25 == 0) {
                     this.damage(DamageSource.HOT_FLOOR, 0.3f);
                 }
-            }
-        }
-    }
-
-    @Inject(at = @At("HEAD"), method = "tick()V")
-    private void neutrino$tickClockandCompass(CallbackInfo ci) {
-        Random random = new Random();
-        if(inventory.contains(Items.CLOCK.getDefaultStack())) {
-            i++;
-            if(i == 1000 + random.nextInt(19000)) {
-                i = 0;
-                inventory.setStack(inventory.getSlotWithStack(Items.CLOCK.getDefaultStack()), ItemRegistry.BROKEN_CLOCK.getDefaultStack());
-                this.playSound(SoundEvents.ENTITY_ITEM_BREAK,1,1);
-                world.addBlockBreakParticles(getBlockPos(), Blocks.GOLD_BLOCK.getDefaultState());
-            }
-        }
-        if(inventory.contains(Items.COMPASS.getDefaultStack())) {
-            i++;
-            if(i == 1000 + random.nextInt(19000)) {
-                i = 0;
-                inventory.setStack(inventory.getSlotWithStack(Items.CLOCK.getDefaultStack()), ItemRegistry.BROKEN_COMPASS.getDefaultStack());
-                this.playSound(SoundEvents.ENTITY_ITEM_BREAK,1,1);
-                world.addBlockBreakParticles(getBlockPos(), Blocks.IRON_BLOCK.getDefaultState());
             }
         }
     }
