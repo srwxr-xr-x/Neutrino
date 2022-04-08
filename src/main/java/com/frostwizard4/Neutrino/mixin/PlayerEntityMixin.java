@@ -13,6 +13,7 @@ import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -69,6 +70,10 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Shadow public abstract PlayerInventory getInventory();
 
+    @Shadow public abstract boolean isSpectator();
+
+    @Shadow public abstract void onKilledOther(ServerWorld world, LivingEntity other);
+
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$checkHolding(CallbackInfo ci) {
         if (getMainHandStack().isOf(ItemRegistry.HARVESTER) || getMainHandStack().isOf(ItemRegistry.LIGHTNING_ROD_ARTIFACT)) {
@@ -120,16 +125,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
 
     @Inject(at = @At("HEAD"), method = "tick()V")
     private void neutrino$freezePlayer(CallbackInfo ci) {
-        if(getY() >= 175 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && config.coldBiomeFreezing) {
-            if (getY() >= 230 && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+        if(getY() >= 175 && !(this.isOnFire()) && !(this.isCreative()) && !(this.isSpectator()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && config.coldBiomeFreezing) {
+            if (getY() >= 230 && !(this.isOnFire()) && !(this.isCreative()) && !(this.isSpectator()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
             }
             this.setFrozenTicks(150);
 
         }
-        if(world.getBiome(getBlockPos()).value().isCold(getBlockPos()) && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && config.coldBiomeFreezing) {
-            if(world.isRaining() || world.isThundering() && !(this.isOnFire()) && !(this.isCreative()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
+        if(world.getBiome(getBlockPos()).value().isCold(getBlockPos()) && !(this.isOnFire()) && !(this.isCreative()) && !(this.isSpectator()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER)) && config.coldBiomeFreezing) {
+            if(world.isRaining() || world.isThundering() && !(this.isOnFire()) && !(this.isCreative()) && !(this.isSpectator()) && !(getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegistry.ALPACA_FUR_SWEATER))) {
                 this.setFrozenTicks(200);
                 this.damage(DamageSource.FREEZE, 0.5F);
             }

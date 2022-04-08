@@ -3,6 +3,7 @@ package com.frostwizard4.Neutrino.items;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HuskEntity;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,7 @@ public class VampiricStaff extends SwordItem {
             huskEntity.setPos(target.getX(), target.getY() + 1, target.getZ());
             attacker.getEntityWorld().spawnEntity(huskEntity);
         }
+        stack.damage(1, attacker, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         return true;
 
     }

@@ -34,7 +34,7 @@ public class GsonConfigWriter {
         values.invincibilityFrameMode = InvincibilityFrameMode.ON;
         values.burnInDesert = true;
         values.naturalLeafCollision = true;
-        values.duckSpawnRate = 10;
+        values.duckSpawnRate = 2;
         values.ratSpawning = true;
         values.ratSpawnRate = 5;
         try {
